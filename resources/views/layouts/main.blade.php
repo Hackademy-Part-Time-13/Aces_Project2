@@ -10,10 +10,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        {{-- NAVBAR --}}
-        <x-navbar/>
-
-        
+        <x-navbar/>       
 
         <main class="container d-flex flex-column min-vh-100">
             <div class="row mt-3">
