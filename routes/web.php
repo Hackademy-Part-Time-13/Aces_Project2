@@ -18,4 +18,4 @@ use App\Http\Controllers\AnnunciController;
 
 Route::get('/', [HomeController::class,'welcome'])->name('home');
 
-Route::get('/inserisciAnnuncio', [AnnunciController::class,'inserisciAnnuncio'])->middleware('auth')->name('inserisciAnnuncio');
+Route::get('/insert', [AnnunciController::class,'insert'])->middleware('auth')->name('insert');
