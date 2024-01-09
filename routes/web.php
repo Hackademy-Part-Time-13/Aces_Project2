@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AnnunciController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'welcome'])->name('home');
+
+Route::get('/inserisciAnnuncio', [AnnunciController::class,'inserisciAnnuncio'])->middleware('auth')->name('inserisciAnnuncio');

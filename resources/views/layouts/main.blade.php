@@ -10,7 +10,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        {{-- qui la navbar --}}
+        {{-- NAVBAR --}}
+        <x-navbar/>
+
+        
+
         <main class="container d-flex flex-column min-vh-100">
             <div class="row mt-3">
                 <div class="col-12">
@@ -30,7 +34,10 @@
             {{$slot}}
         </main>
         <div class="mt-auto container-fluid">
-            {{-- qui il footer --}}
+
+            {{-- Footer --}}
+            <x-footer/>
+            
         </div>
     </body>
 </html>
