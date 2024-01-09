@@ -3,6 +3,7 @@
 use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\AnnunciController;
 
 /*
@@ -19,3 +20,6 @@ use App\Http\Controllers\AnnunciController;
 Route::get('/', [HomeController::class,'welcome'])->name('home');
 
 Route::get('/inserisciAnnuncio', [AnnunciController::class,'inserisciAnnuncio'])->middleware('auth')->name('inserisciAnnuncio');
+
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
