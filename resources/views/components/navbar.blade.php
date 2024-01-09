@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   
   <div class="container">
-    <a class="navbar-brand" href={{route('home')}}>{{config('app.name')}}</a>
+    <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -54,7 +54,8 @@
               </div>
               <div class="modal-body text-center">
                 <h2 class="text-center display-6 mb-4">Join and sell pre-loved items with no fees</h2>
-                <p>Register with <a href={{route('register')}}>Email</a></p>
+                <a class="my-5 btn btn-outline-success col-12 col-md-8 col-lg-6 mx-auto" href="/auth/google"><i class="fa-brands fa-google"></i> Continue with Google</a>
+                <p>Or register with <a href={{route('register')}}>Email</a></p>
                 <p>Already have an account? <a href={{route('login')}}>Log in</a></p>
               </div>              
             </div>
