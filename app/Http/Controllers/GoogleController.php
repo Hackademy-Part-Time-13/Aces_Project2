@@ -41,7 +41,7 @@ class GoogleController extends Controller
             }            
         }
         
-        return redirect('/');
+        return redirect('/insert');
 
     }
 }
