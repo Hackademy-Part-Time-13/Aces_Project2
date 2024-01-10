@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-0">
   
   <div class="container">
     <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>

@@ -7,3 +7,11 @@ body {
 * {
     font-family: 'Lato', sans-serif;
 }
+
+header {
+    height: 600px;
+    background-image: url('https://picsum.photos/4000/600');
+    width: 100vw;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+}

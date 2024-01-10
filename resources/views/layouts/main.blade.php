@@ -12,7 +12,7 @@
     <body>
         <x-navbar/>       
 
-        <main class="container d-flex flex-column min-vh-100">
+        <main class="py-0 container d-flex flex-column min-vh-100">
             <div class="row mt-3">
                 <div class="col-12">
                     @if(session()->has('success'))
