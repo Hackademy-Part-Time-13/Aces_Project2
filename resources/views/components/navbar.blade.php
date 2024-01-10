@@ -47,7 +47,7 @@
             @foreach ($categories as $category)
             <li><a class="dropdown-item" href="{{route('categoryShow', compact('category'))}}">{{
                 ($category->name)}}</a></li>
-                <li><hr class="dropdown-divider"></li>
+                
             @endforeach
         </ul>
      </li>
