@@ -22,6 +22,8 @@ Route::get('/', [HomeController::class,'welcome'])->name('home');
 
 Route::get('/insert', [AnnouncementController::class,'insert'])->middleware('auth')->name('insert');
 
+Route::get('/category/{category}', [CategoryController::class, 'categoryShow'])->name('categoryShow');
+
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
  
