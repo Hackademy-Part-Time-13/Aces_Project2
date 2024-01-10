@@ -4,7 +4,7 @@ use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AdController;
 
 
 /*
@@ -20,12 +20,10 @@ use App\Http\Controllers\AnnouncementController;
 
 Route::get('/', [HomeController::class,'welcome'])->name('home');
 
-Route::get('/insert', [AnnouncementController::class,'insert'])->middleware('auth')->name('insert');
+Route::get('/insert', [AdController::class,'insert'])->middleware('auth')->name('insert');
 
 Route::get('/category/{category}', [CategoryController::class, 'categoryShow'])->name('categoryShow');
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/announcements/retail',[AnnouncementController::class,'retail']);
- 
