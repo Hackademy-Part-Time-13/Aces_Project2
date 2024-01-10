@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\CategoryController;
 
 
 /*
@@ -19,13 +18,11 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [HomeController::class,'welcome'])->name('home');
+Route::get('/', [AdController::class,'welcome'])->name('home');
 
-Route::get('/insert', [AdController::class,'insert'])->middleware('auth')->name('insert');
+Route::get('/items/new', [AdController::class,'insert'])->middleware('auth')->name('insert');
 
-Route::get('/category/{category}', [CategoryController::class, 'categoryShow'])->name('categoryShow');
+Route::get('/ads/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-
-Route::get('/announcements/retail/{category}', [AdController::class,'retail']);

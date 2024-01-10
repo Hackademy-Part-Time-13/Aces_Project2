@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Ad;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -16,27 +18,28 @@ class DatabaseSeeder extends Seeder
     {
 
         $categories = [
-            'Elettronica e Tecnologia',
-            'Veicoli' ,
-            'Immobili' ,
-            'Lavoro e Occupazione',
-            'Arredamento e Casa',
-            'Abbigliamento e Accessori',
-            'Sport e Tempo Libero',
-            'Animali e Accessori',
-            'Servizi' ,
-            'Collezionismo e Antiquariato'
+            'Electronics',
+            'Vehicles' ,
+            'Real Estate' ,
+            'Jobs',
+            'Furniture',
+            'Clothing',
+            'Sport',
+            'Pets',
+            'Services' ,
+            'Collectibles'
         ];
 
         foreach($categories as $category) {
             Category::create(['name'=>$category]);
         }
-        
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(10)->create();
+
+        Ad::factory(30)->create();
+
+
+
+        
     }
 }
