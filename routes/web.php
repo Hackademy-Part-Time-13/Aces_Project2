@@ -2,9 +2,10 @@
 
 use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\AdController;
+use App\Http\Controllers\CategoryController;
 
 
 /*
