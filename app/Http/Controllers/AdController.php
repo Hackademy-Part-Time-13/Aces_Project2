@@ -12,12 +12,10 @@ class AdController extends Controller
         return view('ads.insert');
     }
  
-    public function retail($ad){
-        //  dd("Sono nel metodo retail con ad: " . $ad);
-        $ads=Ad::findOrFail($ad);
+    public function retail(Ad $ad){
         
-        return view('ads.retail', compact('ads'));
-   }
+        return view('ads.retail', compact('ad'));
+    }
 
     public function welcome() {
 
@@ -28,7 +26,7 @@ class AdController extends Controller
 
     public function adsByCategory(Category $category) {
 
-        $ads = Ad::take(6)->where('category_id',$category->id)->get();
+        $ads = Ad::latest()->where('category_id',$category->id)->get();
         // dd($ads);
         return view('welcome', compact('ads'));
     }

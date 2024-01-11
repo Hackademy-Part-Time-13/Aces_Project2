@@ -23,7 +23,7 @@ Route::get('/', [AdController::class,'welcome'])->name('home');
 Route::get('/items/new', [AdController::class,'insert'])->middleware('auth')->name('insert');
 
 Route::get('/ads/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
-Route::get('/ads/retail/{ad}', [AdController::class, 'retail'])->name('adsRetail');
+Route::get('/ad/{ad}', [AdController::class, 'retail'])->name('adsRetail');
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
