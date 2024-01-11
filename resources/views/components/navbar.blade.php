@@ -92,7 +92,7 @@
   <nav class="navbar bg-body-tertiary border-bottom">
     <div class="container-lg">
       @foreach($categories as $category)
-      <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
+      <a class="nav-link text-extramuted" class="category-nav" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
       @endforeach
     </div>
   </nav>

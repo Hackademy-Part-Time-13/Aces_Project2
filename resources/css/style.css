@@ -22,6 +22,10 @@ header > .card {
     background-color: whitesmoke!important;
 }
 
+.category-nav {
+    opacity: 0.5;
+}
+
 .card-title {
     height: 70px;
 }
