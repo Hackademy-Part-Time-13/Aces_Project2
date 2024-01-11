@@ -24,7 +24,7 @@
         <div class="card-body">
           <h5 class="card-title">{{$ad->title}}</h5>
           <p class="card-text text-muted small">€ {{$ad->price}}</p>
-          <a href="{{route(adsRetail.$ad)}}" class="btn btn-primary">Go somewhere</a>
+          <a href="{{route('adsRetail',$ad)}}" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>    
     </div>

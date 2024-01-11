@@ -1,4 +1,4 @@
-< x-main title="dettaglio annuncio">
+<x-main title="dettaglio annuncio">
 
 <div class="container">
 
