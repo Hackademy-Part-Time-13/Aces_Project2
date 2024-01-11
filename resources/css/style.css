@@ -29,3 +29,7 @@ header > .card {
 .navbar-brand {
     font-family: 'Pacifico', cursive;
 }
+
+.position-header {
+    margin-top: -48px;
+}

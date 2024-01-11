@@ -1,5 +1,5 @@
 <x-main>
-  <h1 class="text-center my-3">Register</h1>
+  <h1 class="text-center my-5">Register</h1>
   <form action={{route('register')}} method="POST" class="col-12 col-md-8 col-lg-6 mx-auto">
     @csrf
     <div class="form-floating mb-3">

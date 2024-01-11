@@ -1,13 +1,12 @@
 <x-main>
   @guest
-  <header class="mt-4 d-flex align-items-center justify-content-around ">    
-    <div class="card" style="width: 25rem;">
-      <div class="card-body p-4">
+  <header class="mt-4 d-flex align-items-center justify-content-around @if(Route::currentRouteName() == 'adsByCategory') d-none @endif">    
+    <div class="card" style="width: 25rem; height: 16rem">
+      <div class="card-body p-4 h-100 d-flex flex-column justify-content-between">
         <h1 class="card-title mb-4">Ready to declutter your basement?</h5>
         <div>
           <button class="btn btn-primary w-100 mb-4" data-bs-toggle="modal" data-bs-target="#loginregistermodal">Sell now</button>
         </div>
-        <a href="#" class="card-link">Card link</a>        
       </div>
     </div>
     <div>      
