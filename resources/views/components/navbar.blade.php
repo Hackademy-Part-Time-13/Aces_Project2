@@ -1,4 +1,4 @@
-<div class="fixed-top">
+<div class="modalnav fixed-top">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   
     <div class="container-lg">

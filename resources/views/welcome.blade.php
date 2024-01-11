@@ -15,7 +15,7 @@
   </header> 
   @endguest 
 
-  <div class="row">
+  <div class="row mt-5">
     <h3>Our last items</h3>
     @foreach($ads as $ad) 
     <div class="col-12 col-lg-4">
