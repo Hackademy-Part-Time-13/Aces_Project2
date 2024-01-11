@@ -22,7 +22,7 @@ header > .card {
     background-color: whitesmoke!important;
 }
 
-.category-nav:hover {
+.text-extramuted:hover {
     opacity: 1!important;
 }
 
