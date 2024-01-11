@@ -13,9 +13,9 @@ class AdController extends Controller
     }
  
     public function retail(Ad $ad){
-        //  dd("Sono nel metodo retail con ad: " . $ad);
+        
         return view('ads.retail', compact('ad'));
-   }
+    }
 
     public function welcome() {
 
