@@ -1,12 +1,12 @@
 <x-main title="dettaglio annuncio">
 
-<div class="container">
+<div class="container mt-4">
 
     <div class="row">
 
         <div class="col-12">
 
-            <div id="carouselExampleIndicators" class="carousel slide">
+            <div id="carouselExampleIndicators" class="carousel slide mt-5">
                 <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <p class="card-text">Description: {{$ad->description}}</p>
                 <p class="card-text">Price: {{$ad->price}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>   
+                <a href="{{route('home')}}" class="btn btn-primary">Go back</a>   
                   
                 </div>
             </div>
@@ -50,7 +50,7 @@
 
 
 
-</div>
+    </div>
     </div>  
 
     </div>
