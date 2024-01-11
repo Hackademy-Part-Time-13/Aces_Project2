@@ -20,7 +20,7 @@ use App\Http\Controllers\GoogleController;
 
 Route::get('/', [AdController::class,'welcome'])->name('home');
 
-Route::get('/items/new', [AdController::class,'insert'])->middleware('auth')->name('insert');
+Route::get('/ad/new', [AdController::class,'insert'])->middleware('auth')->name('insert');
 
 Route::get('/ads/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
 Route::get('/ad/{ad}', [AdController::class, 'retail'])->name('adsRetail');
