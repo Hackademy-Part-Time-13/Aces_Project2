@@ -35,7 +35,7 @@ header > .card {
     height: 70px;
 }
 
-.navbar-brand {
+.navbar-brand, h1, h2, h3 {
     font-family: 'Pacifico', cursive;
 }
 

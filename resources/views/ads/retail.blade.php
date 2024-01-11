@@ -1,62 +1,49 @@
-<x-main title="dettaglio annuncio">
+<x-main title="{{$ad->title}}">
 
-<div class="container mt-4">
+    <div class="row mt-5">        
 
-    <div class="row">
-
-        <div class="col-12">
-
-            <div id="carouselExampleIndicators" class="carousel slide mt-5">
-                <div class="carousel-indicators">
+        <div id="carouselExampleIndicators" class="carousel slide mt-5 col-12 col-lg-9">
+            <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
+            </div>
+            <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://picsum.photos/id/27/1200/200" class="d-block w-100" alt="...">
+                    <img src="https://picsum.photos/id/27/1200/600" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/id/28/1200/200" class="d-block w-100" alt="...">
+                    <img src="https://picsum.photos/id/28/1200/600" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/id/29/1200/200" class="d-block w-100" alt="...">
+                    <img src="https://picsum.photos/id/29/1200/600" class="d-block w-100" alt="...">
                 </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        
-        
-        
+            </button>
+        </div>
+    
+        <div class="col-12 col-lg-3 mt-5 d-flex flex-column justify-content-between ">
             <div class="card">
-                <div class="card-header">
-                <h5 class="card-title">Title: {{$ad->title}}</h5>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Description: {{$ad->description}}</p>
-                <p class="card-text">Price: {{$ad->price}}</p>
-                <a href="{{route('home')}}" class="btn btn-outline-primary">Go back</a>   
-                
-                </div>
-            </div>
-
-
-
-
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item display-6">€ {{$ad->price}}</li>
+                    <li class="list-group-item fw-bold">{{$ad->title}}</li>
+                    <li class="list-group-item">{{$ad->description}}</li>                      
+                </ul>
+            </div>     
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-muted fst-italic">{{$ad->user->name}}</li>                                             
+                </ul>
+            </div>             
+        </div>        
+            
     </div>
-    </div>  
-
-    </div>
-
-
-
-
 
 </x-main>
