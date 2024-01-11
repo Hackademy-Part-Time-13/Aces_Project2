@@ -37,11 +37,11 @@
         
             <div class="card">
                 <div class="card-header">
-                <h5 class="card-title">Title: {{$announcement->title}}</h5>
+                <h5 class="card-title">Title: {{$ad->title}}</h5>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Description: {{$announcement->description}}</p>
-                <p class="card-text">Price: {{$announcement->price}}</p>
+                    <p class="card-text">Description: {{$ad->description}}</p>
+                <p class="card-text">Price: {{$ad->price}}</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>   
                   
                 </div>

@@ -12,10 +12,11 @@ class AdController extends Controller
         return view('ads.insert');
     }
  
-    public function retail($category){
-
-        $annoucement=Ad::findOrFail($category);
-        return view('ads.retail', compact('announcement'));
+    public function retail($ad){
+        //  dd("Sono nel metodo retail con ad: " . $ad);
+        $ads=Ad::findOrFail($ad);
+        
+        return view('ads.retail', compact('ads'));
    }
 
     public function welcome() {
