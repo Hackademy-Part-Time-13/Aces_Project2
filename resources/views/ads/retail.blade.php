@@ -42,8 +42,8 @@
                 <div class="card-body">
                     <p class="card-text">Description: {{$ad->description}}</p>
                 <p class="card-text">Price: {{$ad->price}}</p>
-                <a href="{{route('home')}}" class="btn btn-primary">Go back</a>   
-                  
+                <a href="{{route('home')}}" class="btn btn-outline-primary">Go back</a>   
+                
                 </div>
             </div>
 

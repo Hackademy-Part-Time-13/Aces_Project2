@@ -16,14 +16,14 @@
 
   <div class="row mt-5">
     <h3>Our last items</h3>
-    @foreach($ads as $ad) 
+    @foreach($ads as $ad)
     <div class="col-12 col-lg-4">
       <div class="card m-2 mx-auto" style="width: 18rem;">
         <img class="card-img-top" src="https://picsum.photos/286/180/?{{$ad->id}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{$ad->title}}</h5>
           <p class="card-text text-muted small">€ {{$ad->price}}</p>
-          <a href="{{route('adsRetail',$ad)}}" class="btn btn-primary">Go somewhere</a>
+           <a href="{{route('adsRetail',$ad)}}" class="btn btn-outline-primary">Visit ad</a> 
         </div>
       </div>    
     </div>
