@@ -1,5 +1,5 @@
 <div class="modalnav fixed-top">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom">
   
     <div class="container-lg">
       <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>
@@ -89,10 +89,10 @@
     
   </nav>
 
-  <nav class="navbar bg-body-tertiary">
+  <nav class="navbar bg-body-tertiary border-bottom">
     <div class="container-lg">
       @foreach($categories as $category)
-      <a class="nav-link text-muted" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
+      <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
       @endforeach
     </div>
   </nav>

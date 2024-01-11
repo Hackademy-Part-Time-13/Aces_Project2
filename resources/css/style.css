@@ -33,3 +33,8 @@ header > .card {
 .position-header {
     margin-top: -48px;
 }
+
+.text-extramuted {
+    font-size: small;
+    opacity: 0.5;
+}
