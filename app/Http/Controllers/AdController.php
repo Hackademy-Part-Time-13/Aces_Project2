@@ -26,8 +26,9 @@ class AdController extends Controller
 
     public function adsByCategory(Category $category) {
 
+        $categoryName = $category->name;
         $ads = Ad::latest()->where('category_id',$category->id)->get();
         // dd($ads);
-        return view('welcome', compact('ads'));
+        return view('welcome', compact('ads','categoryName'));
     }
 }

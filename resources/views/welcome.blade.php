@@ -14,18 +14,26 @@
   </header> 
   @endguest 
 
-  <div class="row mt-5">
+  <div class="row my-5">
+    @if(Route::currentRouteName() == 'home')
     <h3>Our last items</h3>
+    @elseif(Route::currentRouteName() == 'adsByCategory')
+    <h3>{{$categoryName}}</h3>
+    @endif
     @foreach($ads as $ad)
     <div class="col-12 col-lg-4">
-      <div class="card m-2 mx-auto" style="width: 18rem;">
+      <a href="{{route('adsRetail',$ad)}}" class="card p-1 m-2 mx-auto btn btn-light" style="width: 18rem;">
         <img class="card-img-top" src="https://picsum.photos/286/180/?{{$ad->id}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{$ad->title}}</h5>
-          <p class="card-text text-muted small">€ {{$ad->price}}</p>
-           <a href="{{route('adsRetail',$ad)}}" class="btn btn-outline-primary">Visit ad</a> 
+          <div class="d-flex justify-content-between ">
+            <p class="card-text text-muted small">€ {{$ad->price}}</p>
+            <p class="card-text text-muted small">{{$ad->user->name}}</p>
+
+          </div>
+          
         </div>
-      </div>    
+      </a>    
     </div>
     @endforeach
   </div>
