@@ -22,8 +22,8 @@ header > .card {
     background-color: whitesmoke!important;
 }
 
-.category-nav {
-    opacity: 0.5;
+.category-nav:hover {
+    opacity: 1;
 }
 
 .card-title {
