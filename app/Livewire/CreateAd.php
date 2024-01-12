@@ -8,7 +8,7 @@ use Livewire\Attributes\Validate;
 
 class CreateAd extends Component
 {
-    #[Validate('required|max:50')] 
+    #[Validate('required|max:30')] 
     public $title;
 
     #[Validate('required|exists:categories,id')] 

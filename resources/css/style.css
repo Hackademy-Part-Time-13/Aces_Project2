@@ -26,11 +26,6 @@ header > .card {
     background-color: whitesmoke!important;
 }
 
-.text-extramuted:hover {
-    opacity: 1!important;
-    color: var(--primary-color)!important;
-}
-
 .card-title {
     height: 70px;
 }
@@ -45,5 +40,21 @@ header > .card {
 
 .text-extramuted {
     font-size: small;
-    opacity: 0.5;
+    
 }
+
+.text-extramuted:hover {
+    opacity: 1;
+    color: var(--primary-color)!important;
+}
+
+.card-link {
+    text-decoration: none;
+    transition: color 150ms ease-in-out;
+}
+
+.card-link:hover {
+   
+    color: var(--primary-color);
+}
+

@@ -1,0 +1,1 @@
+<i role="button" class="@if($isFavourite)fa-solid @else fa-regular @endif fa-heart mb-3 ms-3 text-danger" wire:click="toggleFavAd"></i>

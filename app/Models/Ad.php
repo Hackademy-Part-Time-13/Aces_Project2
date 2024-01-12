@@ -23,4 +23,11 @@ class Ad extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // funzione per ottenere gli user a cui piace tal annuncio
+
+    public function favBy()
+    {
+        return $this->belongsToMany(User::class, 'user_favorite_ad');
+    }
 }

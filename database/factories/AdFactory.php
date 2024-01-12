@@ -22,7 +22,7 @@ class AdFactory extends Factory
         $usersIds = User::pluck('id')->toArray();
 
         return [
-            'title' => fake()->sentence(),
+            'title' => fake()->text($maxNbChars = 30),
             'description' => fake()->paragraph(),
             'category_id' => fake()->randomElement($categoriesIds),
             'user_id' => fake()->randomElement($usersIds),

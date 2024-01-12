@@ -45,8 +45,15 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function ads ()
+    public function ads()
     {
         return $this->hasMany(Ad::class);
     }
+
+    // funzione per ottenere gli annunci preferiti dell'utente
+    public function favAds()
+    {
+        return $this->belongsToMany(Ad::class, 'user_favourite_ad');
+    }
+   
 }

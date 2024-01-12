@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ads', function (Blueprint $table) {
+        Schema::create('user_favourite_ad', function (Blueprint $table) {
             
-            $table->id();
-            $table->string('title',30);
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('ad_id');
             $table->unsignedBigInteger('user_id');
-            $table->float('price');
-            $table->string('description');
-            $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('categories');
+            
+            // Chiavi esterne
+            $table->foreign('ad_id')->references('id')->on('ads');
             $table->foreign('user_id')->references('id')->on('users');
+
+            // Unici combinando ad_id e user_id
+            $table->unique(['ad_id', 'user_id']);
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ads');
+        Schema::dropIfExists('user_favourite_ad');
     }
 };

@@ -19,21 +19,27 @@
     <h3>Our last items</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
     <h3 class="mt-4 mt-lg-0">{{$categoryName}}</h3>
+    @elseif(Route::currentRouteName() == 'favs')
+    <h3 class="mt-4 mt-lg-0">Your favourites</h3>
     @endif
     @foreach($ads as $ad)
-    <div class="col-12 col-lg-4">
-      <a href="{{route('adsRetail',$ad)}}" class="card p-1 m-2 mx-auto btn btn-light" style="width: 18rem;">
-        <img class="card-img-top" src="https://picsum.photos/286/180/?{{$ad->id}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{$ad->title}}</h5>
-          <div class="d-flex justify-content-between">
+    <div class="col-12 col-lg-4 my-3">
+      <div class="card p-1 mx-auto h-100" style="width: 18rem;">
+        <a href="{{route('ad.show',$ad)}}">
+          <img class="card-img-top" src="https://picsum.photos/286/180/?{{$ad->id}}" alt="Card image cap">
+        </a>     
+        <div class="card-body pb-0">
+          <a href="{{route('ad.show',$ad)}}" class="card-title fs-5 card-link">{{$ad->title}}</a>
+          <div class="d-flex justify-content-between mt-3 mb-0">
             <p class="card-text text-muted small">€ {{$ad->price}}</p>
             <p class="card-text text-muted small">{{$ad->user->name}}</p>
-
-          </div>
-          
+          </div>                  
         </div>
-      </a>    
+        @auth
+        <livewire:favourite-ad-button adId="{{ $ad->id }}" />
+
+        @endauth
+      </div>    
     </div>
     @endforeach
   </div>

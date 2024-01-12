@@ -2,14 +2,14 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom">
   
     <div class="container-lg">
-      <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>
+      <a class="navbar-brand text-primary" href={{route('ads.index')}}>{{config('app.name')}}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'home') active @endif" href={{route('home')}}>Home</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'ads.index') active @endif" href={{route('ads.index')}}>Home</a>
           </li>
           <!-- categorie -->
           <li class="nav-item dropdown">
@@ -34,7 +34,7 @@
         <ul class="navbar-nav">
           @auth
           <div class="me-3">
-            <a href="{{ route('insert') }}" class="btn btn-primary">Sell now</a>
+            <a href="{{route('ad.create')}}" class="btn btn-primary">Sell now</a>
           </div>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,7 +42,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Account</a></li>
-              <li><a class="dropdown-item" href="#">Ads</a></li>
+              <li><a class="dropdown-item" href={{route('favs')}}>Favourite Ads</a></li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form class="dropdown-item" action={{route('logout')}} method="post">
@@ -92,7 +92,7 @@
   <nav class="navbar bg-body-tertiary border-bottom">
     <div class="container-lg">
       @foreach($categories as $category)
-      <a class="nav-link text-extramuted category-nav" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
+      <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
       @endforeach
     </div>
   </nav>
