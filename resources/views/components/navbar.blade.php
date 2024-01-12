@@ -57,7 +57,7 @@
           @guest
   
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginregistermodal">
+          <button type="button" class="btn btn-outline-primary mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginregistermodal">
             Sign up | Login
           </button>
   
@@ -77,7 +77,7 @@
               </div>
             </div>
           </div>
-          <button type="button" class="btn btn-primary ms-3 " data-bs-toggle="modal" data-bs-target="#loginregistermodal">
+          <button type="button" class="btn btn-primary ms-lg-3 " data-bs-toggle="modal" data-bs-target="#loginregistermodal">
             Sell now
           </button>  
           @endguest

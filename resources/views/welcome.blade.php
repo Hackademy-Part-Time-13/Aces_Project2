@@ -18,7 +18,7 @@
     @if(Route::currentRouteName() == 'home')
     <h3>Our last items</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
-    <h3>{{$categoryName}}</h3>
+    <h3 class="mt-4 mt-lg-0">{{$categoryName}}</h3>
     @endif
     @foreach($ads as $ad)
     <div class="col-12 col-lg-4">
@@ -26,7 +26,7 @@
         <img class="card-img-top" src="https://picsum.photos/286/180/?{{$ad->id}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{$ad->title}}</h5>
-          <div class="d-flex justify-content-between ">
+          <div class="d-flex justify-content-between">
             <p class="card-text text-muted small">€ {{$ad->price}}</p>
             <p class="card-text text-muted small">{{$ad->user->name}}</p>
 
