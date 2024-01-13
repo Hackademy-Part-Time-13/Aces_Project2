@@ -21,6 +21,8 @@
     <h3 class="my-4">{{$categoryName}}</h3>
     @elseif(Route::currentRouteName() == 'ads.favs')
     <h3 class="my-4">Your favourites</h3>
+    @elseif(Route::currentRouteName() == 'ads.search')
+    <h3 class="my-4">Items about: {{$query}}</h3>
     @endif
     
     @forelse($ads as $ad)
@@ -45,7 +47,7 @@
       </div>    
     </div>
     @empty
-    <p class="fst-italic">Sorry, no articles found for this category.</p>
+    <p class="fst-italic">Sorry, no items found here.</p>
     @endforelse
     {{ $ads->links() }}
   </div>

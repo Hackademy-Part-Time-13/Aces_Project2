@@ -42,8 +42,11 @@ class AdController extends Controller
 
     public function searchAds(Request $request)
     {
+        $query = $request->input('searched');
+        
         $ads = Ad::search($request->searched)->paginate(6);
-        return view('welcome', compact('ads'));
+        
+        return view('welcome', compact('ads','query'));
         
     }
 }

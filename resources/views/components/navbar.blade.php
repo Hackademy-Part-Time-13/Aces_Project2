@@ -1,13 +1,13 @@
 <div class="modalnav fixed-top">
   <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom">
   
-    <div class="container-lg">
+    <div class="container-lg ">
       <a class="navbar-brand text-primary" href={{route('ads.index')}}>{{config('app.name')}}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link @if(Route::currentRouteName() == 'ads.index') active @endif" href={{route('ads.index')}}>Home</a>
           </li>
@@ -24,15 +24,11 @@
                 @endforeach
             </ul>
           </li>
-          <!-- categorie -->
-          
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
+          <!-- categorie -->        
         </ul>
 
-        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-auto" role="search">
-          <input name="searched" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-5 px-5  flex-grow-1" role="search">
+          <input name="searched" class="form-control me-2" type="search" placeholder="Search for items">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
        
