@@ -1,18 +1,32 @@
 <x-main>
-  @guest
-  <header class="mt-4 d-flex align-items-center justify-content-around @if(Route::currentRouteName() == 'adsByCategory') d-none @endif">    
-    <div class="card" style="width: 25rem; height: 16rem">
-      <div class="card-body p-4 h-100 d-flex flex-column justify-content-between">
-        <h1 class="card-title mb-4">Ready to declutter your basement?</h5>
+  
+  <header class="mt-4 d-flex align-items-center justify-content-around @if(!Route::currentRouteName() == 'ads.index') d-none @endif">    
+    <div class="card" style="width: 28rem; height: 16rem">
+      <div class="card-body p-4 h-100 d-flex flex-column justify-content-around">        
+        <h1 class="card-title mb-4">
+          @guest 
+            Ready to declutter your basement? 
+          @endguest
+          @auth 
+            @php
+            $firstName = strtok(auth()->user()->name, ' ');
+            @endphp
+            Welcome back, {{$firstName}}! 
+          @endauth
+        </h1>
         <div>
-          <button class="btn btn-primary w-100 mb-4" data-bs-toggle="modal" data-bs-target="#loginregistermodal">Sell now</button>
-        </div>
+          @guest
+            <button class="btn btn-primary w-100 mb-4" data-bs-toggle="modal" data-bs-target="#loginregistermodal">Sell now</button>
+          @endguest
+          @auth          
+            <a class="btn btn-primary w-100 mb-4" href={{route('ad.create')}}>Sell now</a>
+          @endauth
+        </div>  
       </div>
     </div>
-    <div>      
-    </div>     
+    <div></div>
   </header> 
-  @endguest 
+  
 
   <div class="row my-lg-5">
     @if(Route::currentRouteName() == 'ads.index')
