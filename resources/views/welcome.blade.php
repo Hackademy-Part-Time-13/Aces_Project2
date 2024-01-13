@@ -16,12 +16,14 @@
 
   <div class="row my-5">
     @if(Route::currentRouteName() == 'ads.index')
-    <h3>Our last items</h3>
+    <h3 class="my-4">Our last items</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
-    <h3 class="mt-4 mt-lg-0">{{$categoryName}}</h3>
+    <h3 class="my-4 mt-lg-0">{{$categoryName}}</h3>
     @elseif(Route::currentRouteName() == 'favs')
-    <h3 class="mt-4 mt-lg-0">Your favourites</h3>
+    <h3 class="my-4 mt-lg-0">Your favourites</h3>
     @endif
+
+    @if($ads->count() > 0)
     @foreach($ads as $ad)
     <div class="col-12 col-lg-4 my-3">
       <div class="card p-1 mx-auto h-100" style="width: 18rem;">
@@ -42,6 +44,9 @@
       </div>    
     </div>
     @endforeach
+    @else
+    <p class="fst-italic">Sorry, no articles found for this category. Log in to create the first one!</p>
+    @endif
   </div>
  
 </x-main>
