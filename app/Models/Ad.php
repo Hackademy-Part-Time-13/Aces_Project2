@@ -28,6 +28,6 @@ class Ad extends Model
 
     public function favBy()
     {
-        return $this->belongsToMany(User::class, 'user_favorite_ad');
+        return $this->belongsToMany(User::class, 'user_favourite_ad');
     }
 }

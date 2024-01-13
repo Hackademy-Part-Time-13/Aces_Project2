@@ -10,6 +10,7 @@ class FavouriteAdButton extends Component
 {
     public $adId;
     public $isFavourite;   
+    public $count;
 
     public function mount()
     {
@@ -17,7 +18,8 @@ class FavouriteAdButton extends Component
         $user = Auth::user();
 
         // Check if the ad is already favorited
-        $this->isFavourite = $user && $ad && $user->favAds()->wherePivot('ad_id', $ad->id)->count() > 0;
+        $this->isFavourite = $user->favAds()->wherePivot('ad_id', $ad->id)->count() > 0;
+        $this->count = $ad->favBy()->count();
     }
 
     public function toggleFavAd(){        
@@ -25,13 +27,11 @@ class FavouriteAdButton extends Component
         $user = Auth::user();
         $ad = Ad::find($this->adId);
 
-        if ($user) {
-            if ($this->isFavourite) {
+        if ($this->isFavourite) {
                 $user->favAds()->detach($ad);
             } else {
                 $user->favAds()->attach($ad);
             }
-        }
 
         $this->mount();
     }
