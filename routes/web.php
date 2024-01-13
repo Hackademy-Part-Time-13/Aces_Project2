@@ -18,14 +18,24 @@ use App\Http\Controllers\GoogleController;
 |
 */
 
+// home con ultimi 6 annunci
 Route::get('/', [AdController::class,'index'])->name('ads.index');
 
+// crea annuncio
 Route::get('/ad/new', [AdController::class,'create'])->middleware('auth')->name('ad.create');
 
+// annunci per categoria
 Route::get('/ads/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
+
+// vedi annuncio
 Route::get('/ad/{ad}', [AdController::class, 'show'])->name('ad.show');
 
+// socialite google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/favs', [AdController::class, 'favs'])->middleware('auth')->name('favs');
+// preferiti
+Route::get('/favs', [AdController::class, 'favs'])->middleware('auth')->name('ads.favs');
+
+// ricerca annuncio
+Route::get('/search/ads', [AdController::class, 'searchAds'])->name('ads.search');

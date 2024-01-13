@@ -42,7 +42,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Account</a></li>
-              <li><a class="dropdown-item" href={{route('favs')}}>Favourite Ads</a></li>
+              <li><a class="dropdown-item" href={{route('ads.favs')}}>Favourite Ads</a></li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form class="dropdown-item" action={{route('logout')}} method="post">
@@ -89,7 +89,7 @@
     
   </nav>
 
-  <nav class="navbar bg-body-tertiary border-bottom">
+  <nav class="d-none d-lg-block navbar bg-body-tertiary border-bottom">
     <div class="container-lg">
       @foreach($categories as $category)
       <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>

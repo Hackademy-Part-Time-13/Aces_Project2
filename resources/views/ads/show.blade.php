@@ -30,7 +30,7 @@
         </div>
     
         <div class="col-12 col-lg-3 mt-5 d-flex flex-column justify-content-between ">
-            <div class="card">
+            <div class="card mb-3">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item display-6">€ {{$ad->price}}</li>
                     <li class="list-group-item fw-bold">{{$ad->title}}</li>

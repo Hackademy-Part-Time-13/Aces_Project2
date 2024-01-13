@@ -14,13 +14,13 @@
   </header> 
   @endguest 
 
-  <div class="row my-5">
+  <div class="row my-lg-5">
     @if(Route::currentRouteName() == 'ads.index')
     <h3 class="my-4">Our last items</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
-    <h3 class="my-4 mt-lg-0">{{$categoryName}}</h3>
-    @elseif(Route::currentRouteName() == 'favs')
-    <h3 class="my-4 mt-lg-0">Your favourites</h3>
+    <h3 class="my-4">{{$categoryName}}</h3>
+    @elseif(Route::currentRouteName() == 'ads.favs')
+    <h3 class="my-4">Your favourites</h3>
     @endif
 
     @if($ads->count() > 0)
@@ -28,24 +28,24 @@
     <div class="col-12 col-lg-4 my-3">
       <div class="card p-1 mx-auto h-100" style="width: 18rem;">
         <a href="{{route('ad.show',$ad)}}">
-          <img class="card-img-top" src="https://picsum.photos/286/180/?{{$ad->id}}" alt="Card image cap">
+          <img class="card-img-top" src="https://picsum.photos/id/{{$ad->id}}/286/180" alt="Card image cap">
         </a>     
         <div class="card-body pb-0">
           <a href="{{route('ad.show',$ad)}}" class="card-title fs-5 card-link">{{$ad->title}}</a>
           <div class="d-flex justify-content-between mt-3 mb-0">
-            <p class="card-text text-muted small">€ {{$ad->price}}</p>
+            <p class="card-text text-muted small">€ {{number_format($ad->price, 2, ',', '.')}}</p>
             <p class="card-text text-muted small">{{$ad->user->name}}</p>
           </div>                  
         </div>
         @auth
         <livewire:favourite-ad-button adId="{{ $ad->id }}" />
-
         @endauth
       </div>    
     </div>
     @endforeach
+    {{ $ads->links() }}
     @else
-    <p class="fst-italic">Sorry, no articles found for this category. Log in to create the first one!</p>
+    <p class="fst-italic">Sorry, no articles found for this category.</p>
     @endif
   </div>
  

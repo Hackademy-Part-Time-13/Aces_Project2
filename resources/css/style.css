@@ -40,6 +40,7 @@ header > .card {
 
 .text-extramuted {
     font-size: small;
+    opacity: 0.6;
     
 }
 
