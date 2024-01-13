@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class AdController extends Controller
 {
     public function create(){
-        return view('ads.insert');
+        return view('ads.create');
     }
  
     public function show(Ad $ad){
         
-        return view('ads.retail', compact('ad'));
+        return view('ads.show', compact('ad'));
     }
 
     public function index() {

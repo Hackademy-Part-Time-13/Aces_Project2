@@ -23,7 +23,7 @@ Route::get('/', [AdController::class,'index'])->name('ads.index');
 Route::get('/ad/new', [AdController::class,'create'])->middleware('auth')->name('ad.create');
 
 Route::get('/ads/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
-Route::get('/ad/{ad}', [AdController::class, 'retail'])->name('ad.show');
+Route::get('/ad/{ad}', [AdController::class, 'show'])->name('ad.show');
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

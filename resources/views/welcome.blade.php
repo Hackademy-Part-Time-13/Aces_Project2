@@ -15,7 +15,7 @@
   @endguest 
 
   <div class="row my-5">
-    @if(Route::currentRouteName() == 'home')
+    @if(Route::currentRouteName() == 'ads.index')
     <h3>Our last items</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
     <h3 class="mt-4 mt-lg-0">{{$categoryName}}</h3>

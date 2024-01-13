@@ -34,12 +34,15 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item display-6">€ {{$ad->price}}</li>
                     <li class="list-group-item fw-bold">{{$ad->title}}</li>
-                    <li class="list-group-item">{{$ad->description}}</li>                      
+                    <li class="list-group-item fst-italic">{{$ad->category->name}}</li>
+                    <li class="list-group-item">{{$ad->description}}</li> 
+                    <li class="list-group-item"><livewire:favourite-ad-button adId="{{ $ad->id }}"/></li> 
+
                 </ul>
             </div>     
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-muted fst-italic">{{$ad->user->name}}</li>                                             
+                    <li class="list-group-item text-muted fst-italic small">{{$ad->user->name}}</li>                                             
                 </ul>
             </div>             
         </div>        
