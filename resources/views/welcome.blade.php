@@ -63,7 +63,9 @@
           </div>                    
         </div>        
         @auth
-        <livewire:favourite-ad-button adId="{{ $ad->id }}" />
+        <div class="ms-3">
+          <livewire:favourite-ad-button adId="{{ $ad->id }}" />
+        </div>
         @endauth
         @guest
         <div>

@@ -36,7 +36,15 @@
                     <li class="list-group-item fw-bold">{{$ad->title}}</li>
                     <li class="list-group-item fst-italic">{{$ad->category->name}}</li>
                     <li class="list-group-item">{{$ad->description}}</li> 
+                    @guest
+                    <li class="list-group-item">
+                        <i role="button" class="d-inline fa-regular fa-heart opacity-50" data-bs-toggle="modal" data-bs-target="#loginregistermodal"></i>
+                        <p class="small opacity-50 d-inline">{{$ad->favBy()->count()}}</p>
+                    </li>                    
+                    @endguest
+                    @auth
                     <li class="list-group-item"><livewire:favourite-ad-button adId="{{ $ad->id }}"/></li> 
+                    @endauth
 
                 </ul>
             </div>     
