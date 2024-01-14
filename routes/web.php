@@ -46,3 +46,4 @@ Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'accep
 
 Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class,'rejectAnnouncement'])->name('revisor.reject_announcement');
 
+Route::patch('/revisor/{announcement}/undo-last-action', [RevisorController::class, 'undoLastAction'])->name('revisor.undo_last_action');

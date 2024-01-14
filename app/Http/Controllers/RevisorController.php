@@ -14,13 +14,30 @@ class RevisorController extends Controller
 
     public function acceptAnnouncement (Ad $announcement)
     {
-        $announcement->setAccepted(true);
+        $previousState = $announcement->toArray();
+        $announcement->update(['is_accepted'=> true, 'previous_state'=>$previousState]);
         return redirect()->back()->with('message','Annuncio accettato');
     }
 
     public function rejectAnnouncement (Ad $announcement)
     {
-        $announcement->setAccepted(false);
+        $previousState = $announcement->toArray();
+        $announcement->update(['is_accepted'=> true, 'previous_state'=>$previousState]);
         return redirect()->back()->with('message','Annuncio rifiutato');
     }
+
+    public function undoLastAction (Ad $announcement) {
+        {
+            if ($announcement->previous_state) {
+                $announcement->update($announcement->previous_state);
+                $announcement->update(['previous_state' => null]);
+    
+                return redirect()->back()->with('message', 'Operazione nnullata');
+            }
+    
+            return redirect()->back()->with('message', 'Nessuna operazione da annullare');
+        
+        }
+    }
+
 }
