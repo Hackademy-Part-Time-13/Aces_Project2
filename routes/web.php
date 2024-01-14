@@ -40,7 +40,7 @@ Route::get('/favs', [AdController::class, 'favs'])->middleware('auth')->name('ad
 // ricerca annuncio
 Route::get('/search/ads', [AdController::class, 'searchAds'])->name('ads.search');
 
-Route::get('/revisor/home',[RevisorController::class,'index'])->name('revisor.index');
+Route::get('/revisor/home',[RevisorController::class,'index'])->middleware('isRevisor')->name('revisor.index');
 
 Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'acceptAnnouncement'])->name('revisor.accept_announcement');
 

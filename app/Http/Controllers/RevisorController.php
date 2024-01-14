@@ -27,4 +27,8 @@ class RevisorController extends Controller
     public function workWithUs(){
         return view('revisor.work');
     }
+
+    public function becomeRevisor(){
+        return view('revisor.become_revisor');
+    }
 }
