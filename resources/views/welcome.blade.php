@@ -1,5 +1,5 @@
 <x-main>
-  @if(Route::currentRouteName() == 'ads.index')
+  @if(Route::currentRouteName() == 'home')
   <header class="mt-lg-4 row">    
     <div class="card my-auto col-12 col-md-5 offset-md-2 col-lg-3 offset-lg-3" style="height: 16rem">
       <div class="card-body p-4 h-100 d-flex flex-column justify-content-around">        
@@ -28,7 +28,7 @@
   @endif
   
   <div class="row my-lg-5">
-    @if(Route::currentRouteName() == 'ads.index')
+    @if(Route::currentRouteName() == 'home')
     <h3 class="my-4">Our last items</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
     <h3 class="my-4">{{$categoryName}}</h3>

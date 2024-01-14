@@ -2,14 +2,14 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom">
   
     <div class="container-lg ">
-      <a class="navbar-brand text-primary" href={{route('ads.index')}}>{{config('app.name')}}</a>
+      <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'ads.index') active @endif" href={{route('ads.index')}}>Home</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'home') active @endif" href={{route('home')}}>Home</a>
           </li>
           <!-- categorie -->
           <li class="nav-item dropdown">

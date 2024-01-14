@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RevisorController;
 
@@ -19,7 +20,10 @@ use App\Http\Controllers\RevisorController;
 */
 
 // home con ultimi 6 annunci
-Route::get('/', [AdController::class,'index'])->name('ads.index');
+Route::get('/', [PageController::class,'home'])->name('home');
+
+// index annunci
+Route::get('/ads/index', [AdController::class,'index'])->name('ads.index');
 
 // crea annuncio
 Route::get('/ad/new', [AdController::class,'create'])->middleware('auth')->name('ad.create');
