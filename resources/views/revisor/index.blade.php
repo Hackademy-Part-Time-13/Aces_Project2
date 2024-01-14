@@ -50,12 +50,23 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 text-end">
-                            <form action="{{route('revisor.reject_announcement',['announcement'=>$announcement_to_check])}}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <button type="submit" class="btn btn-danger shadow">Rifiuta</button>
-                            </form>
+                        <div class="row">
+                            <div class="col-12 col-md-6 text-end">
+                                <form action="{{route('revisor.reject_announcement',['announcement'=>$announcement_to_check])}}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-danger shadow">Rifiuta</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 text-end">
+                                <form action="{{route('revisor.reject_announcement',['announcement'=>$announcement_to_check])}}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-danger shadow">Annulla l'operazione precedente </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

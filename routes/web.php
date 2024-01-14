@@ -46,7 +46,10 @@ Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'accep
 
 Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class,'rejectAnnouncement'])->name('revisor.reject_announcement');
 
+Route::patch('/revisor/{announcement}/undo-last-action', [RevisorController::class, 'undoLastAction'])->name('revisor.undo_last_action');
+
 // lavora con noi - diventa revisore
 Route::get('/revisor/work', [RevisorController::class, 'workWithUs'])->name('revisor.work');
 
 Route::get('/revisor/become_revisor', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+
