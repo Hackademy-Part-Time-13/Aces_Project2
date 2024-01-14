@@ -46,3 +46,5 @@ Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'accep
 
 Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class,'rejectAnnouncement'])->name('revisor.reject_announcement');
 
+Route::get('/revisor/work', [RevisorController::class, 'workWithUs'])->name('revisor.work');
+
