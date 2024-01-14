@@ -8,12 +8,16 @@ use App\Models\Ad;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
      */
+
+    protected static ?string $password;
+
     public function run(): void
     {
 
@@ -36,10 +40,17 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
+        User::create([
+            'name'=>'revisore',
+            'email'=>'prova@example',
+            'password' => static::$password ??= Hash::make('password'),
+            'is_revisor'=> true,
+        ]);
+
         Ad::factory(30)->create();
 
 
-
+ 
         
     }
 }
