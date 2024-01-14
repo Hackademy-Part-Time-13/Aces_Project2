@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\IsRevisorMiddleware;
 use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
