@@ -48,13 +48,9 @@
                   </a>
               </li>
           @endif
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {{Auth::user()->name}}
-                  </a>
-              </li>
+              
           {{-- fine zona revisore --}}
-          
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{Auth::user()->name}}

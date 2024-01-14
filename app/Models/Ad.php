@@ -43,4 +43,16 @@ class Ad extends Model
     {
         return $this->belongsToMany(User::class, 'user_favourite_ad');
     }
+
+    public function setAccepted($value)
+    {
+        $this->is_accepted = $value;
+        $this-> save();
+        return true;
+    }
+
+    public function toBeRevisionedCount()
+    {
+        return Ad::where('is_accepted', null)->count();
+    }
 }
