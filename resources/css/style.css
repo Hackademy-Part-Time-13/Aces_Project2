@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+:root {
+    --primary-color: #FF9B71;
+    --secondary-color: #FFFD82;
+}
+
 body {
     background-color: whitesmoke;
 }
@@ -18,9 +23,7 @@ header {
     margin-top: -10px!important;  
 }
 
-:root {
-    --primary-color: #FF9B71;
-}
+
 
 header > .card {
     background-color: whitesmoke!important;
@@ -30,7 +33,7 @@ header > .card {
     height: 70px;
 }
 
-.navbar-brand, h1, h2, h3 {
+.navbar-brand, h1, h2, h3, h4 {
     font-family: 'Pacifico', cursive;
 }
 
@@ -62,5 +65,14 @@ header > .card {
 
 .eye-psw-button {
     width: 50px;
+}
+
+.see-all {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.see-all:hover{
+    background-color: rgba(255, 155, 113, 0.1);
 }
 

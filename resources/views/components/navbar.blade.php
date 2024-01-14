@@ -1,5 +1,5 @@
 <div class="modalnav fixed-top">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom">
+  <nav class="navbar navbar-expand-xl bg-body-tertiary border border-bottom">
   
     <div class="container-lg ">
       <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>
@@ -27,11 +27,12 @@
           <!-- categorie -->        
         </ul>
 
-        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-5 px-5  flex-grow-1" role="search">
+        {{-- ricerca --}}
+        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-5 px-5  flex-grow-1 pb-2 pb-xl-0" role="search">
           <input name="searched" class="form-control me-2" type="search" placeholder="Search for items">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
-       
+       {{-- fine ricerca --}}
         <ul class="navbar-nav">
           @auth
           <div class="me-3">
@@ -73,7 +74,7 @@
           @guest
   
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-primary mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginregistermodal">
+          <button type="button" class="btn btn-outline-primary mb-2 mb-xl-0" data-bs-toggle="modal" data-bs-target="#loginregistermodal">
             Sign up | Login
           </button>
   
@@ -93,7 +94,7 @@
               </div>
             </div>
           </div>
-          <button type="button" class="btn btn-primary ms-lg-3 " data-bs-toggle="modal" data-bs-target="#loginregistermodal">
+          <button type="button" class="btn btn-primary ms-xl-3 " data-bs-toggle="modal" data-bs-target="#loginregistermodal">
             Sell now
           </button>  
           @endguest

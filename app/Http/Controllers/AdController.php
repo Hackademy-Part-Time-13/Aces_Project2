@@ -23,30 +23,30 @@ class AdController extends Controller
     {
         $ads = Ad::where('is_accepted',true)->latest()->paginate(8);
         // dd($annoucements);
-        return view('welcome', compact('ads'));
+        return view('ads.index', compact('ads'));
     }
 
     public function adsByCategory(Category $category)
     {
         $categoryName = $category->name;
-        $ads = Ad::latest()->where('category_id',$category->id)->paginate(8);
+        $ads = Ad::where('is_accepted',true)->where('category_id',$category->id)->latest()->paginate(8);
         // dd($ads);
-        return view('welcome', compact('ads','categoryName'));
+        return view('ads.index', compact('ads','categoryName'));
     }
 
     public function favs()
     {
         $ads = Auth::user()->favAds()->paginate(8);
-        return view('welcome', compact('ads'));
+        return view('ads.index', compact('ads'));
     }
 
     public function searchAds(Request $request)
     {
         $query = $request->input('searched');
         
-        $ads = Ad::search($request->searched)->paginate(8);
+        $ads = Ad::search($request->searched)->where('is_accepted',true)->paginate(8);
         
-        return view('welcome', compact('ads','query'));
+        return view('ads.index', compact('ads','query'));
         
     }
 }

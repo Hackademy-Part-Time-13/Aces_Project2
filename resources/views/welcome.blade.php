@@ -1,7 +1,7 @@
 <x-main>
-  @if(Route::currentRouteName() == 'home')
-  <header class="mt-lg-4 row">    
-    <div class="card my-auto col-12 col-md-5 offset-md-2 col-lg-3 offset-lg-3" style="height: 16rem">
+  
+  <header class="mt-lg-5 row">    
+    <div class="card my-auto col-12 col-md-5 offset-md-1 col-xl-3 offset-xl-3" style="height: 16rem">
       <div class="card-body p-4 h-100 d-flex flex-column justify-content-around">        
         <h1 class="card-title mb-4">
           @guest 
@@ -25,27 +25,38 @@
       </div>
     </div>  
   </header> 
-  @endif
   
-  <div class="row my-lg-5">
-    @if(Route::currentRouteName() == 'home')
-    <h3 class="my-4">Our last items</h3>
-    @elseif(Route::currentRouteName() == 'adsByCategory')
-    <h3 class="my-4">{{$categoryName}}</h3>
-    @elseif(Route::currentRouteName() == 'ads.favs')
-    <h3 class="my-4">Your favourites</h3>
-    @elseif(Route::currentRouteName() == 'ads.search')
-    <h3 class="my-4">Items about: {{$query}}</h3>
-    @endif
+  <div class="row">
+    <div class="col-12 mt-2">
+        @if(session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{session('success')}}
+        </div>
+        @endif
+
+        @if(session()->has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{session('error')}}
+        </div>
+        @endif
+    </div>
+  </div>
+  
+  <div class="row my-md-5">
+    
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+      <h4>Our last items</h4>
+      <a class="see-all p-2" href="{{route('ads.index')}}">See all</a>
+    </div>
     
     @forelse($ads as $ad)
-    <div class="col-12 col-md-4 col-lg-3 my-3">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
       <div class="card p-1 mx-auto h-100" style="width: 18rem;">
         <a href="{{route('ad.show',$ad)}}">
           <img class="card-img-top" src="https://picsum.photos/id/{{$ad->id}}/286/180" alt="Card image cap">
         </a>     
         <div class="card-body pb-0">
-          <a href="{{route('ad.show',$ad)}}" class="card-title fs-5 card-link">{{$ad->title}}</a>
+          <a href="{{route('ad.show',$ad)}}" class="card-title fs-6 fw-semibold card-link">{{$ad->title}}</a>
           <div class="d-flex justify-content-between mt-3 mb-0">
             <p class="card-text text-muted small">€ {{number_format($ad->price, 2, ',', '.')}}</p>
             <p class="card-text text-muted small">{{$ad->user->name}}</p>            
@@ -75,7 +86,7 @@
     @empty
     <p class="fst-italic">Sorry, no items found here.</p>
     @endforelse
-    {{ $ads->links() }}
+    
   </div>
  
 </x-main>
