@@ -26,6 +26,7 @@ class RevisorController extends Controller
         return redirect()->back()->with('message','Annuncio rifiutato');
     }
 
+<<<<<<< HEAD
     public function undoLastAction (Ad $announcement) {
         {
             if ($announcement->previous_state) {
@@ -40,4 +41,13 @@ class RevisorController extends Controller
         }
     }
 
+=======
+    public function workWithUs(){
+        return view('revisor.work');
+    }
+
+    public function becomeRevisor(){
+        return view('revisor.become_revisor');
+    }
+>>>>>>> a2f4e742c03c6fa112e8a7fab433070914f70d82
 }
