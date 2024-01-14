@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
-
+use App\Http\Controllers\RevisorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +39,9 @@ Route::get('/favs', [AdController::class, 'favs'])->middleware('auth')->name('ad
 
 // ricerca annuncio
 Route::get('/search/ads', [AdController::class, 'searchAds'])->name('ads.search');
+
+Route::get('/revisor/home',[RevisorController::class,'index'])->name('revisor.index');
+
+Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'acceptAnnouncement'])->name('revisor.accept_Announcement');
+
+Route::patch('/rifiuta/annuncio/{{announcement}}', [RevisorController::class,'rejectAnnouncement'])->name('revisor.reject_announcement');
