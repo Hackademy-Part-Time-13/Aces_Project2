@@ -1,7 +1,7 @@
 <x-main>
-  
-  <header class="mt-4 d-flex align-items-center justify-content-around @if(!Route::currentRouteName() == 'ads.index') d-none @endif">    
-    <div class="card" style="width: 28rem; height: 16rem">
+  @if(Route::currentRouteName() == 'ads.index')
+  <header class="mt-4 row">    
+    <div class="card my-auto col-12 col-lg-3 offset-lg-3" style="height: 16rem">
       <div class="card-body p-4 h-100 d-flex flex-column justify-content-around">        
         <h1 class="card-title mb-4">
           @guest 
@@ -23,11 +23,10 @@
           @endauth
         </div>  
       </div>
-    </div>
-    <div></div>
+    </div>  
   </header> 
+  @endif
   
-
   <div class="row my-lg-5">
     @if(Route::currentRouteName() == 'ads.index')
     <h3 class="my-4">Our last items</h3>
