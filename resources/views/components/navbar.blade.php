@@ -98,7 +98,7 @@
             Sell now
           </button>  
           @endguest
-                  
+          {{-- <i role="button" id="toggleDarkModeButton" class="ms-2 fa-solid fa-sun"></i> --}}
         </ul>
         
       </div>

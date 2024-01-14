@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById('loginregistermodal');
-    var navbar = document.querySelector('.modalnav');
-    var main = document.querySelector('main');
+    let modal = document.getElementById('loginregistermodal');
+    let navbar = document.querySelector('.modalnav');
+    let main = document.querySelector('main');
 
     // Quando il modale si apre
     modal.addEventListener('show.bs.modal', function() {

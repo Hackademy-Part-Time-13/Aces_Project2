@@ -74,7 +74,7 @@
         <div class="card-footer small opacity-75 mt-2 d-flex justify-content-between">
           <div>
             <i class="fa-solid fa-tag"></i>
-            <a href="{{route('adsByCategory',$ad->category)}}" class="card-link d-inline">{{$ad->category->name}}</a>
+            <a href="{{route('adsByCategory',$ad->category)}}" class="d-inline nav-link text-extramuted">{{$ad->category->name}}</a>
           </div>
           <div>
             <i class="fa-solid fa-calendar-days"></i>

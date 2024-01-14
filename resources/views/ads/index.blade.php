@@ -12,7 +12,7 @@
       @endif
       
       @forelse($ads as $ad)
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" >
         <div class="card p-1 mx-auto h-100" style="width: 18rem;">
           <a href="{{route('ad.show',$ad)}}">
             <img class="card-img-top" src="https://picsum.photos/id/{{$ad->id}}/286/180" alt="Card image cap">
