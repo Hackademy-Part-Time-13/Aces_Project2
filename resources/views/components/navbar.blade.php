@@ -58,6 +58,7 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Account</a></li>
               <li><a class="dropdown-item" href={{route('ads.favs')}}>Favourite Ads</a></li>
+              <li><a class="dropdown-item" href="{{route('revisor.work')}}">Work with us</a></li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form class="dropdown-item" action={{route('logout')}} method="post">
