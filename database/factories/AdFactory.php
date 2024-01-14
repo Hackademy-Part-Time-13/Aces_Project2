@@ -23,10 +23,11 @@ class AdFactory extends Factory
 
         return [
             'title' => fake()->text($maxNbChars = 30),
-            'description' => fake()->paragraph(),
+            'description' => fake()->text($maxNbChars = 100),
             'category_id' => fake()->randomElement($categoriesIds),
             'user_id' => fake()->randomElement($usersIds),
             'price' => fake()->randomFloat(2, 5, 100),
+            'is_accepted' => true, 
         ];
     }
 }

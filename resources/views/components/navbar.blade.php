@@ -47,8 +47,8 @@
                       </span>
                   </a>
               </li>
+          
           @endif
-              
           {{-- fine zona revisore --}}
 
           <li class="nav-item dropdown">

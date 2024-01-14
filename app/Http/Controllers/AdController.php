@@ -21,7 +21,7 @@ class AdController extends Controller
 
     public function index()
     {
-        $ads = Ad::latest()->paginate(6);
+        $ads = Ad::where('is_accepted',true)->latest()->paginate(6);
         // dd($annoucements);
         return view('welcome', compact('ads'));
     }
