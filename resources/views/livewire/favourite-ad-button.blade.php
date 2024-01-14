@@ -1,4 +1,4 @@
 <div>
-    <i role="button" class="d-inline @if($isFavourite)fa-solid @else fa-regular @endif fa-heart mb-3 ms-3 text-danger" wire:click="toggleFavAd"></i>
-    <p class="small text-danger d-inline">{{$count}}</p>
+    <i role="button" class="d-inline @if($isFavourite)fa-solid text-danger @else fa-regular opacity-50 @endif fa-heart mb-3 ms-3 " wire:click="toggleFavAd"></i>
+    <p class="small opacity-50 d-inline">{{$count}}</p>
 </div>
