@@ -15,7 +15,7 @@ header {
     width: 100vw;
     margin-left: calc(49% - 50vw) !important;
     margin-right: calc(50% - 50vw) !important;
-       
+    margin-top: -10px!important;  
 }
 
 :root {
@@ -52,6 +52,7 @@ header > .card {
 .card-link {
     text-decoration: none;
     transition: color 150ms ease-in-out;
+    color: #212529;
 }
 
 .card-link:hover {
