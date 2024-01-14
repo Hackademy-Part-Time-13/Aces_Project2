@@ -12,7 +12,7 @@ class Ad extends Model
     use HasFactory, Searchable;
 
     protected $fillable = [
-        'title', 'category_id','user_id','price','description'
+        'title', 'category_id','user_id','price','description','previous_state'
     ];
 
     public function toSearchableArray()
