@@ -57,7 +57,11 @@ Route::get('/revisor/restore/{announcement}',[RevisorController::class,'restore'
 // Route::patch('/revisor/{announcement}/undo-last-action', [RevisorController::class, 'undoLastAction'])->name('revisor.undo_last_action');
 
 // lavora con noi - diventa revisore - Mail
-Route::get('/revisor/work', [RevisorController::class, 'workWithUs'])->name('revisor.work');
 
-Route::post('/revisor/become_revisor', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+
+Route::get('/work-With-Us', [RevisorController::class, 'workWithUs'])->middleware('auth')->name('workWithUs');
+
+Route::post('/mail', [ContactController::class, 'workMail'])->middleware('auth')->name('work.mail');
+
+
 

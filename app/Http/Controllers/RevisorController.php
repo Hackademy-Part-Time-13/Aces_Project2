@@ -65,7 +65,5 @@ class RevisorController extends Controller
         return view('revisor.work');
     }
 
-    public function becomeRevisor(){
-        return view('revisor.become_revisor');
-    }
+    
 }
