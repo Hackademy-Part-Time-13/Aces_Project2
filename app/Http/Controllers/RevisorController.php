@@ -14,29 +14,51 @@ class RevisorController extends Controller
 
     public function acceptAnnouncement (Ad $announcement)
     {
+        
         $announcement->update(['is_accepted' => true]);
-        return redirect()->back()->with('message', 'Annuncio accettato');
+        $announcement->save();
+        return redirect()->back()->with('success', 'Annuncio accettato <a href="'.route('revisor.back',$announcement).'"> Torna indietro </a>');
     }
 
     public function rejectAnnouncement (Ad $announcement)
     {
+        $previousState = $announcement;
+        $announcement->delete();
+        return redirect()->back()->with('success','Annuncio rifiutato <a href="'.route('revisor.restore', $announcement->id).'"> Torna indietro </a>');
+    }
+
+    public function back(Ad $announcement)
+    {
         $announcement->update(['is_accepted'=> false]);
-        return redirect()->back()->with('message','Annuncio rifiutato');
+        return redirect()->back()->with('success','Operazione annullata con successo');
+    
+    }
+
+    public function restore(Ad $announcement)
+    {
+        $announcement = Ad::withTrashed()->find($announcement->id);
+        if ($announcement && $announcement->trashed()){
+            $announcement->restore();
+        }
+        $announcement->update(['is_accepted'=> false]);
+        return redirect()->back()->with('success','Operazione annullata con successo');
+    
     }
 
     public function undoLastAction (Ad $announcement) {
-        {
-            if ($announcement->previous_state) {
-                $announcement->update($announcement->previous_state);
-                $announcement->update(['previous_state' => null]);
-    
-                return redirect()->back()->with('message', 'Operazione nnullata');
+
+            $previousState = $announcement->toArray();
+
+            try{
+                $announcement->update(['is_accepted' => true]);
+                return redirect()->back()->with('success', 'Annuncio accettato');
+
+            } catch (\Exception $e){
+             $announcement->update($previousState);
+
+            return redirect()->back()->with('error', 'Annuncio rifiutato');
             }
-    
-            return redirect()->back()->with('message', 'Nessuna operazione da annullare');
-        
         }
-    }
 
     public function workWithUs(){
         return view('revisor.work');

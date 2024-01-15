@@ -6,13 +6,14 @@ use App\Models\Category;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ad extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, SoftDeletes;
 
     protected $fillable = [
-        'title', 'category_id','user_id','price','description','previous_state'
+        'title', 'category_id','user_id','price','description','previous_state','is_accepted'
     ];
 
     public function toSearchableArray()

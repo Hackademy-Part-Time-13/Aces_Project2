@@ -12,7 +12,24 @@
     <body id="body">
         <x-navbar/>       
         
-        <main class="container-lg d-flex flex-column min-vh-100 mt-5">            
+        <main class="container-lg d-flex flex-column min-vh-100 mt-5">      
+
+            <div class="row mt-5">
+                <div class="col-12 mt-2">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {!!session('success')!!}
+                    </div>
+                    @endif
+            
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('error')}}
+                    </div>
+                    @endif
+                </div>
+              </div>
+
             {{$slot}}
         </main>
         <div class="mt-auto container-fluid">            
