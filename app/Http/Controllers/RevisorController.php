@@ -22,7 +22,6 @@ class RevisorController extends Controller
 
     public function rejectAnnouncement (Ad $announcement)
     {
-        $previousState = $announcement;
         $announcement->delete();
         return redirect()->back()->with('success','Annuncio rifiutato <a href="'.route('revisor.restore', $announcement->id).'"> Torna indietro </a>');
     }
@@ -34,31 +33,33 @@ class RevisorController extends Controller
     
     }
 
-    public function restore(Ad $announcement)
+    public function restore($id)
     {
-        $announcement = Ad::withTrashed()->find($announcement->id);
-        if ($announcement && $announcement->trashed()){
+        $announcement = Ad::withTrashed()->findOrFail($id);
+
+        if ($announcement->trashed()) {
             $announcement->restore();
+        } else {
+            return redirect()->back()->with('error', 'Annuncio non trovato');
         }
-        $announcement->update(['is_accepted'=> false]);
-        return redirect()->back()->with('success','Operazione annullata con successo');
-    
+
+        return redirect()->route('revisor.index')->with('success', 'Annuncio ripristinato');
     }
 
-    public function undoLastAction (Ad $announcement) {
+    // public function undoLastAction (Ad $announcement) {
 
-            $previousState = $announcement->toArray();
+    //         $previousState = $announcement->toArray();
 
-            try{
-                $announcement->update(['is_accepted' => true]);
-                return redirect()->back()->with('success', 'Annuncio accettato');
+    //         try{
+    //             $announcement->update(['is_accepted' => true]);
+    //             return redirect()->back()->with('success', 'Annuncio accettato');
 
-            } catch (\Exception $e){
-             $announcement->update($previousState);
+    //         } catch (\Exception $e){
+    //          $announcement->update($previousState);
 
-            return redirect()->back()->with('error', 'Annuncio rifiutato');
-            }
-        }
+    //         return redirect()->back()->with('error', 'Annuncio rifiutato');
+    //         }
+    //     }
 
     public function workWithUs(){
         return view('revisor.work');

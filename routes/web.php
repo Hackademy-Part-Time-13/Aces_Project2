@@ -52,7 +52,7 @@ Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class,'reje
 
 Route::get('/back/annuncio/{announcement}',[RevisorController::class,'back'])->name('revisor.back'); 
 
-Route::get('/restore/annuncio/{announcement}',[RevisorController::class,'restore'])->name('revisor.restore'); 
+Route::get('/revisor/restore/{announcement}',[RevisorController::class,'restore'])->name('revisor.restore'); 
 
 // Route::patch('/revisor/{announcement}/undo-last-action', [RevisorController::class, 'undoLastAction'])->name('revisor.undo_last_action');
 
