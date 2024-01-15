@@ -21,7 +21,7 @@ class AdController extends Controller
 
     public function index()
     {
-        $ads = Ad::where('is_accepted',true)->latest()->paginate(8);
+        $ads = Ad::where('is_accepted',true)->latest()->paginate(6);
         // dd($annoucements);
         return view('ads.index', compact('ads'));
     }
@@ -29,14 +29,14 @@ class AdController extends Controller
     public function adsByCategory(Category $category)
     {
         $categoryName = $category->name;
-        $ads = Ad::where('is_accepted',true)->where('category_id',$category->id)->latest()->paginate(8);
+        $ads = Ad::where('is_accepted',true)->where('category_id',$category->id)->latest()->paginate(6);
         // dd($ads);
         return view('ads.index', compact('ads','categoryName'));
     }
 
     public function favs()
     {
-        $ads = Auth::user()->favAds()->paginate(8);
+        $ads = Auth::user()->favAds()->paginate(6);
         return view('ads.index', compact('ads'));
     }
 
@@ -44,7 +44,7 @@ class AdController extends Controller
     {
         $query = $request->input('searched');
         
-        $ads = Ad::search($request->searched)->where('is_accepted',true)->paginate(8);
+        $ads = Ad::search($request->searched)->where('is_accepted',true)->paginate(6);
         
         return view('ads.index', compact('ads','query'));
         
