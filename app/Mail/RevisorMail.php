@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+
 class RevisorMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -19,9 +20,9 @@ class RevisorMail extends Mailable
 
      public $name;
      public $email;
-     public $msg;
+     
 
-    public function __construct(public $name,public $email,public $msg)
+    public function __construct(public $name,public $email)
     {
       
     }

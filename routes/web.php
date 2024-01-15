@@ -6,6 +6,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RevisorController;
 
 /*
