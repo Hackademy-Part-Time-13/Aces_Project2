@@ -9,14 +9,14 @@ class ContactController extends Controller
 {
 
   
-    public function mail (){
-        public $name;
-        public $email;
-        public $msg;
+    // public function mail (){
+    //     
     
-        $mail=new ContactMail ($request->name,$request->email,$request->msg);
-        return redirect()->route('contact');
+    //     $mail=new ContactMail ($request->name,$request->email,$request->msg);
+    //     return redirect()->route('contact');
     
 
-    }
+    // }
+
+    public function 
 }

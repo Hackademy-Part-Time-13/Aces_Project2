@@ -16,9 +16,14 @@ class RevisorMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+
+     public $name;
+     public $email;
+     public $msg;
+
+    public function __construct(public $name,public $email,public $msg)
     {
-       
+      
     }
 
     /**
