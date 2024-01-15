@@ -14,7 +14,7 @@ class card extends Component
      */
     public function __construct(public Ad $ad)
     {
-        //
+        
     }
 
     /**
