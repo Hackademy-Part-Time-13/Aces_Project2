@@ -24,7 +24,15 @@
                 @endforeach
             </ul>
           </li>
-          <!-- categorie -->        
+          <!-- categorie --> 
+           <!-- Lingue -->
+        <li class="nav-item">
+          <x locale lang="it" nation="it"/>
+        </li>
+        <li class="nav-item">
+          <x locale lang="en" nation="gb"/>
+        </li>
+        <!--Lingue  -->       
         </ul>
 
         {{-- ricerca --}}
