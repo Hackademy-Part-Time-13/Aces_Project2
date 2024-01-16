@@ -20,8 +20,8 @@
             @endif
 
             {{-- messaggi di successo/errore --}}
-            <div class="row">
-                <div class="col-12">
+            <div class="row mt-5">
+                <div class="col-12 mt-2">
                     @if(session()->has('success'))
                     <div class="alert alert-success" role="alert">
                         {!!session('success')!!}
@@ -30,7 +30,7 @@
             
                     @if(session()->has('error'))
                     <div class="alert alert-danger" role="alert">
-                        {{session('error')}}
+                        {!!session('error')!!}
                     </div>
                     @endif
                 </div>
