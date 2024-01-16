@@ -18,8 +18,8 @@ class RevisorMail extends Mailable
      * Create a new message instance.
      */
 
-     public $name;
-     public $email;
+     
+    
      
 
     public function __construct(public $name,public $email)
@@ -43,7 +43,7 @@ class RevisorMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.contact',
         );
     }
 
