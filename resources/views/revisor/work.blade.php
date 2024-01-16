@@ -15,6 +15,4 @@
 
 
 
-    {{-- <a href="" class="btn btn-primary">Invia richiesta</a> --}}
-
 </x-main>
