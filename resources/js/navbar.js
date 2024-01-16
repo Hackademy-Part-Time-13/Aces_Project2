@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Quando il modale si apre
     modal.addEventListener('show.bs.modal', function() {
-        // Rimuovi la classe 'fixed-top' dalla navbar
+        
         navbar.classList.remove('fixed-top');
-        main.classList.remove('mt-5');
-        main.classList.add('position-header');
+        main.classList.remove('my-5');
+        main.classList.add('position-main');
     });
 
-    // Quando il modale viene nascosto
+    
     modal.addEventListener('hide.bs.modal', function() {
-        // Aggiungi la classe 'fixed-top' alla navbar
+       
         navbar.classList.add('fixed-top');
-        main.classList.add('mt-5');
-        main.classList.remove('position-header');
+        main.classList.add('my-5');
+        main.classList.remove('position-main');
     });
 });

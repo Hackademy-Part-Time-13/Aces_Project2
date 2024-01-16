@@ -22,16 +22,16 @@ header {
     margin-top: -10px!important;  
 }
 
+.position-main {
+    margin-top: -51px;
+}
+
 .card-title {
     height: 70px;
 }
 
 .navbar-brand, h1, h2, h3, h4 {
     font-family: 'Pacifico', cursive;
-}
-
-.position-header {
-    margin-top: -48px;
 }
 
 .text-extramuted {

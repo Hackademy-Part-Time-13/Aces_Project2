@@ -9,13 +9,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body id="body">
-        <x-navbar/>       
-        
-        <main class="container-lg d-flex flex-column min-vh-100 mt-5">      
 
-            <div class="row mt-5">
-                <div class="col-12 mt-2">
+    <body>
+        <x-navbar/> 
+
+        <main class="container-lg d-flex flex-column min-vh-100 my-5 position-main">  
+            
+            @if(Route::currentRouteName() == 'home')      
+            <x-header/>
+            @endif
+
+            {{-- messaggi di successo/errore --}}
+            <div class="row">
+                <div class="col-12">
                     @if(session()->has('success'))
                     <div class="alert alert-success" role="alert">
                         {!!session('success')!!}
@@ -28,7 +34,8 @@
                     </div>
                     @endif
                 </div>
-              </div>
+            </div>
+            {{-- fine messaggi --}}
 
             {{$slot}}
         </main>
