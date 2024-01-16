@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+    <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top">
       <p>© 2022 {{config('app.name')}}, Inc. All rights reserved.</p>
       <ul class="list-unstyled d-flex">
         <li class="ms-3"><a class="link-dark" href="#"><i class="fa-brands fa-twitter"></i></a></li>

@@ -41,7 +41,7 @@
           {{-- zona revisore --}}
           @if (Auth::user()->is_revisor)
               <li class="nav-item">
-                  <a class="nav-link btn btn-outline-success btn-sm position-relative" aria-current="page" href="{{route('revisor.index')}}">
+                  <a class="btn btn-outline-danger position-relative" aria-current="page" href="{{route('revisor.index')}}">
                   Zona revisore
                       {{-- <span class="position absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{App\Models\Ad::toBeRevisionedCount()}}
                           <span class="visually-hidden">Unread Messages</span>
@@ -52,7 +52,7 @@
           @endif
           {{-- fine zona revisore --}}
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown ms-2">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{Auth::user()->name}}
             </a>
