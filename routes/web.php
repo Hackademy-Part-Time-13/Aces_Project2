@@ -60,7 +60,7 @@ Route::get('/revisor/restore/{announcement}',[RevisorController::class,'restore'
 // lavora con noi - diventa revisore - Mail
 
 
-Route::post('/work-With-Us', [RevisorController::class, 'workWithUs'])->middleware('auth')->name('workWithUs');
+Route::get('/work-With-Us', [RevisorController::class, 'workWithUs'])->middleware('auth')->name('workWithUs');
 
 Route::post('/mail', [ContactController::class, 'workMail'])->middleware('auth')->name('work.mail');
 
