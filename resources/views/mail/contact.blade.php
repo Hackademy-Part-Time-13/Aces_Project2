@@ -12,10 +12,10 @@
 
     <h1>Un utente ha richiesto di lavorare con noi</h1>
     <h2>Ecco i dati:</h2>
-    <p>Nome:{{$name}}</p>
-    <p>Email:{{$email}}</p>
+    <p>Nome:{{$user->name}}</p>
+    <p>Email:{{$user->email}}</p>
     <p>Se vuoi renderlo revisore clicca qui</p>
-    <a href="">Rendi revisore</a>
+    <a href={{route('turnsinto.revisor', compact('user'))}}>Rendi revisore</a>
 
 
 </body>

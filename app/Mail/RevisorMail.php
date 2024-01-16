@@ -2,12 +2,13 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 
 class RevisorMail extends Mailable
@@ -20,11 +21,17 @@ class RevisorMail extends Mailable
 
      
     
-     
+     public $user;
 
-    public function __construct(public $name,public $email)
+    public function __construct(User $user)
+
     {
+        $this->user=$user;
       
+    }
+
+    public function build (){
+        return $this->from('presto.it@noreply')->view('mail.contact');
     }
 
     /**

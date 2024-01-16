@@ -64,5 +64,7 @@ Route::get('/work-With-Us', [RevisorController::class, 'workWithUs'])->middlewar
 
 Route::post('/mail', [ContactController::class, 'workMail'])->middleware('auth')->name('work.mail');
 
+Route::get('/turnsinto-revisor/{user}', [ContactController::class, 'makeRevisor'])->name('turnsinto.revisor');
+
 
 

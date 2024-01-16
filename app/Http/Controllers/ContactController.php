@@ -2,21 +2,35 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
+use App\Mail\RevisorMail;
 use Illuminate\Http\Request;
-use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Artisan;
 
 class ContactController extends Controller
 {
 
   
-     public function workMail(Request $request){
-        $mail = new ContactMail($request->name,$request->email);
+     public function workMail(){
+   
+        $mail = new RevisorMail(Auth::user());
         Mail::to('admin@presto.it')->send($mail);
         // return view('mail.contact',['name'=>$request->name,'email'=>$request->email]);
-         return $mail->render();
+         
         
     
     
+}
+
+
+public function makeRevisor (User $user){
+   
+   Artisan::call('presto:make-user-revisor', ["email"=>$user->email]);
+   return redirect('/')->with('message', 'Complimenti! L\ utente è diventato revisore');
+
+   
 }
 }
