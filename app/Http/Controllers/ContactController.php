@@ -20,7 +20,7 @@ class ContactController extends Controller
         Mail::to('admin@presto.it')->send($mail);
         // return view('mail.contact',['name'=>$request->name,'email'=>$request->email]);
          
-        
+        return view('mail.thanks');
     
     
 }
