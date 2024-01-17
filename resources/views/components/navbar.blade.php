@@ -106,7 +106,11 @@
             Sell now
           </button>  
           @endguest
-          {{-- <i role="button" id="toggleDarkModeButton" class="ms-2 fa-solid fa-sun"></i> --}}
+
+          {{-- bottone per dark mode --}}
+          <button class="ms-3 btn btn-primary" id="theme-button" type="button">
+            <i id="theme-icon" class="fa fa-sun"></i>
+          </button>
         </ul>
         
       </div>

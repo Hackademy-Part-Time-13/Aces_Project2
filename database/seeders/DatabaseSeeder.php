@@ -47,10 +47,7 @@ class DatabaseSeeder extends Seeder
             'is_revisor'=> true,
         ]);
 
-        Ad::factory(30)->create();
-
-
- 
+        Ad::factory(30)->create(); 
         
     }
 }
