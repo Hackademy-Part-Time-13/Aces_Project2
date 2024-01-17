@@ -1,4 +1,4 @@
-<x-main title="Sell an item | PrestoProj">
+<x-main title="{{config('app.name')}} | Sell an item">
     
     <livewire:create-ad/>
 

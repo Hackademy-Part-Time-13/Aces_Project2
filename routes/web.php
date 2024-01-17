@@ -27,7 +27,7 @@ Route::get('/', [PageController::class,'home'])->name('home');
 Route::get('/ads/index', [AdController::class,'index'])->name('ads.index');
 
 // crea annuncio
-Route::get('/ad/new', [AdController::class,'create'])->middleware('auth')->name('ad.create');
+Route::get('/ad/new', [AdController::class,'create'])->middleware(['verified'])->name('ad.create');
 
 // annunci per categoria e utente
 Route::get('/ads/category/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');

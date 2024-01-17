@@ -1,4 +1,4 @@
-<x-main title="Login">
+<x-main title="{{config('app.name')}} | Login">
   <h1 class="text-center my-5 pt-lg-5">Login</h1>
   <form action={{route('login')}} method="post" class="col-12 col-md-8 col-lg-6 mx-auto">
     @csrf
@@ -26,6 +26,10 @@
       <label class="form-check-label small" for="remember">Remember me</label>
     </div>
     <button type="submit" class="btn btn-primary col-12">Submit</button>
+
+    <div class="text-center">
+      <a class="btn btn-link fst-italic" href="/forgot-password">Forgot password?</a>
+    </div>
   </form>
 
 </x-main>

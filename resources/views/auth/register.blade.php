@@ -1,4 +1,4 @@
-<x-main>
+<x-main title="{{config('app.name')}} | Sign Up">
   <h1 class="text-center my-5 pt-lg-5">Register</h1>
   <form action={{route('register')}} method="POST" class="col-12 col-md-8 col-lg-6 mx-auto">
     @csrf
@@ -38,7 +38,9 @@
     </div>
     
     <button type="submit" class="btn btn-primary col-12">Submit</button>
+    <div class="text-center">
+      <a class="btn btn-link fst-italic" href="/forgot-password">Forgot password?</a>
+    </div>
   </form>
 
-  {{-- <a class="mt-5 btn btn-outline-success col-12 col-md-8 col-lg-6 mx-auto" href="/auth/google">Register with Google</a> --}}
 </x-main>

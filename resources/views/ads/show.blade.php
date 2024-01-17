@@ -52,7 +52,9 @@
             </div>     
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-muted fst-italic small">{{$ad->user->name}}</li>                                             
+                    <li class="list-group-item fst-italic small">
+                        <a class="nav-link text-extramuted" href="{{route('adsByUser',$ad->user)}}">{{$ad->user->name}}</a>  
+                    </li>                                             
                 </ul>
             </div>             
         </div>        

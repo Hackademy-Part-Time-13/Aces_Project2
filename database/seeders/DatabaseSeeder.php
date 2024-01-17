@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
             'email'=>'revisore@quicked.it',
             'password' => static::$password ??= Hash::make('password'),
             'is_revisor'=> true,
+            'email_verified_at' => now(),
         ]);
 
         Ad::factory(30)->create(); 
