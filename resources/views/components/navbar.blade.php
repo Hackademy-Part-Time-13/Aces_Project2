@@ -109,7 +109,7 @@
 
           {{-- bottone per dark mode --}}
           <button class="ms-3 btn btn-primary" id="theme-button" type="button">
-            <i id="theme-icon" class="fa fa-sun"></i>
+            <i id="theme-icon" class="fa-regular fa-sun"></i>
           </button>
         </ul>
         
