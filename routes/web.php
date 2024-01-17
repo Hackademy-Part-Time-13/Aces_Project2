@@ -29,8 +29,9 @@ Route::get('/ads/index', [AdController::class,'index'])->name('ads.index');
 // crea annuncio
 Route::get('/ad/new', [AdController::class,'create'])->middleware('auth')->name('ad.create');
 
-// annunci per categoria
-Route::get('/ads/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
+// annunci per categoria e utente
+Route::get('/ads/category/{category}', [AdController::class, 'adsByCategory'])->name('adsByCategory');
+Route::get('/ads/user/{user}', [AdController::class, 'adsByUser'])->name('adsByUser');
 
 // vedi annuncio
 Route::get('/ad/{ad}', [AdController::class, 'show'])->name('ad.show');

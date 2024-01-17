@@ -8,7 +8,9 @@
     @elseif(Route::currentRouteName() == 'ads.favs')
     <h3 class="my-4">Your favourites</h3>
     @elseif(Route::currentRouteName() == 'ads.search')
-    <h3 class="my-4">Items about: {{$query}}</h3>
+    <h3 class="my-4">Items about {{$query}}</h3>
+    @elseif(Route::currentRouteName() == 'adsByUser')
+    <h3 class="my-4">Items by {{$userName}}</h3>
     @endif
     
     @forelse($ads as $ad)

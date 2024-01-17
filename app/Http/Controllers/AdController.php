@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,14 @@ class AdController extends Controller
         $ads = Ad::where('is_accepted',true)->where('category_id',$category->id)->latest()->paginate(6);
         // dd($ads);
         return view('ads.index', compact('ads','categoryName'));
+    }
+
+    public function adsByUser(User $user)
+    {
+        $userName = $user->name;
+        $ads = Ad::where('is_accepted',true)->where('user_id',$user->id)->latest()->paginate(6);
+        // dd($ads);
+        return view('ads.index', compact('ads','userName'));
     }
 
     public function favs()

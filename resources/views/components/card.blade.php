@@ -5,9 +5,9 @@
       </a>     
       <div class="card-body pb-0">
         <a href={{route('ad.show',$ad)}} class="card-title fs-6 fw-semibold card-link">{{$ad->title}}</a>
-        <div class="d-flex justify-content-between mt-3 mb-0">
-          <p class="card-text text-muted small">€ {{number_format($ad->price, 2, ',', '.')}}</p>
-          <p class="card-text text-muted small">{{$ad->user->name}}</p>            
+        <div class="d-flex justify-content-between mt-3 mb-0 small">
+          <p class="card-text text-muted">€ {{number_format($ad->price, 2, ',', '.')}}</p>
+          <a href="{{route('adsByUser',$ad->user)}}" class="nav-link text-extramuted">{{$ad->user->name}}</a>            
         </div>                    
       </div>        
       @auth
