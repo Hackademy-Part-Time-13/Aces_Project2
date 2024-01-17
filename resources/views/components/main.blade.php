@@ -42,5 +42,7 @@
         <div class="mt-auto container-fluid">            
             <x-footer/>            
         </div>
+
+
     </body>
 </html>

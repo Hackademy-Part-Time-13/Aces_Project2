@@ -48,14 +48,12 @@
           </div>
           {{-- zona revisore --}}
           @if (Auth::user()->is_revisor)
-              <li class="nav-item">
-                  <a class="btn btn-outline-danger position-relative" aria-current="page" href="{{route('revisor.index')}}">
-                  Zona revisore
-                      {{-- <span class="position absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{App\Models\Ad::toBeRevisionedCount()}}
-                          <span class="visually-hidden">Unread Messages</span>
-                      </span> --}}
-                  </a>
-              </li>
+          <li class="nav-item">
+            <livewire:notification-button>
+              
+            </a>
+          </li>
+          
           
           @endif
           {{-- fine zona revisore --}}
