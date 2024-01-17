@@ -14,7 +14,7 @@ class CreateAd extends Component
     #[Validate('required|exists:categories,id')] 
     public $selectedCategory;
     
-    #[Validate('required|numeric')] 
+    #[Validate('required|numeric|min:0.01')] 
     public $price;
 
     #[Validate('required|max:300')] 

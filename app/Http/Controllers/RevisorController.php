@@ -10,7 +10,11 @@ class RevisorController extends Controller
     public function index (){
 
         $ad_to_check = Ad::where('is_accepted',false)->first();
-        return view('revisor.index', compact('ad_to_check'));
+
+        $rejected_ads = Ad::onlyTrashed()->latest()->paginate(10);
+        $accepted_ads = Ad::where('is_accepted',true)->latest()->paginate(10);
+
+        return view('revisor.index', compact('ad_to_check', 'accepted_ads', 'rejected_ads'));
     }
 
     public function acceptAd (Ad $ad)
@@ -29,7 +33,7 @@ class RevisorController extends Controller
     public function back(Ad $ad)
     {
         $ad->update(['is_accepted'=> false]);
-        return redirect()->back()->with('success','Operazione annullata con successo');
+        return redirect()->back()->with('success','Operation canceled successfully');
     
     }
 
@@ -43,7 +47,7 @@ class RevisorController extends Controller
             return redirect()->back()->with('error', 'Annuncio non trovato');
         }
 
-        return redirect()->route('revisor.index')->with('success', 'Annuncio ripristinato con successo');
+        return redirect()->route('revisor.index')->with('success', 'Ad restored successfully');
     }
 
    

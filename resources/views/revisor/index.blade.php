@@ -52,12 +52,12 @@
                         <form action="{{route('revisor.accept_ad',['ad'=>$ad_to_check])}}" method="POST">
                             @csrf
                             @method('PATCH') 
-                                <button type="submit" class="btn btn-outline-success shadow">Accept</button>
+                                <button type="submit" class="btn btn-outline-primary">Accept</button>
                         </form>
                         <form action="{{route('revisor.reject_ad',['ad'=>$ad_to_check])}}" method="POST">
                             @csrf
                             @method('PATCH')
-                            <button type="submit" class="btn btn-outline-danger shadow">Reject</button>
+                            <button type="submit" class="btn btn-outline-danger">Reject</button>
                         </form>
                     </div>
                 </div>
@@ -66,50 +66,91 @@
 
         @endif
 
-        <div class="row mt-5">
-            <div class="d-flex justify-content-between">
-                <h4>History</h4>
+        <div class="row mt-5 history-section">
+            <div class="d-flex justify-content-between mt-4">
+                <h2 class="text-center">History</h2>
                 {{-- <div class="btn-group" role="group" aria-label="Filter Ads">
                     <a href="{{route('revisor.history')}}" class="btn btn-secondary">All Ads</a>
                     <a href="{{route('revisor.history', ['status' => 'accepted'])}}" class="btn btn-secondary">Accepted Ads</a>
                     <a href="{{route('revisor.history', ['status' => 'rejected'])}}" class="btn btn-secondary">Rejected Ads</a>
                 </div> --}}
             </div>
-            
-            <table class="table table-striped small">
+
+            <div class="col-12 col-md-6">
+              <h5 class="text-danger my-3">Ads rejected</h5>
+              <table class="table table-striped small">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Description</th>
+                    
                     <th scope="col">Price</th>
                     <th scope="col">Seller</th>
-                    <th scope="col">Date</th>
+                    
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach (\App\Models\Ad::withTrashed()->latest()->get() as $rejected_ad)
+                    @foreach ($rejected_ads as $rejected_ad)
                         <tr>
                             <th scope="row">{{$rejected_ad->id}}</th>
                             <td>{{$rejected_ad->title}}</td>
                             <td>{{$rejected_ad->category->name}}</td>
-                            <td>{{$rejected_ad->description}}</td>
+                            
                             <td>€ {{number_format($rejected_ad->price, 2, ',', '.')}}</td>
                             <td>{{$rejected_ad->user->name}}</td>
-                            <td>{{$rejected_ad->created_at->format('d/m/y')}}</td>
+                            
                             <td>
-                                @if($rejected_ad->deleted_at)
-                                <a class="btn btn-outline-success" href="{{route('revisor.restore', $rejected_ad)}}">Restore</a>
-                                @else
-                                <a class="btn btn-outline-danger" href="{{route('revisor.back', $rejected_ad)}}">Revoke</a>
-                                @endif
+                                
+                              <a class="btn btn-outline-success" href="{{route('revisor.restore', $rejected_ad)}}">Restore</a>
+                               
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
               </table>
+              {{ $rejected_ads->links() }}
+            </div>
+
+            <div class="col-12 col-md-6">
+              <h5 class="text-primary my-3">Ads accepted</h5>
+              <table class="table table-striped small">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    
+                    <th scope="col">Price</th>
+                    <th scope="col">Seller</th>
+                    
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($accepted_ads as $accepted_ad)
+                        <tr>
+                            <th scope="row">{{$accepted_ad->id}}</th>
+                            <td>{{$accepted_ad->title}}</td>
+                            <td>{{$accepted_ad->category->name}}</td>
+                            
+                            <td>€ {{number_format($accepted_ad->price, 2, ',', '.')}}</td>
+                            <td>{{$accepted_ad->user->name}}</td>
+                            
+                            <td>
+                                
+                              <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">Revoke</a>
+                               
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {{ $accepted_ads->links() }}
+            </div>
+            
+            
             
                 
             
