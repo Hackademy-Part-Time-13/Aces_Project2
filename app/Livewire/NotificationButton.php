@@ -3,21 +3,18 @@
 namespace App\Livewire;
 
 use App\Models\Ad;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class NotificationButton extends Component
 {
     public $notificationButton;
 
+    #[On('formsubmit')]
     public function mount()
     {
         $this->notificationButton = Ad::where('is_accepted', false)->count();
     }
-
-    // public function markAsRead()
-    // {
-    //     Ad::where('is_accepted',false)->update(['is_accepted'=>false]);
-    // }
 
     public function render()
     {

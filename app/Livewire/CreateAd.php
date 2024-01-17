@@ -41,7 +41,7 @@ class CreateAd extends Component
 
         session()->flash('success', 'Ad created successfully');
         
-        
+        $this->dispatch('formsubmit')->to('notification-button');
                
     }
 
