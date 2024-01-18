@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        \Chatify\ChatifyServiceProvider::class,
         /*
          * Application Service Providers...
          */

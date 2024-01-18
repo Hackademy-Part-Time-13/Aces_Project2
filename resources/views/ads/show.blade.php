@@ -52,8 +52,11 @@
             </div>     
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item fst-italic small">
+                    <li class="list-group-item fst-italic small d-flex gap-2">
                         <a class="nav-link text-extramuted" href="{{route('adsByUser',$ad->user)}}">{{$ad->user->name}}</a>  
+                        <a href={{route('user',$ad->user)}}>
+                            <i class="fa-regular fa-comment text-primary"></i>
+                        </a>
                     </li>                                             
                 </ul>
             </div>             

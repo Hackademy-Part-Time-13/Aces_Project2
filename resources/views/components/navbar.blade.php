@@ -57,10 +57,12 @@
           
           @endif
           {{-- fine zona revisore --}}
-
+          @php
+          $firstName = strtok(auth()->user()->name, ' ');              
+          @endphp
           <li class="nav-item dropdown ms-2">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{Auth::user()->name}}
+              {{$firstName}}
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Account</a></li>
