@@ -22,20 +22,20 @@ class DatabaseSeeder extends Seeder
     {
 
         $categories = [
-            'Electronics',
-            'Vehicles' ,
-            'Real Estate' ,
-            'Jobs',
-            'Furniture',
-            'Clothing',
-            'Sport',
-            'Pets',
-            'Services' ,
-            'Collectibles'
+            ['name' => 'Electronics', 'icon' => 'fa-laptop'],
+            ['name' => 'Vehicles', 'icon' => 'fa-car-side'],
+            ['name' => 'Real Estate', 'icon' => 'fa-building'],
+            ['name' => 'Jobs', 'icon' => 'fa-briefcase'],
+            ['name' => 'Furniture', 'icon' => 'fa-hammer'],
+            ['name' => 'Clothing', 'icon' => 'fa-shirt'],
+            ['name' => 'Sport', 'icon' => 'fa-table-tennis-paddle-ball'],
+            ['name' => 'Pets', 'icon' => 'fa-cat'],
+            ['name' => 'Services', 'icon' => 'fa-bell-concierge'],
+            ['name' => 'Collectibles', 'icon' => 'fa-museum'],    
         ];
 
         foreach($categories as $category) {
-            Category::create(['name'=>$category]);
+            Category::create($category);
         }
 
         User::factory(10)->create();
