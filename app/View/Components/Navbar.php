@@ -9,12 +9,13 @@ use Illuminate\Contracts\View\View;
 
 class Navbar extends Component
 {
+    
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        
     }
 
     
