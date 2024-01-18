@@ -66,6 +66,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Account</a></li>
+              <li><a class="dropdown-item" href={{'chatify'}}>Mailbox</a></li>
               <li><a class="dropdown-item" href={{route('ads.favs')}}>Favourite Ads</a></li>
               <li><a class="dropdown-item" href="{{route('workWithUs')}}">Work with us</a></li>
               <li><hr class="dropdown-divider"></li>
