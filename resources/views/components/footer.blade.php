@@ -2,35 +2,35 @@
   <footer class="py-5 container">
     <div class="row">
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Categorie</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Eletronics</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Vehicles</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Real Estate</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Jobs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Forniture</a></li>
         </ul>
       </div>
 
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Categorie</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Clothing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Sport</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pets</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Service</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Collectibles</a></li>
         </ul>
       </div>
 
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Assistenza</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Centro Assistenza</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Creazione Annunci</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Sicurezza e Affidibilità</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Acquistare</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Vendere</a></li>
         </ul>
       </div>
 
