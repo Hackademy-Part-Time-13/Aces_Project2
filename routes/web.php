@@ -47,14 +47,14 @@ Route::get('/favs', [AdController::class, 'favs'])->middleware('auth')->name('ad
 Route::get('/search/ads', [AdController::class, 'searchAds'])->name('ads.search');
 
 // rotte revisore
-Route::get('/revisor/home',[RevisorController::class,'index'])->middleware('isRevisor')->name('revisor.index');
+Route::get('/revisor/home',[RevisorController::class,'index'])->name('revisor.index');
 Route::patch('/revisor/accept/{ad}',[RevisorController::class,'acceptAd'])->name('revisor.accept_ad');
 Route::patch('/revisor/reject/{ad}', [RevisorController::class,'rejectAd'])->name('revisor.reject_ad');
 Route::get('/revisor/back/{ad}',[RevisorController::class,'back'])->name('revisor.back'); 
 Route::get('/revisor/restore/{ad}',[RevisorController::class,'restore'])->name('revisor.restore'); 
 
 // lavora con noi - diventa revisore - Mail
-Route::get('/work-With-Us', [RevisorController::class, 'workWithUs'])->middleware('auth')->name('workWithUs');
+Route::get('/work-with-us', [RevisorController::class, 'workWithUs'])->middleware('auth')->name('workWithUs');
 Route::post('/mail', [ContactController::class, 'workMail'])->middleware('auth')->name('work.mail');
 Route::get('/turnsinto-revisor/{user}', [ContactController::class, 'makeRevisor'])->name('turnsinto.revisor');
 

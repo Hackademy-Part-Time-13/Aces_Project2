@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 
 class RevisorController extends Controller
 {
+    public function __construct(){
+        $this->middleware('is_revisor')->except('workWithUs');
+    }
+
     public function index (){
 
-        $ad_to_check = Ad::where('is_accepted',false)->first();
+        $ad_to_check = Ad::where('is_accepted',false)->where('user_id','!=',auth()->user()->id)->first();
 
-        $rejected_ads = Ad::onlyTrashed()->latest()->paginate(10);
-        $accepted_ads = Ad::where('is_accepted',true)->latest()->paginate(10);
+        $rejected_ads = Ad::onlyTrashed()->where('user_id','!=',auth()->user()->id)->latest()->paginate(10);
+        $accepted_ads = Ad::where('is_accepted',true)->where('user_id','!=',auth()->user()->id)->latest()->paginate(10);
 
         return view('revisor.index', compact('ad_to_check', 'accepted_ads', 'rejected_ads'));
     }
@@ -50,25 +54,9 @@ class RevisorController extends Controller
         return redirect()->route('revisor.index')->with('success', 'Ad restored successfully');
     }
 
-   
-    // public function undoLastAction (Ad $ad) {
-
-    //         $previousState = $ad->toArray();
-
-    //         try{
-    //             $ad->update(['is_accepted' => true]);
-    //             return redirect()->back()->with('success', 'Annuncio accettato');
-
-    //         } catch (\Exception $e){
-    //          $ad->update($previousState);
-
-    //         return redirect()->back()->with('error', 'Annuncio rifiutato');
-    //         }
-    //     }
-
     public function workWithUs(){
         return view('revisor.work');
     }
-
+   
     
 }

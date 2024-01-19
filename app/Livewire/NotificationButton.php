@@ -13,7 +13,7 @@ class NotificationButton extends Component
     #[On('formsubmit')]
     public function mount()
     {
-        $this->notificationButton = Ad::where('is_accepted', false)->count();
+        $this->notificationButton = Ad::where('is_accepted', false)->where('user_id','!=',auth()->user()->id)->count();
     }
 
     public function render()

@@ -23,7 +23,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'google_id'
+        'google_id',
+        'is_revisor',
+        'contact_requested'
     ];
 
     /**
@@ -51,10 +53,20 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Ad::class);
     }
 
-    // funzione per ottenere gli annunci preferiti dell'utente
+    // metodo per ottenere gli annunci preferiti dell'utente
     public function favAds()
     {
         return $this->belongsToMany(Ad::class, 'user_favourite_ad');
     }
-   
+
+    // metodo per verificare se l'utente è l'autore di un'annuncio passato ad argomento
+    public function isAdAuthor($adId)
+    {
+        // Cerca l'annuncio in base all'ID
+        $ad = $this->ads()->find($adId);
+
+        // Verifica se l'utente è l'autore dell'annuncio
+        return $ad !== null;
+    }
+      
 }

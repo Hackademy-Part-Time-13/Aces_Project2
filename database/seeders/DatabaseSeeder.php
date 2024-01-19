@@ -42,10 +42,10 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name'=>'Revisore',
-            'email'=>'revisore@quicked.it',
+            'email'=>'revisor@presto.it',
             'password' => static::$password ??= Hash::make('password'),
             'is_revisor'=> true,
-            'email_verified_at' => now(),
+            'email_verified_at' => now(),            
         ]);
 
         Ad::factory(30)->create(); 

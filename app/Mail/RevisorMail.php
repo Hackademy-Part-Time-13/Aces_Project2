@@ -21,17 +21,16 @@ class RevisorMail extends Mailable
 
      
     
-     public $user;
+    public $user;
 
     public function __construct(User $user)
-
     {
         $this->user=$user;
       
     }
 
     public function build (){
-        return $this->from('presto.it@noreply')->view('mail.contact');
+        return $this->from('noreply@presto.it')->view('mail.contact');
     }
 
     /**

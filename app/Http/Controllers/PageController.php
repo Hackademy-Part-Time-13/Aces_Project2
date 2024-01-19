@@ -13,4 +13,6 @@ class PageController extends Controller
         // dd($annoucements);
         return view('welcome', compact('ads'));
     }
+
+    
 }
