@@ -1,6 +1,6 @@
     <x-main>
         
-        <div class="row mb-3 mt-lg-3">
+        <div class="row mb-3 mt-3">
             <h4 class="text-center text-primary">
                 {!!$ad_to_check ? 'There are some ads that need your attention <i class="fa-solid fa-mug-hot"></i>' : 'Good work, no more ads to check! <i class="fa-solid fa-umbrella-beach"></i>'!!}
             </h4>

@@ -159,7 +159,7 @@
           @endguest
 
           {{-- bottone per dark mode --}}
-          <li class="nav-item my-auto text-center mt-2 mt-lg-0">
+          <li class="nav-item my-auto text-center mt-2 mt-lg-1">
             <i id="theme-button" class="nav-link fa-regular fa-sun opacity-75" role="button"></i>
           </li>
           {{-- fine bottone dark mode --}}

@@ -1,4 +1,4 @@
-<div>
+<div class="me-lg-2">
     <a href="{{route('revisor.index')}}" class="btn btn-outline-danger position-relative w-100" aria-current="page" wire:click="mount">
         Zona revisore
         @if ($notificationButton > 0)
