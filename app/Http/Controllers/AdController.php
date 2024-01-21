@@ -29,16 +29,6 @@ class AdController extends Controller
     {
         $ads = Ad::where('is_accepted',true)->latest()->paginate(8);
 
-        // prova ordinamento prezzo
-        Event::listen('listings.filter.order', function($order) {
-            if ($order === 'asc') {
-                $ads = Ad::orderBy('price', 'asc')->get();
-            } else {
-                $ads = Ad::orderBy('price', 'desc')->get();
-            }
-        });        
-        // fine prova
-
         return view('ads.index', compact('ads'));
     }
 

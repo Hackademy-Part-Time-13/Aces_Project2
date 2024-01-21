@@ -1,20 +1,29 @@
 <x-main>
        
+  <div class="row justify-content-between align-items-center">
+    <div>
+      @if(Route::currentRouteName() == 'ads.news')
+      <h3 class="my-4">Last items</h3>
+      @elseif(Route::currentRouteName() == 'ads.popular')
+      <h3 class="my-4">Most popular</h3>
+      @elseif(Route::currentRouteName() == 'adsByCategory')
+      <h3 class="my-4">{{$categoryName}}</h3>
+      @elseif(Route::currentRouteName() == 'ads.favs')
+      <h3 class="my-4">Your favourite items</h3>
+      @elseif(Route::currentRouteName() == 'ads.search')
+      <h3 class="my-4">Items about {{$query}}</h3>
+      @elseif(Route::currentRouteName() == 'adsByUser')
+      <h3 class="my-4">Items by {{$userName}}</h3>
+      @endif
+    </div>
+    {{-- <select class="form-select" aria-label="Default select example" name="orderBy">
+      <option selected>Più recenti</option>
+      <option value="1">Più economico</option>
+      <option value="2">Più costoso</option>
+    </select> --}}
+  </div>
+
   <div class="row">
-    @if(Route::currentRouteName() == 'ads.news')
-    <h3 class="my-4">Last items</h3>
-    @elseif(Route::currentRouteName() == 'ads.like')
-    <h3 class="my-4">Most popular</h3>
-    @elseif(Route::currentRouteName() == 'adsByCategory')
-    <h3 class="my-4">{{$categoryName}}</h3>
-    @elseif(Route::currentRouteName() == 'ads.favs')
-    <h3 class="my-4">Your favourite items</h3>
-    @elseif(Route::currentRouteName() == 'ads.search')
-    <h3 class="my-4">Items about {{$query}}</h3>
-    @elseif(Route::currentRouteName() == 'adsByUser')
-    <h3 class="my-4">Items by {{$userName}}</h3>
-    @endif
-    
     @forelse($ads as $ad)
     <x-card :ad="$ad"/>
     @empty
@@ -32,6 +41,7 @@
 
     @endforelse
     {{ $ads->links() }}
+
   </div>
    
 </x-main>
