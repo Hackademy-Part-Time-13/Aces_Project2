@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class AdController extends Controller
 {
@@ -17,13 +18,37 @@ class AdController extends Controller
  
     public function show(Ad $ad)
     {
-        return view('ads.show', compact('ad'));
+        if($ad->is_accepted) {
+            return view('ads.show', compact('ad'));
+        } else {
+            abort(403);
+        }
     }
 
-    public function index()
+    public function news()
     {
-        $ads = Ad::where('is_accepted',true)->latest()->paginate(6);
-        // dd($annoucements);
+        $ads = Ad::where('is_accepted',true)->latest()->paginate(8);
+
+        // prova ordinamento prezzo
+        Event::listen('listings.filter.order', function($order) {
+            if ($order === 'asc') {
+                $ads = Ad::orderBy('price', 'asc')->get();
+            } else {
+                $ads = Ad::orderBy('price', 'desc')->get();
+            }
+        });        
+        // fine prova
+
+        return view('ads.index', compact('ads'));
+    }
+
+    public function popular()
+    {
+        $ads = Ad::where('is_accepted', true)->latest()
+        ->withCount('favBy')
+        ->orderByDesc('fav_by_count')
+        ->paginate(8);
+
         return view('ads.index', compact('ads'));
     }
 

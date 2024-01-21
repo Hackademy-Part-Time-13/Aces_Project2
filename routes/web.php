@@ -20,11 +20,14 @@ use App\Http\Controllers\RevisorController;
 |
 */
 
-// home con ultimi 6 annunci
+// home
 Route::get('/', [PageController::class,'home'])->name('home');
 
-// index annunci
-Route::get('/ads/index', [AdController::class,'index'])->name('ads.index');
+// index nuovi annunci
+Route::get('/ads/news', [AdController::class,'news'])->name('ads.news');
+
+// index annunci popolari
+Route::get('/ads/popular', [AdController::class,'popular'])->name('ads.popular');
 
 // crea annuncio
 Route::get('/ad/new', [AdController::class,'create'])->middleware(['verified'])->name('ad.create');

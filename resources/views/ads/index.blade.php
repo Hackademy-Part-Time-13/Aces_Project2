@@ -1,8 +1,10 @@
 <x-main>
        
   <div class="row">
-    @if(Route::currentRouteName() == 'ads.index')
-    <h3 class="my-4">Our last items</h3>
+    @if(Route::currentRouteName() == 'ads.news')
+    <h3 class="my-4">Last items</h3>
+    @elseif(Route::currentRouteName() == 'ads.like')
+    <h3 class="my-4">Most popular</h3>
     @elseif(Route::currentRouteName() == 'adsByCategory')
     <h3 class="my-4">{{$categoryName}}</h3>
     @elseif(Route::currentRouteName() == 'ads.favs')
