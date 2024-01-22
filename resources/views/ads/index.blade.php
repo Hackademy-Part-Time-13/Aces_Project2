@@ -35,7 +35,7 @@
           <p class="fst-italic my-5 text-center">Sorry, no items found here.</p>
         @endif
         <button class="btn btn-primary d-block mx-auto">
-          <a class="text-white nav-link" href="{{route('ads.index')}}">Browse</a>
+          <a class="text-white nav-link" href="{{route('ads.favs')}}">Browser</a>
         </button>
       </div>    
 
