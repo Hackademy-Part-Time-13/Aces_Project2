@@ -61,5 +61,6 @@ Route::get('/work-with-us', [RevisorController::class, 'workWithUs'])->middlewar
 Route::post('/mail', [ContactController::class, 'workMail'])->middleware('auth')->name('work.mail');
 Route::get('/turnsinto-revisor/{user}', [ContactController::class, 'makeRevisor'])->name('turnsinto.revisor');
 
-
+// Cambio Lingua
+Route::post('/lingua{lang}', [PageController::class, 'setLanguage'])->name('set_language_locale');
 
