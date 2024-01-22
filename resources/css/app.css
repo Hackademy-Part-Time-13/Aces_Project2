@@ -1,4 +1,4 @@
 @import 'bootstrap';
 @import './style.css';
 @import './custom.css';
-@import 'flag-icons';
+@import "~flag-icon-css/flag-icon.min.css";
