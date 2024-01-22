@@ -22,5 +22,8 @@ class PageController extends Controller
         return view('welcome', compact('last_ads','popular_ads'));
     }
 
-    
+    public function setLanguage($lang) {
+        session->put('locale', $lang);
+        return redirect()->back();
+    }
 }
