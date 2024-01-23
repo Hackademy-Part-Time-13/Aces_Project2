@@ -1,26 +1,18 @@
 <x-main>
        
-  <div class="row justify-content-between align-items-center">
-    <div>
-      @if(Route::currentRouteName() == 'ads.news')
-      <h3 class="my-4">Last items</h3>
-      @elseif(Route::currentRouteName() == 'ads.popular')
-      <h3 class="my-4">Most popular</h3>
-      @elseif(Route::currentRouteName() == 'adsByCategory')
-      <h3 class="my-4">{{$categoryName}}</h3>
-      @elseif(Route::currentRouteName() == 'ads.favs')
-      <h3 class="my-4">Your favourite items</h3>
-      @elseif(Route::currentRouteName() == 'ads.search')
-      <h3 class="my-4">Items about {{$query}}</h3>
-      @elseif(Route::currentRouteName() == 'adsByUser')
-      <h3 class="my-4">Items by {{$userName}}</h3>
-      @endif
-    </div>
-    {{-- <select class="form-select" aria-label="Default select example" name="orderBy">
-      <option selected>Più recenti</option>
-      <option value="1">Più economico</option>
-      <option value="2">Più costoso</option>
-    </select> --}}
+  <div class="d-flex justify-content-between align-items-center">    
+    <h3 class="my-4">{{$title}}</h3>
+
+    {{-- ordinamento annunci --}}   
+    <form action={{route(Route::currentRouteName(),$id ?? '')}} method="GET">
+      <input type="hidden" name="searched" value={{ $query ?? ''}}>
+      <select class="form-select" name="orderby" onchange="submit()">
+        <option {{ $orderby === 'default' ? 'selected' : '' }} value="default">In evidenza</option>
+        <option {{ $orderby === 'asc' ? 'selected' : '' }} value="asc">Dal più economico</option>
+        <option {{ $orderby === 'desc' ? 'selected' : '' }} value="desc">Dal più costoso</option>
+      </select>
+    </form>
+    
   </div>
 
   <div class="row">
@@ -35,7 +27,7 @@
           <p class="fst-italic my-5 text-center">Sorry, no items found here.</p>
         @endif
         <button class="btn btn-primary d-block mx-auto">
-          <a class="text-white nav-link" href="{{route('ads.favs')}}">Browser</a>
+          <a class="text-white nav-link" href="{{route('ads.favs')}}">Browse</a>
         </button>
       </div>    
 
