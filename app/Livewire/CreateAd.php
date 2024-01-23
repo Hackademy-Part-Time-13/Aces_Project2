@@ -11,6 +11,10 @@ use Livewire\Attributes\Validate;
 class CreateAd extends Component
 {
     use WithFileUploads;
+    
+    public $temporary_images;
+    public $images = [];
+    public $ad;
 
     protected $rules = [
         'images.*'=>'image|max:1024',
@@ -28,9 +32,6 @@ class CreateAd extends Component
         'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
     ];
 
-
-    public $temporary_images;
-    public $images = [];
 
     #[Validate('required|max:30')] 
     public $title;
