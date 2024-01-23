@@ -18,15 +18,11 @@
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="https://picsum.photos/id/{{$ad_to_check->id}}/900/900" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="https://picsum.photos/id/{{$ad_to_check->id+1}}/900/900" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="https://picsum.photos/id/{{$ad_to_check->id+3}}/900/900" class="d-block w-100" alt="...">
-                          </div>
+                          @foreach ($ad_to_check->images as $img)
+                            <div class="carousel-item @if($loop->first) active @endif">
+                              <img src="{{Storage::url($img->path)}}" class="d-block w-100" alt="...">
+                            </div>
+                           @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
