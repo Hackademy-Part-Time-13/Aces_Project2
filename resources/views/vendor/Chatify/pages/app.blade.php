@@ -1,6 +1,6 @@
 <x-main>
 @include('Chatify::layouts.headLinks')
-<div class="messenger">
+<div class="messenger bg-body-tertiary">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="border messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
         {{-- Header and search bar --}}

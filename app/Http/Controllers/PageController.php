@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -22,8 +23,17 @@ class PageController extends Controller
         return view('welcome', compact('last_ads','popular_ads'));
     }
 
+    public function profile(){
+
+        $user = auth()->user();
+        $ads = $user->ads()->withTrashed()->get();
+        $created_at = Carbon::parse($user->created_at)->diffForHumans();
+
+        return view('auth.profile', compact('user','created_at','ads'));
+    }
+
     public function setLanguage($lang) {
-        session->put('locale', $lang);
+        session()->put('locale', $lang);
         return redirect()->back();
     }
 }

@@ -28,7 +28,7 @@
       </div>
       <div>
         <i class="fa-solid fa-calendar-days me-1"></i>
-        <p class="small d-inline text-muted">{{$ad->created_at->format('d/m/y')}}</p>
+        <p class="small d-inline text-muted">{{$created_at}}</p>
       </div>
     </div>
   </div> 

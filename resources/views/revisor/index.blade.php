@@ -68,12 +68,7 @@
 
         <div class="row mt-5 history-section">
             <div class="d-flex justify-content-between mt-4">
-                <h2 class="text-center">History</h2>
-                {{-- <div class="btn-group" role="group" aria-label="Filter Ads">
-                    <a href="{{route('revisor.history')}}" class="btn btn-secondary">All Ads</a>
-                    <a href="{{route('revisor.history', ['status' => 'accepted'])}}" class="btn btn-secondary">Accepted Ads</a>
-                    <a href="{{route('revisor.history', ['status' => 'rejected'])}}" class="btn btn-secondary">Rejected Ads</a>
-                </div> --}}
+              <h2 class="text-center">History</h2>
             </div>
 
             <div class="col-12 col-md-6">

@@ -23,6 +23,9 @@ use App\Http\Controllers\RevisorController;
 // home
 Route::get('/', [PageController::class,'home'])->name('home');
 
+// profilo utente
+Route::get('/profile', [PageController::class,'profile'])->middleware('auth')->name('profile');
+
 // index nuovi annunci
 Route::get('/ads/news', [AdController::class,'news'])->name('ads.news');
 

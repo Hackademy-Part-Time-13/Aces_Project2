@@ -102,7 +102,7 @@
                 {{$firstName}}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                {{-- <li><a class="dropdown-item" href="#">Profile</a></li>   --}}
+                <li><a class="dropdown-item" href={{route('profile')}}>Profile</a></li>  
                 @if(!auth()->user()->is_revisor)              
                 <li><a class="dropdown-item" href="{{route('workWithUs')}}">Work with us</a></li>
                 @endif
