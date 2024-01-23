@@ -18,6 +18,8 @@ class SetLocaleMiddleware
     {
         $localeLanguage = session('locale', 'it');
         App::setLocale($localeLanguage);
+        
+    
         return $next($request);
     }
 }

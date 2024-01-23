@@ -18,7 +18,9 @@
             @if(Route::currentRouteName() == 'home')      
             <x-header/>
             @endif
-
+           <!--  -->
+           <p class="h2 my-2 fw-bold">{{__('ui.allAnnouncements')}}</p>
+            <!--  -->
             {{-- messaggi di successo/errore --}}
             <div class="row mt-lg-5">
                 <div class="col-12 mt-2">
