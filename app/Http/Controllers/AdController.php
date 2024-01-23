@@ -15,6 +15,20 @@ class AdController extends Controller
     {
         return view('ads.create');
     }
+
+    public function edit(Ad $ad)
+    {
+        return view('ads.edit', compact('ad'));
+    }
+
+    public function delete($id)
+    {
+        $ad = Ad::withTrashed()->findOrFail($id);
+
+        $ad->forceDelete();
+    
+        return redirect()->back()->with('success', 'Ad deleted successfully');
+    }
  
     public function show(Ad $ad)
     {

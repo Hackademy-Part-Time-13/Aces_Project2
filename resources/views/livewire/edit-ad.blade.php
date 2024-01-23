@@ -15,8 +15,8 @@
         </div>
     </div>
 
-    <h3 class="my-3">Sell an item</h3>
-    <form wire:submit.prevent="store" class="mx-auto">
+    <h3 class="my-3">Edit an item</h3>
+    <form wire:submit.prevent="update" class="mx-auto">
 
         <div class="input-group mt-3">            
             <label for="title" class="px-3 input-group-text col-6">Title</label>
@@ -72,8 +72,8 @@
                         <div class="row border border-4 border-info rounded shadow py-4">
                             @foreach ($images as $key => $image)
                                 <div class="col my-3">
-                                    <div class="img-preview mx-auto shadow rounded" style="background-image: url({{$image->temporaryUrl()}}); background-size: cover; height: 150px;"></div>
-                                        <button type="button" class=" btn btn-danger shadow d-block text-center mt-2 mx-auto" wire:click="removeImage({{$key}})">Cancella</button>
+                                    <div class="img-preview mx-auto shadow rounded" style="background-image: url({{Storage::url($image->path)}}); background-size: cover; height: 150px;"></div>
+                                        <button type="button" class=" btn btn-danger shadow d-block text-center mt-2 mx-auto" wire:click="removeImage({{$key}})">Delete</button>
                                 </div>
                             @endforeach
                         </div>

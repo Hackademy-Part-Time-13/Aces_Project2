@@ -42,6 +42,12 @@ Route::get('/ads/user/{user}', [AdController::class, 'adsByUser'])->name('adsByU
 // vedi annuncio
 Route::get('/ad/{ad}', [AdController::class, 'show'])->name('ad.show');
 
+// edita annuncio
+Route::get('ad/edit/{ad}', [AdController::class, 'edit'])->name('ad.edit');
+
+// elimina annuncio
+Route::delete('ad/delete/{ad}', [AdController::class, 'delete'])->name('ad.delete');
+
 // socialite google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

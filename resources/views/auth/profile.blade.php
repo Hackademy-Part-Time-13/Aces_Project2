@@ -15,7 +15,7 @@
             <p>Annunci accettati: {{$user->ads()->where('is_accepted',true)->count()}}</p>
             <p>Annunci rifiutati: {{$user->ads()->onlyTrashed()->count()}}</p>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-9">
             <table class="table table-striped border">
                 <thead>
                   <tr>
@@ -24,6 +24,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Created</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,14 @@
                             @else
                                 <span class="text-warning">In revisione</span>
                             @endif
+                        </td>
+                        <td>
+                            <a class="btn btn-warning d-inline" href={{route('ad.edit',$ad->id)}}>Edit</a>
+                            <form class="d-inline" action={{route('ad.delete',$ad->id)}} method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
