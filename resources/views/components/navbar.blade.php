@@ -43,7 +43,7 @@
         {{-- ricerca --}}
         <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-lg-5 px-lg-5 flex-grow-1 pb-2 pb-xl-0" role="search">
           <div class="input-group">
-            <input name="searched" class="form-control" type="search" placeholder="Search for items">
+            <input name="searched" class="form-control" type="search" placeholder="{{__('ui.search_items')}}">
             <button class="btn btn-outline-primary" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -78,7 +78,7 @@
             <hr class="d-lg-none">
             {{-- categorie --}}
             <li class="nav-item d-lg-none">
-              <p class="small opacity-50 mb-1">Categories</p>
+              <p class="small opacity-50 mb-1">{{__('ui.categories')}}</p>
               @foreach ($categories as $category)
                 <li class="d-lg-none row gx-1 align-items-center mb-0">
                   <div class="col-2 d-flex justify-content-center">
@@ -96,21 +96,21 @@
             $firstName = strtok(auth()->user()->name, ' ');              
             @endphp
 
-            <p class="small opacity-50 mb-0 d-lg-none">Account</p>
+            <p class="small opacity-50 mb-0 d-lg-none">{{__('ui.account')}}</p>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{$firstName}}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href={{route('profile')}}>Profile</a></li>  
+                <li><a class="dropdown-item" href={{route('profile')}}>{{__('ui.profile')}}</a></li>  
                 @if(!auth()->user()->is_revisor)              
-                <li><a class="dropdown-item" href="{{route('workWithUs')}}">Work with us</a></li>
+                <li><a class="dropdown-item" href="{{route('workWithUs')}}">{{__('ui.work_with_us')}}</a></li>
                 @endif
                 <li><hr class="dropdown-divider"></li>
                 <li>
                   <form class="dropdown-item" action={{route('logout')}} method="post">
                     @csrf
-                    <button class="btn p-0 text-danger" type="submit">Log out</button>
+                    <button class="btn p-0 text-danger" type="submit">{{__('ui.logout')}}</button>
                   </form>
                 </li>
               </ul>
@@ -119,7 +119,7 @@
 
             {{-- bottone crea annuncio --}}
             <li class="mx-lg-2 mb-2 mb-lg-0 order-first order-lg-0">
-              <a href="{{route('ad.create')}}" class="btn btn-primary w-100 text-white">Sell now</a>
+              <a href="{{route('ad.create')}}" class="btn btn-primary w-100 text-white">{{__('ui.sell')}}</a>
             </li>
             {{-- fine bottone crea annuncio--}}
           @endauth
@@ -129,7 +129,7 @@
           <!-- Button trigger modal -->
           <li class="mx-lg-2 mb-2 mb-xl-0">
             <button type="button" class="w-100 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginregistermodal">
-              Sign up | Login
+              {{__('ui.signup_login')}}
             </button>
           </li>
   
@@ -153,7 +153,7 @@
 
           <li class="mx-lg-2">
             <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginregistermodal">
-              Sell now
+              {{__('ui.sell')}}
             </button> 
           </li>
           @endguest

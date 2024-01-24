@@ -8,19 +8,18 @@
         {{-- cdn fontawesome --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     </head>
 
     <body>
         <x-navbar/> 
 
-        <main class="container-lg d-flex flex-column min-vh-100 my-3 position-main">  
+        <main class="container-lg d-flex flex-column min-vh-100 my-5 position-main">  
             
             @if(Route::currentRouteName() == 'home')      
             <x-header/>
             @endif
-           <!--  -->
-           <p class="h2 my-2 fw-bold">{{__('ui.allAnnouncements')}}</p>
-            <!--  -->
+           
             {{-- messaggi di successo/errore --}}
             <div class="row mt-lg-5">
                 <div class="col-12 mt-2">
