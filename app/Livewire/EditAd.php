@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use Illuminate\Http\Request;
 
 class EditAd extends Component
 {
@@ -15,7 +16,6 @@ class EditAd extends Component
     public $temporary_images;
     public $images = [];
     public $ad;
-    public $adId;
     
     #[Validate('required|max:30')] 
     public $title;
@@ -29,16 +29,16 @@ class EditAd extends Component
     #[Validate('required|max:300')] 
     public $description;
 
-    public function mount($adId){
-
-        $this->adId = $adId;
-
-        $this->ad = Ad::findOrFail($adId);
+    public function mount(Request $request){
+        
+        $this->ad= $request->route()->parameter('ad');
         $this->title = $this->ad->title;
         $this->selectedCategory = $this->ad->category->id;
         $this->price = $this->ad->price;
         $this->description = $this->ad->description;
         $this->images = $this->ad->images;
+
+        
     }
 
     protected $rules = [
@@ -60,10 +60,8 @@ class EditAd extends Component
 
     public function updatedTemporaryImages()
     {
-        $this->ad = Ad::findOrFail($this->adId);
-
         if ($this->validate([
-            'temporary_images.*'=>'image|max:1024',
+            'temporary_images.*'=>'image|max:3000',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->images[] = $image;
@@ -73,36 +71,47 @@ class EditAd extends Component
 
     public function removeImage($key)
     {
-        if (in_array($key, array_keys($this->images))) {
-            unset($this->images[$key]);
-        }
+        $imageKeys = $this->images->pluck('id')->toArray();
+        
+        $this->images = $this->images->filter(function ($image, $index) use ($key) {
+            return $index != $key;
+        });
+        // if (in_array($key, $imageKeys)) {
+        //     $this->images = $this->images->where('id', '!=', $this->images[$key]->id);
+        // }
     }
 
-    public function updated($propertyName)
-    {
+    public function updated($propertyName)    {
+
         $this->validateOnly($propertyName);
 
         if ($propertyName === 'temporary_images') {
-            $this->update($ad);
+            $this->update($this->ad);
         }
     }
 
 
-    public function update($adId)
+    public function update()
     {
-        $this->ad = Ad::findOrFail($adId);  
-        $this->ad->validate();
-    
-        $this->ad->update();
-    
-        if (count($this->images)) {
-            foreach ($this->images as $image) {
-                $imagePath = $image->store('images', 'public');
-                $newAd.images().create(['path' => $imagePath]);
-            }
-        }
-    
-        return redirect()->back()->with('success', 'Ad edited successfully, it will be posted after review');
+        
+        $imageIds = $this->images->pluck('id')->toArray();   
+
+        $this->validate();  
+
+        $this->ad->update([
+            'title' => $this->title,
+            'description' => $this->description,
+            'category_id' => $this->selectedCategory,
+            'price' => $this->price,
+        ]);
+
+        
+        $this->ad->images()->sync($imageIds);
+        $this->ad->save();
+        // dd($this->ad);
+
+               
+        return redirect()->route('profile')->with('success', 'Ad edited successfully, it will be posted after review');
     
         $this->dispatch('formsubmit')->to('notification-button');
     }

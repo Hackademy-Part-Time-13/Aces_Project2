@@ -32,7 +32,7 @@ header {
     height: 70px;
 }
 
-.navbar-brand, h1, h2, h3, h4 {
+.navbar-brand, h1, h2, h3 {
     font-family: 'Pacifico', cursive;
 }
 

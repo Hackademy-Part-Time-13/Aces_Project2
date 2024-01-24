@@ -13,7 +13,7 @@
     <body>
         <x-navbar/> 
 
-        <main class="container-lg d-flex flex-column min-vh-100 my-5 position-main">  
+        <main class="container-lg d-flex flex-column min-vh-100 my-3 position-main">  
             
             @if(Route::currentRouteName() == 'home')      
             <x-header/>
