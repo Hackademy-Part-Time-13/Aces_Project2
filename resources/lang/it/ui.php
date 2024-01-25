@@ -72,6 +72,14 @@ return [
     'with_google'=>'Accedi con Google',
     'forgot_password_page'=>'Hai dimenticato la password? Non ti preoccupare, capita anche ai migliori!',
     'reset_password'=>'Ripristina la password',
+    'ad_deleted_success'=>'Annuncio eliminato con successo',
+    'ad_accepted_success'=>'Annuncio accettato con successo',
+    'ad_rejected_success'=>'Annuncio rifiutato con successo',
+    'ops'=>'Ops, torna indietro',
+    'operation_canceled'=>'Operazione annullata con successo',
+    'ad_not_found'=>'Annuncio non trovato',
+    'ad_restored_success'=>'Annuncio ripristinato con successo',
+
 
     
 

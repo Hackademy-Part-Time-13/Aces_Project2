@@ -72,6 +72,13 @@ return [
     'with_google'=>'Continue with Google',
     'forgot_password_page'=>'Forgot password? No worries, we\'ve got you covered!',
     'reset_password'=>'Reset password',
+    'ad_deleted_success'=>'Ad deleted successfully',
+    'ad_accepted_success'=>'Ad accepted successfully',
+    'ad_rejected_success'=>'Ad rejected successfully',
+    'ops'=>'Whoops, go back',
+    'operation_canceled'=>'Operation canceled successfully',
+    'ad_not_found'=>'Ad not found',
+    'ad_restored_success'=>'Ad restored successfully',
 
 
 

@@ -25,19 +25,20 @@ class RevisorController extends Controller
     {        
         $ad->update(['is_accepted' => true]);
         $ad->save();
-        return redirect()->back()->with('success', 'Ad accepted! <a href="'.route('revisor.back',$ad).'"> Whoops, go back </a>');
+        return redirect()->back()->with('success', trans('ui.ad_accepted_success') . ' <a href="' . route('revisor.back', $ad) . '">' . trans('ui.ops') . '</a>');
+
     }
 
     public function rejectAd (Ad $ad)
     {
         $ad->delete();
-        return redirect()->back()->with('error','Ad rejected! <a href="'.route('revisor.restore', $ad->id).'"> Whoops, go back </a>');
+        return redirect()->back()->with('error', trans('ui.ad_rejected_success') . ' <a href="' . route('revisor.restore', $ad) . '">' . trans('ui.ops') . '</a>');
     }
 
     public function back(Ad $ad)
     {
         $ad->update(['is_accepted'=> false]);
-        return redirect()->back()->with('success','Operation canceled successfully');
+        return redirect()->back()->with('success',trans('ui.operation_canceled'));
     
     }
 
@@ -48,10 +49,10 @@ class RevisorController extends Controller
         if ($ad->trashed()) {
             $ad->restore();
         } else {
-            return redirect()->back()->with('error', 'Annuncio non trovato');
+            return redirect()->back()->with('error', trans('ui.ad_not_found'));
         }
 
-        return redirect()->route('revisor.index')->with('success', 'Ad restored successfully');
+        return redirect()->route('revisor.index')->with('success', trans('ui.ad_restored_success'));
     }
 
     public function workWithUs(){

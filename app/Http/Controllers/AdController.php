@@ -27,7 +27,7 @@ class AdController extends Controller
 
         $ad->forceDelete();
     
-        return redirect()->back()->with('success', 'Ad deleted successfully');
+        return redirect()->back()->with('success', trans('ui.ad_deleted_success'));
     }
  
     public function show(Ad $ad)
