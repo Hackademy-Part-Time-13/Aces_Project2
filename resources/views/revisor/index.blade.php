@@ -28,7 +28,9 @@
           <div class="carousel-inner">
             @foreach ($ad_to_check->images as $img)
               <div class="carousel-item @if($loop->first) active @endif">
-                <img src="{{Storage::url($img->path)}}" class="d-block w-100" alt="...">
+              
+                <img src="{{$img->getUrl(200,200)}}" class="d-block w-100" alt="...">
+                {{-- <img src="{{Storage::url($img->path)}}" class="d-block w-100" alt="..."> --}}
               </div>
               @endforeach
           </div>

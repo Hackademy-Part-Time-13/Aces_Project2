@@ -1,7 +1,8 @@
 <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
   <div class="card mx-auto h-100 border-0 shadow rounded-0" style="width: 250px;">
     <a href={{route('ad.show',$ad)}}>
-      <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/250/250" alt="Card image cap">
+      <img class="card-img-top rounded-0" src="{{$ad->images()->first()->getUrl(200,200)}}" alt="Card image cap">
+      {{-- <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/250/250" alt="Card image cap"> --}}
     </a>     
     <div class="card-body pb-0">
       <a href={{route('ad.show',$ad)}} class="card-title fs-6 fw-semibold card-link">{{$ad->title}}</a>
