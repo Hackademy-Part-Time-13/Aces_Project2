@@ -41,7 +41,7 @@
         </ul>
 
         {{-- ricerca --}}
-        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-2 mx-xl-5 flex-grow-1 pb-2 pb-xl-0" role="search">
+        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-xl-5 flex-grow-1 pb-2 pb-xl-0" role="search">
           <div class="input-group">
             <input name="searched" class="form-control" type="search" placeholder="{{__('ui.search_items')}}">
             <button class="btn btn-outline-primary" type="submit">
@@ -84,7 +84,16 @@
                   <div class="col-2 d-flex justify-content-center">
                     <i class="fs-5 text-primary fa-solid {{$category->icon}}"></i>
                   </div>
-                  <a class="col-6 nav-link" href={{route('adsByCategory',$category)}}>{{($category->name)}}
+                  <a class="col-6 nav-link" href={{route('adsByCategory',$category)}}>
+                    @if (app()->getLocale() == 'it')
+                      {{ $category->title_it }}
+                    @elseif (app()->getLocale() == 'en')
+                      {{ $category->title_en }}
+                    @elseif (app()->getLocale() == 'es')
+                      {{ $category->title_es }}
+                    @else
+                      {{ $category->title_en }} 
+                    @endif
                   </a>
                 </li>                                
               @endforeach
@@ -156,6 +165,32 @@
               {{__('ui.sell')}}
             </button> 
           </li>
+
+          <hr class="d-lg-none">
+          {{-- categorie --}}
+          <li class="nav-item d-lg-none">
+            <p class="small opacity-50 mb-1">{{__('ui.categories')}}</p>
+            @foreach ($categories as $category)
+              <li class="d-lg-none row gx-1 align-items-center mb-0">
+                <div class="col-2 d-flex justify-content-center">
+                  <i class="fs-5 text-primary fa-solid {{$category->icon}}"></i>
+                </div>
+                <a class="col-6 nav-link" href={{route('adsByCategory',$category)}}>
+                  @if (app()->getLocale() == 'it')
+                    {{ $category->title_it }}
+                  @elseif (app()->getLocale() == 'en')
+                    {{ $category->title_en }}
+                  @elseif (app()->getLocale() == 'es')
+                    {{ $category->title_es }}
+                  @else
+                    {{ $category->title_en }} 
+                  @endif
+                </a>
+              </li>                                
+            @endforeach
+          </li>
+          {{-- fine categorie --}}
+          <hr class="d-lg-none">
           @endguest
 
           {{-- bottone per dark mode --}}

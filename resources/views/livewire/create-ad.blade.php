@@ -40,7 +40,17 @@
             <select class="form-select col-6 @error('selectedCategory') is-invalid @enderror" id="category" name="category" wire:model.blur="selectedCategory">
             <option selected>{{__('ui.select_category')}}</option>              
                 @foreach(\App\Models\Category::all() as $category)
-                    <option value={{$category->id}}>{{$category->name}}</option>
+                    <option value={{$category->id}}>
+                        @if (app()->getLocale() == 'it')
+                            {{ $category->title_it }}
+                        @elseif (app()->getLocale() == 'en')
+                            {{ $category->title_en }}
+                        @elseif (app()->getLocale() == 'es')
+                            {{ $category->title_es }}
+                        @else
+                            {{ $category->title_en }} 
+                        @endif
+                    </option>
                 @endforeach
             </select>            
         </div>

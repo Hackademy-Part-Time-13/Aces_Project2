@@ -36,7 +36,17 @@
                     <li class="list-group-item fw-bold">{{$ad->title}}</li>
                     <li class="list-group-item">
                         <i class="fa-solid fa-tag me-1"></i>
-                        <a href="{{route('adsByCategory',$ad->category)}}" class="d-inline nav-link text-extramuted">{{$ad->category->name}}</a>
+                        <a href="{{route('adsByCategory',$ad->category)}}" class="d-inline nav-link text-extramuted">
+                            @if (app()->getLocale() == 'it')
+                                {{ $ad->category->title_it }}
+                            @elseif (app()->getLocale() == 'en')
+                                {{ $ad->category->title_en }}
+                            @elseif (app()->getLocale() == 'es')
+                                {{ $ad->category->title_es }}
+                            @else
+                                {{ $ad->category->title_en }} 
+                            @endif
+                        </a>
                     </li>
                     <li class="list-group-item">{{$ad->description}}</li> 
                     @guest

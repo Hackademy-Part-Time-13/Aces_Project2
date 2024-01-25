@@ -22,16 +22,16 @@ class DatabaseSeeder extends Seeder
     {
 
         $categories = [
-            ['title_it' => 'Electronics', 'title_en' => 'Electronics', 'title_es' => 'Electronics', 'icon' => 'fa-laptop'],
-            ['title_it' => 'Vehicles', 'title_en' =>'Vehicles', 'title_es' => 'Vehicles', 'icon' => 'fa-car-side'],
-            ['title_it' => 'Real Estate', 'title_en' =>'Real Estate', 'title_es'=> 'Real Estate', 'icon' => 'fa-building'],
-            ['title_it' => 'Jobs', 'title_en' =>'Jobs', 'title_es'=> 'Jobs', 'icon' => 'fa-briefcase'],
-            ['title_it' => 'Furniture', 'title_en' => 'Furniture', 'title_es'=> 'Furniture' , 'icon' => 'fa-hammer'],
-            ['title_it' => 'Clothing', 'title_en' => 'Clothing', 'title_es'=> '','icon' => 'fa-shirt'],
+            ['title_it' => 'Elettronica', 'title_en' => 'Electronics', 'title_es' => 'Electronics', 'icon' => 'fa-laptop'],
+            ['title_it' => 'Motori', 'title_en' =>'Vehicles', 'title_es' => 'Vehicles', 'icon' => 'fa-car-side'],
+            ['title_it' => 'Immobili', 'title_en' =>'Real Estate', 'title_es'=> 'Real Estate', 'icon' => 'fa-building'],
+            ['title_it' => 'Lavoro', 'title_en' =>'Jobs', 'title_es'=> 'Jobs', 'icon' => 'fa-briefcase'],
+            ['title_it' => 'Arredamento', 'title_en' => 'Furniture', 'title_es'=> 'Furniture' , 'icon' => 'fa-hammer'],
+            ['title_it' => 'Abbigliamento', 'title_en' => 'Clothing', 'title_es'=> '','icon' => 'fa-shirt'],
             ['title_it' => 'Sport', 'title_en' =>'Sport' , 'title_es'=> 'Sport','icon' => 'fa-table-tennis-paddle-ball'],
-            ['title_it' => 'Pets', 'title_en' =>'Pets', 'title_es'=> 'Pets','icon' => 'fa-cat'],
-            ['title_it' => 'Services', 'title_en' => 'Services', 'title_es'=> 'Services','icon' => 'fa-bell-concierge'],
-            ['title_it' => 'Collectibles', 'title_en' =>'Collectibles', 'title_es'=> 'Collectibles','icon' => 'fa-museum'],    
+            ['title_it' => 'Accessori per animali', 'title_en' =>'Pets', 'title_es'=> 'Pets','icon' => 'fa-cat'],
+            ['title_it' => 'Servizi', 'title_en' => 'Services', 'title_es'=> 'Services','icon' => 'fa-bell-concierge'],
+            ['title_it' => 'Collezionismo', 'title_en' =>'Collectibles', 'title_es'=> 'Collectibles','icon' => 'fa-museum'],    
         ];
 
         foreach($categories as $category) {
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),            
         ]);
 
-        // Ad::factory(30)->create(); 
+        Ad::factory(30)->create(); 
         
     }
 }

@@ -19,8 +19,8 @@ class CreateAd extends Component
     public $ad;
 
     protected $rules = [
-        'images.*'=>'image|max:1024',
-        'temporary_images.*'=>'image|max:1024',
+        'images.*'=>'image|max:3600',
+        'temporary_images.*'=>'image|max:3600',
     ];
 
 // Personalizzazione messaggi d'errore (consigliato in caso di traduzione in altra lingua)
@@ -50,7 +50,7 @@ class CreateAd extends Component
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:1024',
+            'temporary_images.*'=>'image|max:3600',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->images[] = $image; 

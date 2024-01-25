@@ -29,7 +29,17 @@
     <div class="card-footer border-0 small opacity-75 mt-2 d-flex justify-content-between">
       <div>
         <i class="fa-solid fa-tag me-1"></i>
-        <a href="{{route('adsByCategory',$ad->category)}}" class="d-inline nav-link text-extramuted">{{$ad->category->name}}</a>
+        <a href="{{route('adsByCategory',$ad->category)}}" class="d-inline nav-link text-extramuted">
+          @if (app()->getLocale() == 'it')
+            {{ $ad->category->title_it }}
+          @elseif (app()->getLocale() == 'en')
+            {{ $ad->category->title_en }}
+          @elseif (app()->getLocale() == 'es')
+            {{ $ad->category->title_es }}
+          @else
+            {{ $ad->category->title_en }} 
+          @endif
+        </a>
       </div>
       <div>
         <i class="fa-solid fa-calendar-days me-1"></i>
