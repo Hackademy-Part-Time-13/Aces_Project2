@@ -9,13 +9,25 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
+                @if(count($ad->images)>0)
                 @foreach ($ad->images as $img)
-              <div class="carousel-item @if($loop->first) active @endif">
-              
-                <img src="{{$img->getUrl(200,200)}}" class="d-block w-100" alt="...">
-                
-              </div>
-              @endforeach
+                <div class="carousel-item @if($loop->first) active @endif">                
+                  <img src="{{$img->getUrl(200,200)}}" class="d-block w-100" alt="...">                  
+                </div>
+                @endforeach
+                @else  
+                <div class="carousel-item active">
+                    <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/600/600" alt="Card image cap"> 
+                  </div>
+                  <div class="carousel-item">
+                    <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id+1}}/600/600" alt="Card image cap"> 
+                  </div>
+                  <div class="carousel-item">
+                    <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id+2}}/600/600" alt="Card image cap"> 
+                  </div>    
+                <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/600/600" alt="Card image cap"> 
+                @endif
+               
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
