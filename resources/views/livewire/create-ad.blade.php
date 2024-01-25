@@ -1,4 +1,4 @@
-<div class="px-3 mt-5 col-12 col-lg-9 mx-auto">
+<div class="px-3 mt-3 col-12 col-lg-9 mx-auto">
     <div class="row mt-3">
         <div class="col-12">
             @if(session()->has('success'))
