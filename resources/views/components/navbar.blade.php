@@ -177,10 +177,19 @@
       <div class="container-lg">
         @foreach($categories as $category)
         <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>
-          {{ $category->title }} 
+          @if (app()->getLocale() == 'it')
+            {{ $category->title_it }}
+          @elseif (app()->getLocale() == 'en')
+            {{ $category->title_en }}
+          @elseif (app()->getLocale() == 'es')
+            {{ $category->title_es }}
+          @else
+            {{ $category->title_en }} 
+          @endif
         </a>
         @endforeach
       </div>
     </nav>
-  {{-- fine seconda navbar --}}
+{{-- fine seconda navbar --}}
+
 </div>
