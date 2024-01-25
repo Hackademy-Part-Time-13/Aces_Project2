@@ -49,7 +49,31 @@ return [
     'accept'=>'Accetta',
     'reject'=>'Rifiuta',
     'history'=>'Cronologia',
+    'restore'=>'Ripristina',
+    'revoke'=>'Revoca',
+    'login'=>'Accedi',
+    'remember'=>'Ricordami',
+    'submit'=>'Continua',
+    'forgot_password'=>'Hai dimenticato la password?',
+    'register'=>'Iscriviti',
+    'eight_char'=>'Utilizza almeno 8 caratteri',
+    'confirm_password'=>'Conferma la password',
+    'email_verification'=>'Verifica della e-mail',
+    'email_verification_text1'=>'Grazie di esserti iscritto! Per completare la registrazione, controlla nella tua posta e conferma la tua e-mail.',
+    'email_verification_text2'=>'Se non hai ricevuto l\'e-mail di verifica, clicca il bottone qui sotto per richiederne un\'altra.',
+    'resend_email'=>'Richiedi una nuova e-mail di verifica',
+    'new_mail'=>'Una nuova e-mail di verifica è stata spedita!',
+    'join_us'=>'Unisciti a noi!',
+    'join_us_text'=>'Stiamo cercando un revisore pubblicitario diligente e orientato ai dettagli per unirsi al nostro team. Se hai un occhio attento per la precisione e una passione per mantenere contenuti di alta qualità, saremmo felici di sentirti. Rivedi e assicura l\'integrità degli annunci sul nostro sito, contribuendo a un\'esperienza utente senza interruzioni. Unisciti a noi nel plasmare un ambiente online affidabile e di fiducia.',
+    'apply'=>'Candidati',
+    'join_community'=>'Iscriviti e vendi gli oggetti che non usi più, senza commissioni',
+    'register_with'=>'Oppure iscriviti con',
+    'already_registered'=>'Hai già un account?',
+    'with_google'=>'Accedi con Google',
+    'forgot_password_page'=>'Hai dimenticato la password? Non ti preoccupare, capita anche ai migliori!',
+    'reset_password'=>'Ripristina la password',
 
+    
 
 
 ];

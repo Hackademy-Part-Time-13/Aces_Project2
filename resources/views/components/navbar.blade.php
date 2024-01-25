@@ -41,7 +41,7 @@
         </ul>
 
         {{-- ricerca --}}
-        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-lg-5 px-lg-5 flex-grow-1 pb-2 pb-xl-0" role="search">
+        <form action="{{route('ads.search')}}" method="GET" class="d-flex mx-2 mx-xl-5 flex-grow-1 pb-2 pb-xl-0" role="search">
           <div class="input-group">
             <input name="searched" class="form-control" type="search" placeholder="{{__('ui.search_items')}}">
             <button class="btn btn-outline-primary" type="submit">
@@ -141,10 +141,10 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <h2 class="text-center display-6 mb-4">Join and sell pre-loved items with no fees</h2>
-                  <a class="my-5 btn btn-outline-success col-12 col-md-8 col-lg-6 mx-auto" href="/auth/google"><i class="fa-brands fa-google"></i> Continue with Google</a>
-                  <p>Or register with <a href={{route('register')}}>Email</a></p>
-                  <p>Already have an account? <a href={{route('login')}}>Log in</a></p>
+                  <h2 class="text-center display-6 mb-4">{{__('ui.join_community')}}</h2>
+                  <a class="my-5 btn btn-outline-success col-12 col-md-8 col-lg-6 mx-auto" href="/auth/google"><i class="fa-brands fa-google"></i> {{__('ui.with_google')}}</a>
+                  <p>{{__('ui.register_with')}} <a href={{route('register')}}>Email</a></p>
+                  <p>{{__('ui.already_registered')}} <a href={{route('login')}}>{{__('ui.login')}}</a></p>
                 </div>              
               </div>
             </div>

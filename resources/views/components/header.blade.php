@@ -1,5 +1,5 @@
 <header class="mt-lg-5 row pt-lg-5 mb-4">    
-    <div class="card my-auto col-12 col-md-5 offset-md-1 col-xl-3 offset-xl-3" style="height: 16rem">
+    <div class="card my-auto col-12 col-lg-5 offset-lg-1 col-xl-3 offset-xl-3" style="height: 16rem">
       <div class="card-body p-4 h-100 d-flex flex-column justify-content-around">        
         <h1 class="card-title">
           @guest 

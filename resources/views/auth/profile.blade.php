@@ -86,7 +86,7 @@
                             @endif
                         </td>
                         <td class="d-flex gap-2">
-                            <a class="btn btn-warning py-1" href={{route('ad.edit',$ad->id)}}>{{__('ui.edit')}}</a>
+                            {{-- <a class="btn btn-warning py-1" href={{route('ad.edit',$ad->id)}}>{{__('ui.edit')}}</a> --}}
                             <form action={{route('ad.delete',$ad->id)}} method="POST">
                                 @csrf
                                 @method('DELETE')

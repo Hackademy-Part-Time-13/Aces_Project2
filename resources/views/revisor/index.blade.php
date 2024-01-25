@@ -81,13 +81,13 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
+                    <th scope="col">{{__('ui.title')}}</th>
+                    <th scope="col">{{__('ui.category')}}</th>
                     
-                    <th scope="col">Price</th>
-                    <th scope="col">Seller</th>
+                    <th scope="col">{{__('ui.price')}}</th>
+                    <th scope="col">{{__('ui.seller')}}</th>
                     
-                    <th scope="col">Actions</th>
+                    <th scope="col">{{__('ui.actions')}}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -102,7 +102,7 @@
                             
                             <td>
                                 
-                              <a class="btn btn-outline-success" href="{{route('revisor.restore', $rejected_ad)}}">Restore</a>
+                              <a class="btn btn-outline-success" href="{{route('revisor.restore', $rejected_ad)}}">{{__('ui.restore')}}</a>
                                
                             </td>
                         </tr>
@@ -117,14 +117,13 @@
               <table class="table table-striped small">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
+                    <th scope="col">{{__('ui.title')}}</th>
+                    <th scope="col">{{__('ui.category')}}</th>
                     
-                    <th scope="col">Price</th>
-                    <th scope="col">Seller</th>
+                    <th scope="col">{{__('ui.price')}}</th>
+                    <th scope="col">{{__('ui.seller')}}</th>
                     
-                    <th scope="col">Actions</th>
+                    <th scope="col">{{__('ui.actions')}}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -139,7 +138,7 @@
                             
                             <td>
                                 
-                              <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">Revoke</a>
+                              <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">{{__('ui.revoke')}}</a>
                                
                             </td>
                         </tr>

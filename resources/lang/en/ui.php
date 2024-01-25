@@ -49,6 +49,35 @@ return [
     'accept'=>'Accept',
     'reject'=>'Reject',
     'history'=>'History',
+    'restore'=>'Restore',
+    'revoke'=>'Revoke',
+    'login'=>'Login',
+    'remember'=>'Remember me',
+    'submit'=>'Submit',
+    'forgot_password'=>'Forgot Password?',
+    'register'=>'Register',
+    'eight_char'=>'Use at least 8 characters',
+    'confirm_password'=>'Confirm Password',
+    'email_verification'=>'Email Verification',
+    'email_verification_text1'=>'Thank you for registering! To complete the registration, please check your inbox and confirm your email.',
+    'email_verification_text2'=>'If you haven\'t received the verification email, you can click the button below to request another one.',
+    'resend_email'=>'Resend Verification Email',
+    'new_mail'=>'A new email verification link has been emailed to you!',
+    'join_us'=>'Join us!',
+    'join_us_text'=>'We\'re currently seeking a diligent and detail-oriented Ad Reviewer to join our team. If you have a keen eye for accuracy and a passion for maintaining high-quality content, we\'d love to hear from you. Review and ensure the integrity of our site\'s advertisements, contributing to a seamless user experience. Join us in shaping a reliable and trustworthy online environment.',
+    'apply'=>'Apply now',
+    'join_community'=>'Join and sell pre-loved items with no fees',
+    'register_with'=>'Or register with',
+    'already_registered'=>'Already have an account?',
+    'with_google'=>'Continue with Google',
+    'forgot_password_page'=>'Forgot password? No worries, we\'ve got you covered!',
+    'reset_password'=>'Reset password',
+
+
+
+
+    
+
 
 
 

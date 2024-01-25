@@ -1,10 +1,10 @@
 <x-main>
-    <h1 class="text-center my-5 pt-lg-5">Reset password</h1>
+    <h1 class="text-center my-5 pt-lg-5">{{__('ui.reset_password')}}</h1>
     <form action={{route('password.update')}} method="POST" class="col-12 col-md-8 col-lg-6 mx-auto">
       @csrf
         
       <div class="mb-3">
-        <label for="email" class="form-label mb-0 small ms-2 fst-italic">Email address</label>
+        <label for="email" class="form-label mb-0 small ms-2 fst-italic">Email</label>
         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{old('email')}}">
         @error('email') 
           <div class="small text-danger">{{$message}}</div>                
@@ -23,7 +23,7 @@
       </div>
   
       <div class="mb-3">
-        <label for="confirm_password" class="form-label mb-0 small ms-2 fst-italic">Confirm Password</label>
+        <label for="confirm_password" class="form-label mb-0 small ms-2 fst-italic">{{__('ui.confirm_password')}}</label>
         <div class="input-group">
           <input type="password" name="password_confirmation" class="form-control" id="confirm_password" placeholder="Password">
           <span class="input-group-text eye-psw-button"><i class="fa-regular fa-eye-slash mx-auto" id="toogle-confirm-psw-button" role="button"></i></span>
