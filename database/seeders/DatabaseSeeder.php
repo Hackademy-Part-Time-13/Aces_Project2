@@ -22,16 +22,16 @@ class DatabaseSeeder extends Seeder
     {
 
         $categories = [
-            ['name' => 'Electronics', 'icon' => 'fa-laptop'],
-            ['name' => 'Vehicles', 'icon' => 'fa-car-side'],
-            ['name' => 'Real Estate', 'icon' => 'fa-building'],
-            ['name' => 'Jobs', 'icon' => 'fa-briefcase'],
-            ['name' => 'Furniture', 'icon' => 'fa-hammer'],
-            ['name' => 'Clothing', 'icon' => 'fa-shirt'],
-            ['name' => 'Sport', 'icon' => 'fa-table-tennis-paddle-ball'],
-            ['name' => 'Pets', 'icon' => 'fa-cat'],
-            ['name' => 'Services', 'icon' => 'fa-bell-concierge'],
-            ['name' => 'Collectibles', 'icon' => 'fa-museum'],    
+            ['title_it' => 'Electronics', 'title_en' => 'Electronics', 'title_es' => 'Electronics', 'icon' => 'fa-laptop'],
+            ['title_it' => 'Vehicles', 'title_en' =>'Vehicles', 'title_es' => 'Vehicles', 'icon' => 'fa-car-side'],
+            ['title_it' => 'Real Estate', 'title_en' =>'Real Estate', 'title_es'=> 'Real Estate', 'icon' => 'fa-building'],
+            ['title_it' => 'Jobs', 'title_en' =>'Jobs', 'title_es'=> 'Jobs', 'icon' => 'fa-briefcase'],
+            ['title_it' => 'Furniture', 'title_en' => 'Furniture', 'title_es'=> 'Furniture' , 'icon' => 'fa-hammer'],
+            ['title_it' => 'Clothing', 'title_en' => 'Clothing', 'title_es'=> '','icon' => 'fa-shirt'],
+            ['title_it' => 'Sport', 'title_en' =>'Sport' , 'title_es'=> 'Sport','icon' => 'fa-table-tennis-paddle-ball'],
+            ['title_it' => 'Pets', 'title_en' =>'Pets', 'title_es'=> 'Pets','icon' => 'fa-cat'],
+            ['title_it' => 'Services', 'title_en' => 'Services', 'title_es'=> 'Services','icon' => 'fa-bell-concierge'],
+            ['title_it' => 'Collectibles', 'title_en' =>'Collectibles', 'title_es'=> 'Collectibles','icon' => 'fa-museum'],    
         ];
 
         foreach($categories as $category) {
