@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),            
         ]);
 
-        Ad::factory(30)->create(); 
+        // Ad::factory(30)->create(); 
         
     }
 }
