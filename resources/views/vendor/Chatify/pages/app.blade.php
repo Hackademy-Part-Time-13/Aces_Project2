@@ -8,7 +8,7 @@
             <nav>
                 <div>
                     <i class="fas fa-inbox text-primary"></i> 
-                    <span class="messenger-headTitle">Messenger</span> 
+                    <span class="messenger-headTitle">Chat</span> 
                 </div>                
             </nav>
 

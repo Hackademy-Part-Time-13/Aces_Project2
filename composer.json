@@ -15,7 +15,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.3",
         "munafio/chatify": "^1.6",
-        "spatie/image": "*",
+        "spatie/image": "2.2.7",
         "spatie/laravel-html": "^3.4",
         "teamtnt/laravel-scout-tntsearch-driver": "^13.2",
         "teamtnt/tntsearch": "^4.2"

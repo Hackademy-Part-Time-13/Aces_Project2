@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Jobs\ResizeImage;
 use App\Models\Ad;
 use Livewire\Component;
 use App\Models\Category;
+use App\Jobs\ResizeImage;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\File;
 
 class CreateAd extends Component
 {
@@ -88,13 +89,13 @@ class CreateAd extends Component
                  $imagePath = $image->store('images', 'public');
                  $newAd->images()->create(['path' => $imagePath]);
 
-                // $newFileName = "ads/{$newAd->id}";
-                // $newImage = $newAd->images()->store($newFileName, 'public');
+                 $newFileName = "ads/{$newAd->id}";
+                 $newImage = $newAd->images()->create(['path'=>$image->store($newFileName, 'public')]);
 
-                // dispatch(new ResizeImage($newImage->path, 200 , 200));
+                 dispatch(new ResizeImage($newImage->path, 200 , 200));
             }
 
-            // File::deleteDirectory(storage_path('/app/livewire-tmp'));
+             File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
             
             // pulizia degli input
