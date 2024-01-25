@@ -173,12 +173,14 @@
   {{-- fine prima navbar --}}
 
   {{-- seconda navbar --}}
-  <nav class="d-none d-lg-block navbar bg-body-tertiary border-bottom">
-    <div class="container-lg">
-      @foreach($categories as $category)
-      <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>{{$category->name}}</a>
-      @endforeach
-    </div>
-  </nav>
+    <nav class="d-none d-lg-block navbar bg-body-tertiary border-bottom">
+      <div class="container-lg">
+        @foreach($categories as $category)
+        <a class="nav-link text-extramuted" href={{route('adsByCategory',$category)}}>
+          {{ $category->title }} 
+        </a>
+        @endforeach
+      </div>
+    </nav>
   {{-- fine seconda navbar --}}
 </div>
