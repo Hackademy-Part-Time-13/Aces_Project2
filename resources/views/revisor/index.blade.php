@@ -74,89 +74,89 @@
 
   @endif
 
-        <div class="row mt-5 history-section">
-            <div class="d-flex justify-content-between mt-4">
-              <h2 class="text-center">{{__('ui.history')}}</h2>
-            </div>
+  <div class="row mt-5 history-section">
+    <div class="d-flex justify-content-between mt-4">
+      <h2 class="text-center">{{__('ui.history')}}</h2>
+    </div>
 
-            <div class="col-12 col-md-6">
-              <h5 class="text-danger my-3">{{__('ui.rejected_ads')}}</h5>
-              <table class="table table-striped small">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">{{__('ui.title')}}</th>
-                    <th scope="col">{{__('ui.category')}}</th>
+    <div class="col-12 col-md-6">
+      <h5 class="text-danger my-3">{{__('ui.rejected_ads')}}</h5>
+      <table class="table table-striped small">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{__('ui.title')}}</th>
+            <th scope="col">{{__('ui.category')}}</th>
+            
+            <th scope="col">{{__('ui.price')}}</th>
+            <th scope="col">{{__('ui.seller')}}</th>
+            
+            <th scope="col">{{__('ui.actions')}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($rejected_ads as $rejected_ad)
+                <tr>
+                    <th scope="row">{{$rejected_ad->id}}</th>
+                    <td>{{$rejected_ad->title}}</td>
+                    <td>{{$rejected_ad->category->name}}</td>
                     
-                    <th scope="col">{{__('ui.price')}}</th>
-                    <th scope="col">{{__('ui.seller')}}</th>
+                    <td>€ {{number_format($rejected_ad->price, 2, ',', '.')}}</td>
+                    <td>{{$rejected_ad->user->name}}</td>
                     
-                    <th scope="col">{{__('ui.actions')}}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($rejected_ads as $rejected_ad)
-                        <tr>
-                            <th scope="row">{{$rejected_ad->id}}</th>
-                            <td>{{$rejected_ad->title}}</td>
-                            <td>{{$rejected_ad->category->name}}</td>
-                            
-                            <td>€ {{number_format($rejected_ad->price, 2, ',', '.')}}</td>
-                            <td>{{$rejected_ad->user->name}}</td>
-                            
-                            <td>
-                                
-                              <a class="btn btn-outline-success" href="{{route('revisor.restore', $rejected_ad)}}">{{__('ui.restore')}}</a>
-                               
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-              </table>
-              {{ $rejected_ads->links() }}
-            </div>
+                    <td>
+                        
+                      <a class="btn btn-outline-success" href="{{route('revisor.restore', $rejected_ad)}}">{{__('ui.restore')}}</a>
+                        
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+      </table>
+      {{ $rejected_ads->links() }}
+    </div>
 
-            <div class="col-12 col-md-6">
-              <h5 class="text-primary my-3">{{__('ui.accepted_ads')}}</h5>
-              <table class="table table-striped small">
-                <thead>
-                  <tr>
-                    <th scope="col">{{__('ui.title')}}</th>
-                    <th scope="col">{{__('ui.category')}}</th>
-                    
-                    <th scope="col">{{__('ui.price')}}</th>
-                    <th scope="col">{{__('ui.seller')}}</th>
-                    
-                    <th scope="col">{{__('ui.actions')}}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($accepted_ads as $accepted_ad)
-                        <tr>
-                            <th scope="row">{{$accepted_ad->id}}</th>
-                            <td>{{$accepted_ad->title}}</td>
-                            <td>{{$accepted_ad->category->name}}</td>
-                            
-                            <td>€ {{number_format($accepted_ad->price, 2, ',', '.')}}</td>
-                            <td>{{$accepted_ad->user->name}}</td>
-                            
-                            <td>
-                                
-                              <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">{{__('ui.revoke')}}</a>
-                               
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $accepted_ads->links() }}
-            </div>
-            
-            
-            
-                
-            
+    <div class="col-12 col-md-6">
+      <h5 class="text-primary my-3">{{__('ui.accepted_ads')}}</h5>
+      <table class="table table-striped small">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{__('ui.title')}}</th>
+            <th scope="col">{{__('ui.category')}}</th>            
+            <th scope="col">{{__('ui.price')}}</th>
+            <th scope="col">{{__('ui.seller')}}</th>            
+            <th scope="col">{{__('ui.actions')}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($accepted_ads as $accepted_ad)
+                <tr>
+                    <th scope="row">{{$accepted_ad->id}}</th>
+                    <td>{{$accepted_ad->title}}</td>
+                    <td>
+                      @if (app()->getLocale() == 'it')
+                          {{ $accepted_ad->category->title_it }}
+                          @elseif (app()->getLocale() == 'en')
+                            {{ $accepted_ad->category->title_en }}
+                          @elseif (app()->getLocale() == 'es')
+                            {{ $accepted_ad->category->title_es }}
+                          @else
+                            {{ $accepted_ad->category->title_en }} 
+                          @endif
+                    </td>                    
+                    <td>€ {{number_format($accepted_ad->price, 2, ',', '.')}}</td>
+                    <td>{{$accepted_ad->user->name}}</td>                    
+                    <td>
+                      <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">{{__('ui.revoke')}}</a>                        
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+      </table>
+    {{ $accepted_ads->links() }}
+    </div>
 
-        </div>
-    </x-main>
+  </div>
+</x-main>
         
