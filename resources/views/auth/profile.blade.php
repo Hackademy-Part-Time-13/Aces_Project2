@@ -76,13 +76,13 @@
                         <td>{{$ad->title}}</td>
                         <td>
                           @if (app()->getLocale() == 'it')
-                          {{ $category->title_it }}
+                          {{ $ad->category->title_it }}
                           @elseif (app()->getLocale() == 'en')
-                            {{ $category->title_en }}
+                            {{ $ad->category->title_en }}
                           @elseif (app()->getLocale() == 'es')
-                            {{ $category->title_es }}
+                            {{ $ad->category->title_es }}
                           @else
-                            {{ $category->title_en }} 
+                            {{ $ad->category->title_en }} 
                           @endif
                         </td>
                         <td>{{Carbon::parse($ad->created_at)->diffForHumans()}}</td>
