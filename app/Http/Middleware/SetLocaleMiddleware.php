@@ -19,8 +19,7 @@ class SetLocaleMiddleware
         $len = explode("_", $request->getPreferredLanguage());
         
         $localeLanguage = session('locale', $len[0]);
-        App::setLocale($localeLanguage);
-        
+        App::setLocale($localeLanguage);        
     
         return $next($request);
     }

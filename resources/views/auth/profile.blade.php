@@ -74,7 +74,17 @@
                     <tr>
                         <th scope="row">{{$ad->id}}</th>
                         <td>{{$ad->title}}</td>
-                        <td>{{$ad->category->name}}</td>
+                        <td>
+                          @if (app()->getLocale() == 'it')
+                          {{ $category->title_it }}
+                          @elseif (app()->getLocale() == 'en')
+                            {{ $category->title_en }}
+                          @elseif (app()->getLocale() == 'es')
+                            {{ $category->title_es }}
+                          @else
+                            {{ $category->title_en }} 
+                          @endif
+                        </td>
                         <td>{{Carbon::parse($ad->created_at)->diffForHumans()}}</td>
                         <td>
                             @if ($ad->is_accepted)
