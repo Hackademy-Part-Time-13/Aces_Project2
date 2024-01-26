@@ -80,4 +80,9 @@ return [
     'operation_canceled'=>'Operación cancelada con éxito',
     'ad_not_found'=>'Anuncio no encontrado',
     'ad_restored_success'=>'Anuncio restaurado correctamente',
+    'featured'=>'Destacados',
+    'cheapest'=>'Más económico',
+    'most_expensive'=>'Más caro',
+    'browse'=>'Explora',
+    'no_fav'=>'Agrega artículos a tus favoritos y encuéntralos aquí.',
 ];

@@ -79,6 +79,12 @@ return [
     'operation_canceled'=>'Operazione annullata con successo',
     'ad_not_found'=>'Annuncio non trovato',
     'ad_restored_success'=>'Annuncio ripristinato con successo',
+    'featured'=>'In evidenza',
+    'cheapest'=>'Dal più economico',
+    'most_expensive'=>'Dal più costoso',
+    'browse'=>'Esplora',
+    'no_fav'=>'Aggiungi articoli ai tuoi preferiti e trovali qui',
+    
 
 
     

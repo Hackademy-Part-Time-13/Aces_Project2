@@ -54,7 +54,7 @@
         </form>
        {{-- fine ricerca --}}
 
-        <ul class="navbar-nav">
+        <ul class="navbar-nav gap-3">
           @auth
             {{-- zona revisore --}}
             @if (Auth::user()->is_revisor)
@@ -69,12 +69,12 @@
             {{-- preferiti e posta --}}
             <li class="nav-item my-auto d-none d-lg-block">
               <a class="my-auto nav-link" href={{route('ads.favs')}}>
-                <i class="fa-regular fa-heart text-muted opacity-75 "></i>
+                <i class="fa-regular fa-heart text-muted opacity-75 fs-4"></i>
               </a>
             </li>
             <li class="nav-item my-auto d-none d-lg-block">
               <a class="my-auto nav-link" href={{route('chatify')}}>
-                <i class="fa-regular fa-envelope text-muted opacity-75 "></i>
+                <i class="fa-regular fa-envelope text-muted opacity-75 fs-4"></i>
               </a>
             </li>
             {{-- fine preferiti e posta --}}

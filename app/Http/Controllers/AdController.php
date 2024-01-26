@@ -81,7 +81,15 @@ class AdController extends Controller
 
     public function adsByCategory(Category $category, Request $request)
     {
-        $title=$category->name;
+       
+        if (app()->getLocale() == 'it'){ 
+            $title=$category->title_it;
+        }else if(app()->getLocale() == 'en'){
+            $title=$category->title_en;
+        }else if(app()->getLocale() == 'es'){
+            $title=$category->title_es;
+        }
+
         $id = $category->id;
         
         $orderby='default';

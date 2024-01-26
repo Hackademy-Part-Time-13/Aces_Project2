@@ -1,6 +1,6 @@
 <x-main title="{{$ad->title}}">
 
-    <div class="row my-4">        
+    <div class="row mt-2">        
 
         <div id="carouselExampleIndicators" class="carousel slide mt-5 col-12 col-lg-6">
             <div class="carousel-indicators">
@@ -38,7 +38,8 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    
+
+  
         <div class="col-12 col-lg-6 mt-5 d-flex flex-column justify-content-between ">
             <div class="card mb-3">
                 <ul class="list-group list-group-flush">
@@ -62,7 +63,7 @@
                     @guest
                     <li class="list-group-item">
                         <i role="button" class="d-inline fa-regular fa-heart opacity-50" data-bs-toggle="modal" data-bs-target="#loginregistermodal"></i>
-                        <p class="small opacity-50 d-inline ms-1">{{$ad->favBy()->count()}}</p>
+                        <p class="opacity-50 d-inline ms-1">{{$ad->favBy()->count()}}</p>
                     </li>                    
                     @endguest
                     @auth
@@ -72,8 +73,8 @@
             </div>     
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item fst-italic small d-flex gap-2">
-                        <a class="nav-link text-extramuted" href="{{route('adsByUser',$ad->user)}}">{{$ad->user->name}}</a>  
+                    <li class="list-group-item fst-italic d-flex gap-2">
+                        <a class="nav-link" href="{{route('adsByUser',$ad->user)}}">{{$ad->user->name}}</a>  
                         <a href={{route('user',$ad->user)}}>
                             <i class="fa-regular fa-comment text-primary"></i>
                         </a>

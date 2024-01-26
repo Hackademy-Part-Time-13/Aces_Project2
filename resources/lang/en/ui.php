@@ -79,6 +79,11 @@ return [
     'operation_canceled'=>'Operation canceled successfully',
     'ad_not_found'=>'Ad not found',
     'ad_restored_success'=>'Ad restored successfully',
+    'featured'=>'Featured',
+    'cheapest'=>'Cheapest',
+    'most_expensive'=>'Most expensive',
+    'browse'=>'Browse',
+    'no_fav'=>'Add items to your favorites and find them here.',
 
 
 

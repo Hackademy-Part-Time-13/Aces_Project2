@@ -8,12 +8,13 @@
 
 * {
     font-family: 'Lato', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 header {
     height: 500px;
-    background-image: url('https://picsum.photos/3000/500');
+    background-image: url('/public/media/header-image.png');
+    background-position: bottom center;
     width: 100vw;
     margin-left: calc(50% - 50vw) !important;
     margin-top: -10px!important;  
@@ -83,21 +84,6 @@ nav li {
     opacity: 75%;
 }
 
- /* Freccine di navigazione tra le card */
- .scroll-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1;
-}
 
-.scroll-left {
-    left: 10px;
-}
 
-.scroll-right {
-    right: 10px;
-}
 
