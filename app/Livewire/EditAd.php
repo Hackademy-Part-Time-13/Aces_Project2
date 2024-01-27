@@ -17,7 +17,10 @@ class EditAd extends Component
     use WithFileUploads;
     
     public $ad;
+
+    #[Validate('required|max:3000')] 
     public $temporary_images;
+
     public $existingImages = [];
     public $newImages = [];
 
@@ -35,20 +38,20 @@ class EditAd extends Component
     public $description;
 
     protected $rules = [
-        'existingImages.*'=>'image|max:3600',
-        'newImages.*'=>'image|max:3600',
-        'temporary_images.*'=>'image|max:3600',
+        'existingImages.*'=>'image|max:3000',
+        'newImages.*'=>'image|max:3000',
+        'temporary_images.*'=>'required|image|max:3000',
     ];
 
-    protected $messages = [
-        'required' => 'Il campo :attribute è richiesto',
-        'min' => 'Il campo :attribute è troppo corto',
-        'temporary_images.required' => 'Immagine richiesta',
-        'temporary_images.*.image' => 'I file devono essere immagini',
-        'temporary_images.*.max' => 'Dimensioni massime consentite: 1 MB',
-        'images.image' => 'L\'immagine deve essere un file immagine',
-        'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
-    ];
+    // protected $messages = [
+    //     'required' => 'Il campo :attribute è richiesto',
+    //     'min' => 'Il campo :attribute è troppo corto',
+    //     'temporary_images.required' => 'Immagine richiesta',
+    //     'temporary_images.*.image' => 'I file devono essere immagini',
+    //     'temporary_images.*.max' => 'Dimensioni massime consentite: 1 MB',
+    //     'images.image' => 'L\'immagine deve essere un file immagine',
+    //     'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
+    // ];
 
     public function mount(Request $request){
         
@@ -64,7 +67,7 @@ class EditAd extends Component
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:3000',
+            'temporary_images.*'=>'required|image|max:3000',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->newImages[] = $image;
@@ -100,7 +103,7 @@ class EditAd extends Component
 
     public function update()
     {
-        // $this->validate();  
+        $this->validate();  
 
         $this->ad->title = $this->title;
         $this->ad->description = $this->description;
@@ -122,7 +125,7 @@ class EditAd extends Component
             File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
                        
-        return redirect()->route('profile')->with('success', 'Ad edited successfully, it will be posted after review');
+        return redirect()->route('profile')->with('success', trans('ui.ad_edited_success'));
     
         $this->dispatch('formsubmit')->to('notification-button');
     }

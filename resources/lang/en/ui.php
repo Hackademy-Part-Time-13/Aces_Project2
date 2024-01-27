@@ -86,6 +86,9 @@ return [
     'no_fav'=>'Add items to your favorites and find them here.',
     'upload_img'=>'Upload photos',
     'edit_item'=>'Edit item',
+    'ad_created_success'=>'Ad created successfully, it will be posted after review',
+    'ad_edited_success'=>'Ad edited successfully, it will be posted after review',
+    'lang'=>'Languages',
 
 
 

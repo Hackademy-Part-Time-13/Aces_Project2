@@ -17,6 +17,7 @@
   @if($ad_to_check)
       
     <div class="row">
+      @if($ad_to_check->images->count() > 0)
       {{-- carosello --}}
       <div class="col-12 col-md-4">
         <div id="carouselExampleIndicators" class="carousel slide">
@@ -31,7 +32,7 @@
                 
                 <img src="{{$img->getUrl(200,200)}}" class="d-block w-100" alt="...">
                 
-                {{-- <img src="{{Storage::url($img->path)}}" class="d-block w-100" alt="..."> --}}
+              
                 
               </div>
               @endforeach
@@ -47,7 +48,9 @@
         </div>
       </div>
       {{-- fine carosello --}}
-
+      @else
+      <p class="fst-italic">Questo annuncio non ha foto.</p>
+      @endif
       {{-- inizio dati + azioni --}}
       <div class="col-12 col-md-8 p-2">
         <p><strong>{{__('ui.title')}}:</strong> {{$ad_to_check->title}}</p>
@@ -79,7 +82,7 @@
       <h2 class="text-center">{{__('ui.history')}}</h2>
     </div>
 
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 table-responsive">
       <h5 class="text-danger my-3">{{__('ui.rejected_ads')}}</h5>
       <table class="table table-striped small">
         <thead>
@@ -99,7 +102,17 @@
                 <tr>
                     <th scope="row">{{$rejected_ad->id}}</th>
                     <td>{{$rejected_ad->title}}</td>
-                    <td>{{$rejected_ad->category->name}}</td>
+                    <td>
+                      @if (app()->getLocale() == 'it')
+                      {{ $rejected_ad->category->title_it }}
+                      @elseif (app()->getLocale() == 'en')
+                        {{ $rejected_ad->category->title_en }}
+                      @elseif (app()->getLocale() == 'es')
+                        {{ $rejected_ad->category->title_es }}
+                      @else
+                        {{ $rejected_ad->category->title_en }} 
+                      @endif
+                    </td>
                     
                     <td>€ {{number_format($rejected_ad->price, 2, ',', '.')}}</td>
                     <td>{{$rejected_ad->user->name}}</td>
@@ -116,7 +129,7 @@
       {{ $rejected_ads->links() }}
     </div>
 
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 table-responsive">
       <h5 class="text-primary my-3">{{__('ui.accepted_ads')}}</h5>
       <table class="table table-striped small">
         <thead>

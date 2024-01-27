@@ -1,6 +1,10 @@
 <x-main>
-    <h1 class="text-center my-5 pt-lg-5">{{__('ui.reset_password')}}</h1>
-    <form action={{route('password.update')}} method="POST" class="col-12 col-md-8 col-lg-6 mx-auto">
+
+  <div class="shadow bg-body-tertiary p-4 col-12 col-md-8 col-lg-6 m-auto">
+
+    <h1 class="text-center my-3">{{__('ui.reset_password')}}</h1>
+
+    <form action={{route('password.update')}} method="POST">
       @csrf
         
       <div class="mb-3">
@@ -32,7 +36,8 @@
 
       <input type="hidden" name="token" value="{{request()->route('token')}}">  
       
-      <button type="submit" class="btn btn-primary col-12">Submit</button>
+      <button type="submit" class="btn btn-primary col-12 my-3">Submit</button>
     </form>
+  </div>
     
 </x-main>

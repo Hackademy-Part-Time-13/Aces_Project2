@@ -73,6 +73,9 @@
 
             @endif
         </div>
+        @error('temporary_images')
+            <p class="text-danger small ">{{$message}}</p>
+        @enderror 
         {{-- fine container --}}
         
        

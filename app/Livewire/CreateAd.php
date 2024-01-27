@@ -14,26 +14,16 @@ class CreateAd extends Component
 {
     use WithFileUploads;
     
+    #[Validate('required|max:3000')] 
     public $temporary_images;
+
     public $images = [];
     public $ad;
 
     protected $rules = [
-        'images.*'=>'image|max:3600',
-        'temporary_images.*'=>'image|max:3600',
+        'images.*'=>'required|image|max:3000',
+        'temporary_images.*'=>'required|image|max:3000',
     ];
-
-// Personalizzazione messaggi d'errore (consigliato in caso di traduzione in altra lingua)
-    protected $messages = [
-        'required' => 'Il campo :attribute è richiesto',
-        'min' => 'Il campo :attribute è troppo corto',
-        'temporary_images.required' => 'Immagine richiesta',
-        'temporary_images.*.image' => 'I file devono essere immagini',
-        'temporary_images.*.max' => 'Dimensioni massime consentite: 1 MB',
-        'images.image' => 'L\'immagine deve essere un file immagine',
-        'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
-    ];
-
 
     #[Validate('required|max:30')] 
     public $title;
@@ -50,7 +40,7 @@ class CreateAd extends Component
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:3600',
+            'temporary_images.*'=>'required|image|max:3600',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->images[] = $image; 
@@ -108,7 +98,7 @@ class CreateAd extends Component
             
         
 
-        session()->flash('success', 'Ad created successfully, it will be posted after review');
+        session()->flash('success', trans('ui.ad_created_success'));
         
         $this->dispatch('formsubmit')->to('notification-button');
 

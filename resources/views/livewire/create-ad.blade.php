@@ -1,4 +1,4 @@
-<div class="px-3 mt-3 col-12 col-lg-9 mx-auto">
+<div class="col-12 col-lg-9 mx-auto">
     <div class="row mt-3">
         <div class="col-12">
             @if(session()->has('success'))
@@ -60,6 +60,9 @@
 
             @endif
         </div>
+        @error('temporary_images')
+            <p class="text-danger small ">{{$message}}</p>
+        @enderror   
         {{-- fine container --}}
 
         <div class="input-group mt-3">            
@@ -116,9 +119,7 @@
             <input id="fileInput" wire:model="temporary_images" type="file" name="images" multiple class="form-control @error('temporary_images.*') is-invalid @enderror" placeholder="Img"/>
         </div>
 
-        @error('temporary_images.*')
-            <p class="text-danger mt-2">{{$message}}</p>
-        @enderror   
+        
 
         
         <button class="btn btn-primary mt-4 col-12 col-lg-6 d-block ms-auto text-white" type="submit">{{__('ui.upload')}}</button>

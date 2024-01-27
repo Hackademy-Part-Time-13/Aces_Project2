@@ -27,7 +27,7 @@
           <p class="fst-italic my-5 text-center">{{__('ui.no_items')}}</p>
         @endif
         <button class="btn btn-primary d-block mx-auto">
-          <a class="text-white nav-link" href="{{route('ads.favs')}}">{{__('ui.browse')}}</a>
+          <a class="text-white nav-link" href="{{route('ads.news')}}">{{__('ui.browse')}}</a>
         </button>
       </div>    
 

@@ -1,8 +1,9 @@
 <x-main title="{{config('app.name')}} | Login">
-  <div class="shadow bg-body-tertiary p-3 col-12 col-md-8 col-lg-6 mx-auto">
+
+  <div class="shadow bg-body-tertiary p-3 col-12 col-md-8 col-lg-6 m-auto">
 
     <h1 class="text-center my-3">{{__('ui.login')}}</h1>
-    <form action={{route('login')}} method="post" class="">
+    <form action={{route('login')}} method="post">
       @csrf
       <div class="mb-3">
         <label for="email" class="form-label mb-0 small ms-2 fst-italic">Email</label>

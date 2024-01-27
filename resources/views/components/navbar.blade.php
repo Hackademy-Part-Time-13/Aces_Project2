@@ -4,7 +4,9 @@
   <nav class="navbar navbar-expand-xl bg-body-tertiary border border-bottom">
     
     <div class="container-lg">
-      <a class="navbar-brand text-primary" href={{route('home')}}>{{config('app.name')}}</a>
+      <a class="navbar-brand text-primary p-0"  href={{route('home')}}>        
+        <img style="height:30px;" src="{{ asset('media/altrologo.png') }}" alt="Presto">        
+      </a>
 
       @auth
       {{-- preferiti e posta --}}
@@ -29,18 +31,28 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
           
-          
-           <!-- Lingue -->
-        <li class="nav-item">
-          <x-_locale lang="it" nation="it"/>
-        </li>
-        <li class="nav-item">
-          <x-_locale lang="en" nation="gb"/>
-        </li>
-        <li class="nav-item">
-          <x-_locale lang="es" nation="es"/>
-        </li>
-        <!--Lingue  -->       
+          {{-- lingue --}}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{__('ui.lang')}}
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item d-flex align-items-center">
+                <x-_locale lang="it" nation="it"/>
+                <span>Italiano</span>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <x-_locale lang="en" nation="gb"/>
+                <span>English</span>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <x-_locale lang="es" nation="es"/>
+                <span>Español</span>
+              </li>
+            </ul>
+          </li>
+          {{-- fine lingue --}}      
+
         </ul>
 
         {{-- ricerca --}}
@@ -69,12 +81,12 @@
             {{-- preferiti e posta --}}
             <li class="nav-item my-auto d-none d-lg-block">
               <a class="my-auto nav-link" href={{route('ads.favs')}}>
-                <i class="fa-regular fa-heart text-muted opacity-75 fs-4"></i>
+                <i class="fa-regular fa-heart text-muted opacity-75"></i>
               </a>
             </li>
             <li class="nav-item my-auto d-none d-lg-block">
               <a class="my-auto nav-link" href={{route('chatify')}}>
-                <i class="fa-regular fa-envelope text-muted opacity-75 fs-4"></i>
+                <i class="fa-regular fa-envelope text-muted opacity-75"></i>
               </a>
             </li>
             {{-- fine preferiti e posta --}}

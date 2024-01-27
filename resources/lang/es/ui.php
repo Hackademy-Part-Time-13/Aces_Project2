@@ -87,4 +87,7 @@ return [
     'no_fav'=>'Agrega artículos a tus favoritos y encuéntralos aquí.',
     'upload_img'=>'Sube las fotos',
     'edit_item'=>'Edita el anuncio',
+    'ad_created_success'=>'Anuncio creado con éxito, será publicado después de la revisión',
+    'ad_edited_success'=>'Anuncio modificado con éxito, será publicado después de la revisión',
+    'lang'=>'Idiomas',
 ];

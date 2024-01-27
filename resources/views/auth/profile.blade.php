@@ -2,7 +2,7 @@
     use Carbon\Carbon;
 @endphp
 <x-main title="{{config('app.name')}} | Profile">
-    <div class="row m-3 justify-content-between">
+    <div class="row mt-4 justify-content-between">
         <div class="col-12 col-md-3 bg-body-tertiary border p-3">
             {{-- accordion --}}
             <div class="accordion accordion-flush" id="accordionExample">
