@@ -16,17 +16,23 @@ class IsAuthorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Ottieni l'ID dell'annuncio (ad) dalla richiesta
-        $ad = $request->route('ad');
-        $adId = $ad->id;
         $user = Auth::user();
-        $adBelongsToUser = $user->ads()->where('id', $adId)->exists();
+        // Ottieni l'annuncio (ad) dalla richiesta
+        $ad = $request->route('ad');
+
+        if(is_string($ad)){
+            $adBelongsToUser = $user->ads()->where('id', $ad)->exists();
+        }else{
+
+            $adId = $ad->id;            
+            $adBelongsToUser = $user->ads()->where('id', $adId)->exists();
+        }
         
         if($adBelongsToUser){
             return $next($request);
         }
 
-        return redirect('/profile')->with('error', 'Non puoi editare un annuncio non tuo');
+        return redirect('/profile')->with('error', 'Non puoi modificare un annuncio non tuo');
 
         
     }

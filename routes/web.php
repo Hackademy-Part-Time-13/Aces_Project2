@@ -46,7 +46,7 @@ Route::get('/ad/{ad}', [AdController::class, 'show'])->name('ad.show');
 Route::get('ad/edit/{ad}', [AdController::class, 'edit'])->middleware('is_author')->name('ad.edit');
 
 // elimina annuncio
-Route::delete('ad/delete/{ad}', [AdController::class, 'delete'])->name('ad.delete');
+Route::delete('ad/delete/{ad}', [AdController::class, 'delete'])->middleware('is_author')->name('ad.delete');
 
 // socialite google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
