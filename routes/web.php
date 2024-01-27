@@ -43,7 +43,7 @@ Route::get('/ads/user/{user}', [AdController::class, 'adsByUser'])->name('adsByU
 Route::get('/ad/{ad}', [AdController::class, 'show'])->name('ad.show');
 
 // edita annuncio
-Route::get('ad/edit/{ad}', [AdController::class, 'edit'])->name('ad.edit');
+Route::get('ad/edit/{ad}', [AdController::class, 'edit'])->middleware('is_author')->name('ad.edit');
 
 // elimina annuncio
 Route::delete('ad/delete/{ad}', [AdController::class, 'delete'])->name('ad.delete');
