@@ -84,6 +84,8 @@ return [
     'most_expensive'=>'Most expensive',
     'browse'=>'Browse',
     'no_fav'=>'Add items to your favorites and find them here.',
+    'upload_img'=>'Upload photos',
+    'edit_item'=>'Edit item',
 
 
 

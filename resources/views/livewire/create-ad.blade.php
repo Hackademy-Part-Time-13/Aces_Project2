@@ -16,7 +16,51 @@
     </div>
 
     <h3 class="my-3">{{__('ui.sell_item')}}</h3>
-    <form wire:submit.prevent="store" class="mx-auto">
+
+    <form wire:submit.prevent="store">
+
+        {{-- container immagini --}}
+        <div class="bg-body-tertiary border img-container rounded-3 p-1 d-flex flex-wrap gap-2">
+            @if (empty($images))
+            <div class="d-block m-auto">
+                <button class="btn btn-outline-primary d-flex align-items-center gap-1" onclick="document.getElementById('fileInput').click()" wire:click.prevent>
+                    <i class="bi bi-plus-lg fs-4"></i>
+                    <div>{{__('ui.upload_img')}}</div>
+                </button>
+            </div>
+            @else
+
+            {{-- immagini --}}
+            
+            @foreach ($images as $key => $image)
+            <div>
+                <div class="d-block m-auto">                    
+                    <div class="img-preview rounded d-block mx-auto my-1" style="background-image: url({{$image->temporaryUrl()}}); background-size: cover;">
+                        <button type="button" class="btn btn-danger m-1" wire:click="removeImage({{$key}})">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>                    
+                </div>         
+            </div>
+            @endforeach
+            
+            {{-- fine immagini --}}
+            <div>
+
+                <div class="d-block m-auto">
+                    
+                    <div class="img-preview d-flex align-items-center justify-content-center ">                
+                        <button class="btn btn-outline-primary d-flex justify-content-center align-items-center" style="width: 45px; height: 45px;" onclick="document.getElementById('fileInput').click()" wire:click.prevent>
+                            <i class="bi bi-plus-lg fs-3"></i>
+                        </button>
+                    </div>                
+    
+                </div>
+            </div>
+
+            @endif
+        </div>
+        {{-- fine container --}}
 
         <div class="input-group mt-3">            
             <label for="title" class="px-3 input-group-text col-6">{{__('ui.title')}}</label>
@@ -67,34 +111,17 @@
         <div class="small text-danger">{{$message}}</div>                
         @enderror 
         
-        {{-- US 5 Button Img --}}
-        <div class="input-group mt-3">
-            
-            <input wire:model="temporary_images" type="file" name="images" multiple class="form-control shadow @error('temporary_images.*') is-invalid @enderror"
-                placeholder="Img"/>
-            </div>
-            @error('temporary_images.*')
-                <p class="text-danger mt-2">{{$message}}</p>
-            @enderror   
-            @if (!empty($images))
-                <div class="row">
-                    <div class="col-12">
-                        <p>{{__('ui.photo_preview')}}</p>
-                        <div class="row border border-4 border-info rounded shadow py-4">
-                            @foreach ($images as $key => $image)
-                                <div class="col my-3">
-                                    <div class="img-preview mx-auto shadow rounded" style="background-image: url({{$image->temporaryUrl()}}); background-size: cover; height: 150px;"></div>
-                                        <button type="button" class=" btn btn-danger shadow d-block text-center mt-2 mx-auto" wire:click="removeImage({{$key}})">{{__('ui.delete')}}</button>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            @endif
         
+        <div class="input-group d-none">            
+            <input id="fileInput" wire:model="temporary_images" type="file" name="images" multiple class="form-control @error('temporary_images.*') is-invalid @enderror" placeholder="Img"/>
+        </div>
 
-        {{-- Fine US 5 Button Img --}}
-        <button class="btn btn-outline-primary mt-3 col-12" type="submit">{{__('ui.upload')}}</button>
+        @error('temporary_images.*')
+            <p class="text-danger mt-2">{{$message}}</p>
+        @enderror   
+
+        
+        <button class="btn btn-primary mt-4 col-12 col-lg-6 d-block ms-auto text-white" type="submit">{{__('ui.upload')}}</button>
 
     </form>
 </div>

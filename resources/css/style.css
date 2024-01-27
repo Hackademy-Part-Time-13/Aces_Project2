@@ -8,16 +8,22 @@
 
 * {
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 header {
     height: 500px;
     background-image: url('/public/media/header-image.png');
-    background-position: bottom center;
+    background-position: center -410px;
     width: 100vw;
     margin-left: calc(50% - 50vw) !important;
     margin-top: -10px!important;  
+}
+
+@media screen and (max-width: 991px) {
+    header {
+        background-position: center bottom;
+    }
 }
 
 .history-section {
@@ -83,6 +89,27 @@ nav li {
     color: black;
     opacity: 75%;
 }
+
+.card-transparent {
+    background-color: rgba(255, 255, 255, 0.75)!important;
+    color: black !important;
+}
+
+.img-preview {
+    height: 150px;
+    width: 150px;
+    
+}
+
+.img-container {
+    min-height: 160px;
+    
+}
+
+.proportional {
+    max-width: 100%;
+    height: auto;
+  }
 
 
 

@@ -85,4 +85,6 @@ return [
     'most_expensive'=>'Más caro',
     'browse'=>'Explora',
     'no_fav'=>'Agrega artículos a tus favoritos y encuéntralos aquí.',
+    'upload_img'=>'Sube las fotos',
+    'edit_item'=>'Edita el anuncio',
 ];

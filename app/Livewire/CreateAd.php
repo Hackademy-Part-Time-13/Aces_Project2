@@ -58,17 +58,17 @@ class CreateAd extends Component
         }
     }
 
-        public function removeImage($key)
-        {
-            if (in_array($key, array_keys($this->images))) {
-                unset($this->images[$key]);
-            }
+    public function removeImage($key)
+    {
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
         }
+    }
 
-        public function updated($propertyName)
-            {
-                $this->validateOnly($propertyName);
-            }
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
 
     public function store()
@@ -89,13 +89,13 @@ class CreateAd extends Component
                 //  $imagePath = $image->store('images', 'public');
                 //  $newAd->images()->create(['path' => $imagePath]);
 
-                 $newFileName = "ads/{$newAd->id}";
-                 $newImage = $newAd->images()->create(['path'=>$image->store($newFileName, 'public')]);
+                $newFileName = "ads/{$newAd->id}";
+                $newImage = $newAd->images()->create(['path'=>$image->store($newFileName, 'public')]);
 
-                 dispatch(new ResizeImage($newImage->path, 200 , 200));
+                dispatch(new ResizeImage($newImage->path, 200 , 200));
             }
 
-             File::deleteDirectory(storage_path('/app/livewire-tmp'));
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
             
             // pulizia degli input

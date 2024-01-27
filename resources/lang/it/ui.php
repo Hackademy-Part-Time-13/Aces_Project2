@@ -84,6 +84,8 @@ return [
     'most_expensive'=>'Dal più costoso',
     'browse'=>'Esplora',
     'no_fav'=>'Aggiungi articoli ai tuoi preferiti e trovali qui',
+    'upload_img'=>'Carica le foto',
+    'edit_item'=>'Modifica l\'annuncio',
     
 
 

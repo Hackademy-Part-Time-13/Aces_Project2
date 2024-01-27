@@ -3,19 +3,24 @@
 namespace App\Livewire;
 
 use App\Models\Ad;
+use App\Models\Image;
 use Livewire\Component;
 use App\Models\Category;
+use App\Jobs\ResizeImage;
+use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class EditAd extends Component
 {
     use WithFileUploads;
     
-    public $temporary_images;
-    public $images = [];
     public $ad;
+    public $temporary_images;
+    public $existingImages = [];
+    public $newImages = [];
+
     
     #[Validate('required|max:30')] 
     public $title;
@@ -29,24 +34,12 @@ class EditAd extends Component
     #[Validate('required|max:300')] 
     public $description;
 
-    public function mount(Request $request){
-        
-        $this->ad= $request->route()->parameter('ad');
-        $this->title = $this->ad->title;
-        $this->selectedCategory = $this->ad->category->id;
-        $this->price = $this->ad->price;
-        $this->description = $this->ad->description;
-        $this->images = $this->ad->images;
-
-        
-    }
-
     protected $rules = [
-        'images.*'=>'image|max:1024',
-        'temporary_images.*'=>'image|max:1024',
+        'existingImages.*'=>'image|max:3600',
+        'newImages.*'=>'image|max:3600',
+        'temporary_images.*'=>'image|max:3600',
     ];
 
-// Personalizzazione messaggi d'errore (consigliato in caso di traduzione in altra lingua)
     protected $messages = [
         'required' => 'Il campo :attribute è richiesto',
         'min' => 'Il campo :attribute è troppo corto',
@@ -57,6 +50,16 @@ class EditAd extends Component
         'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
     ];
 
+    public function mount(Request $request){
+        
+        $this->ad= $request->route()->parameter('ad');
+        $this->title = $this->ad->title;
+        $this->selectedCategory = $this->ad->category->id;
+        $this->price = $this->ad->price;
+        $this->description = $this->ad->description;
+        $this->existingImages = $this->ad->images;
+        
+    }    
 
     public function updatedTemporaryImages()
     {
@@ -64,53 +67,61 @@ class EditAd extends Component
             'temporary_images.*'=>'image|max:3000',
         ])) {
             foreach ($this->temporary_images as $image) {
-                $this->images[] = $image;
+                $this->newImages[] = $image;
             }
         }
     }
 
+    // rimuovi nuove immagini
     public function removeImage($key)
     {
-        $imageKeys = $this->images->pluck('id')->toArray();
-        
-        $this->images = $this->images->filter(function ($image, $index) use ($key) {
-            return $index != $key;
-        });
-        // if (in_array($key, $imageKeys)) {
-        //     $this->images = $this->images->where('id', '!=', $this->images[$key]->id);
-        // }
+        if (in_array($key, array_keys($this->newImages))) {
+            unset($this->newImages[$key]);
+        }
     }
 
-    public function updated($propertyName)    {
-
-        $this->validateOnly($propertyName);
-
-        if ($propertyName === 'temporary_images') {
-            $this->update($this->ad);
+    public function removeExistingImage($imageId)
+    {
+        $image = Image::find($imageId);
+        if ($image) {
+            File::delete(storage_path('app/' . $image->path));
+            $image->delete(); // Elimina il record dal database
         }
+
+        // Aggiorna l'array delle immagini esistenti per riflettere la modifica
+        $this->existingImages = $this->ad->images()->get();
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
 
     public function update()
     {
-        
-        $imageIds = $this->images->pluck('id')->toArray();   
+        // $this->validate();  
 
-        $this->validate();  
-
-        $this->ad->update([
-            'title' => $this->title,
-            'description' => $this->description,
-            'category_id' => $this->selectedCategory,
-            'price' => $this->price,
-        ]);
-
-        
-        $this->ad->images()->sync($imageIds);
+        $this->ad->title = $this->title;
+        $this->ad->description = $this->description;
+        $this->ad->price = $this->price;
+        $this->ad->category_id = $this->selectedCategory;
+        $this->ad->is_accepted = false;
         $this->ad->save();
-        // dd($this->ad);
 
-               
+        // Caricamento delle nuove immagini
+        if(count($this->newImages)){
+            foreach($this->newImages as $newImage){
+                
+                $newFileName = "ads/{$this->ad->id}";
+                $newImage = $this->ad->images()->create(['path'=>$newImage->store($newFileName, 'public')]);
+
+                dispatch(new ResizeImage($newImage->path, 200 , 200));
+            }
+
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
+        }
+                       
         return redirect()->route('profile')->with('success', 'Ad edited successfully, it will be posted after review');
     
         $this->dispatch('formsubmit')->to('notification-button');
