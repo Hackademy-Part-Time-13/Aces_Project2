@@ -17,10 +17,10 @@
 
     <h3 class="my-3">{{__('ui.edit_item')}}</h3>
     <form wire:submit.prevent="update" class="mx-auto">
-
+        
          {{-- container immagini --}}
          <div class="bg-body-tertiary border img-container rounded-3 p-1 d-flex flex-wrap gap-2">
-            @if (empty($existingImages)&&empty($newImages))
+            @if (!$existingImages->count() && empty($newImages))
             <div class="d-block m-auto">
                 <button class="btn btn-outline-primary d-flex align-items-center gap-1" onclick="document.getElementById('fileInput').click()" wire:click.prevent>
                     <i class="bi bi-plus-lg fs-4"></i>
@@ -117,7 +117,7 @@
         @enderror 
 
         <div class="input-group mt-3">            
-            <label for="price" class="px-3 input-group-text col-6">{{__('ui.category')}}</label>
+            <label for="price" class="px-3 input-group-text col-6">{{__('ui.price')}}</label>
             <input type="text" name="price" class="form-control col-6 @error('price') is-invalid @enderror" id="price" placeholder="€ 8.99" wire:model.blur="price">
         
         </div>        
