@@ -19,10 +19,12 @@ class EditAd extends Component
     
     public $ad;
 
-    #[Validate('max:3000')] 
+    #[Validate('max:3000|required_without:existingImages')] 
     public $temporary_images;
 
+    #[Validate('max:3000|required_without:temporary_images')] 
     public $existingImages = [];
+
     public $newImages = [];
 
     
@@ -39,9 +41,15 @@ class EditAd extends Component
     public $description;
 
     protected $rules = [
-        'existingImages.*'=>'image|max:3000',
+        'existingImages.*'=>'required_without:temporary_images.*',
         'newImages.*'=>'image|max:3000',
-        'temporary_images.*'=>'image|max:3000',
+        'temporary_images.*'=>'image|max:3000|required_without:existingImages.*',       
+        
+    ];
+
+    protected $messages = [
+        'temporary_images.required_without' => 'È necessario caricare almeno una foto',
+        'existingImages.required_without' => '',
     ];
 
     // protected $messages = [
@@ -68,7 +76,7 @@ class EditAd extends Component
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:3000',
+            'temporary_images.*'=>'image|max:3000|required_without:existingImages.*',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->newImages[] = $image;
@@ -107,10 +115,9 @@ class EditAd extends Component
         $this->validateOnly($propertyName);
     }
 
-
     public function update()
     {
-        // $this->validate();  
+        $this->validate();     
 
         $this->ad->title = $this->title;
         $this->ad->description = $this->description;

@@ -76,6 +76,9 @@
         @error('temporary_images')
             <p class="text-danger small ">{{$message}}</p>
         @enderror 
+        @error('existingImages')
+            <p class="text-danger small ">{{$message}}</p>
+        @enderror
         {{-- fine container --}}
         
        
@@ -135,9 +138,7 @@
 
         </div>
         
-        @error('temporary_images.*')
-            <p class="text-danger mt-2">{{$message}}</p>
-        @enderror   
+        
 
               
 
