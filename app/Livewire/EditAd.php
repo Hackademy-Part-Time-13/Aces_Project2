@@ -19,10 +19,10 @@ class EditAd extends Component
     
     public $ad;
 
-    #[Validate('max:3000|required_without:existingImages')] 
+    #[Validate('required_without:existingImages')] 
     public $temporary_images;
 
-    #[Validate('max:3000|required_without:temporary_images')] 
+    #[Validate('required_without:temporary_images')] 
     public $existingImages = [];
 
     public $newImages = [];
@@ -34,33 +34,28 @@ class EditAd extends Component
     #[Validate('required|exists:categories,id')] 
     public $selectedCategory;
     
-    #[Validate('required|numeric|min:0.01|max:9999.99')] 
+    #[Validate('required|numeric|min:1.00|max:9999.99')] 
     public $price;
 
     #[Validate('required|max:300')] 
     public $description;
 
     protected $rules = [
-        'existingImages.*'=>'required_without:temporary_images.*',
-        'newImages.*'=>'image|max:3000',
-        'temporary_images.*'=>'image|max:3000|required_without:existingImages.*',       
-        
+        'temporary_images.*' => 'image|max:3000',
     ];
 
     protected $messages = [
-        'temporary_images.required_without' => 'È necessario caricare almeno una foto',
+        'temporary_images.required_without' => 'validation.temporary_images.required_without',
+        'temporary_images.*.max'=>'validation.temporary_images.max',
+        'temporary_images.*.image'=>'validation.temporary_images.image',
         'existingImages.required_without' => '',
+        'title.required'=>'validation.title.required',
+        'description.required'=>'validation.description.required',
+        'description.max'=>'validation.description.max',
+        'selectedCategory'=>'validation.selectedCategory',
+        'price'=>'validation.price',
+        
     ];
-
-    // protected $messages = [
-    //     'required' => 'Il campo :attribute è richiesto',
-    //     'min' => 'Il campo :attribute è troppo corto',
-    //     'temporary_images.required' => 'Immagine richiesta',
-    //     'temporary_images.*.image' => 'I file devono essere immagini',
-    //     'temporary_images.*.max' => 'Dimensioni massime consentite: 1 MB',
-    //     'images.image' => 'L\'immagine deve essere un file immagine',
-    //     'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
-    // ];
 
     public function mount(Request $request){
         
@@ -76,7 +71,7 @@ class EditAd extends Component
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:3000|required_without:existingImages.*',
+            'temporary_images.*'=>'required_without:existingImages|image|max:3000',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->newImages[] = $image;

@@ -61,7 +61,7 @@
             @endif
         </div>
         @error('temporary_images')
-            <p class="text-danger small ">{{$message}}</p>
+            <p class="text-danger small">{{__($message)}}</p>
         @enderror   
         {{-- fine container --}}
 
@@ -71,7 +71,7 @@
             
         </div>
         @error('title') 
-            <div class="small text-danger">{{$message}}</div>                
+            <div class="small text-danger">{{__($message)}}</div>                
         @enderror 
 
         <div class="input-group mt-3">
@@ -79,7 +79,7 @@
             <textarea class="form-control col-6 @error('description') is-invalid @enderror" placeholder="{{__('ui.description_placeholder')}}" name="description" wire:model.blur="description"></textarea>
         </div>
         @error('description') 
-            <div class="small text-danger">{{$message}}</div>                
+            <div class="small text-danger">{{__($message)}}</div>                
         @enderror
 
         <div class="input-group mt-3">
@@ -102,7 +102,7 @@
             </select>            
         </div>
         @error('selectedCategory') 
-            <div class="small text-danger">{{$message}}</div>                
+            <div class="small text-danger">{{__($message)}}</div>                
         @enderror 
 
         <div class="input-group mt-3">            
@@ -111,7 +111,7 @@
         
         </div>        
         @error('price') 
-        <div class="small text-danger">{{$message}}</div>                
+        <div class="small text-danger">{{__($message)}}</div>                
         @enderror 
         
         

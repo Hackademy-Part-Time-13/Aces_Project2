@@ -14,16 +14,11 @@ class CreateAd extends Component
 {
     use WithFileUploads;
     
-    #[Validate('required|max:3000')] 
+    #[Validate('required')] 
     public $temporary_images;
 
     public $images = [];
     public $ad;
-
-    protected $rules = [
-        'images.*'=>'required|image|max:3000',
-        'temporary_images.*'=>'required|image|max:3000',
-    ];
 
     #[Validate('required|max:30')] 
     public $title;
@@ -36,6 +31,21 @@ class CreateAd extends Component
 
     #[Validate('required|max:300')] 
     public $description;
+
+    protected $rules = [
+        'temporary_images.*' => 'image|max:3000',
+    ];
+
+    protected $messages = [
+        'temporary_images.required' =>'validation.temporary_images.required',
+        'temporary_images.*.max'=>'validation.temporary_images.max',
+        'temporary_images.*.image'=>'validation.temporary_images.image',
+        'title.required'=>'validation.title.required',
+        'description.required'=>'validation.description.required',
+        'description.max'=>'validation.description.max',
+        'selectedCategory'=>'validation.selectedCategory',
+        'price'=>'validation.price',        
+    ];
 
     public function updatedTemporaryImages()
     {
