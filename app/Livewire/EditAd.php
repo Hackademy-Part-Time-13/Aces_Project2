@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class EditAd extends Component
 {
@@ -18,7 +19,7 @@ class EditAd extends Component
     
     public $ad;
 
-    #[Validate('required|max:3000')] 
+    #[Validate('max:3000')] 
     public $temporary_images;
 
     public $existingImages = [];
@@ -40,7 +41,7 @@ class EditAd extends Component
     protected $rules = [
         'existingImages.*'=>'image|max:3000',
         'newImages.*'=>'image|max:3000',
-        'temporary_images.*'=>'required|image|max:3000',
+        'temporary_images.*'=>'image|max:3000',
     ];
 
     // protected $messages = [
@@ -67,7 +68,7 @@ class EditAd extends Component
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'required|image|max:3000',
+            'temporary_images.*'=>'image|max:3000',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->newImages[] = $image;
@@ -87,7 +88,13 @@ class EditAd extends Component
     {
         $image = Image::find($imageId);
         if ($image) {
-            File::delete(storage_path('app/' . $image->path));
+
+            $cropUrl = $image->getUrl(600,600);
+            // dd(base_path('public'.$cropUrl));
+            
+            File::delete(storage_path('app/public/'.$image->path));
+            File::delete(base_path('public'.$cropUrl));
+
             $image->delete(); // Elimina il record dal database
         }
 
@@ -103,7 +110,7 @@ class EditAd extends Component
 
     public function update()
     {
-        $this->validate();  
+        // $this->validate();  
 
         $this->ad->title = $this->title;
         $this->ad->description = $this->description;
@@ -119,7 +126,7 @@ class EditAd extends Component
                 $newFileName = "ads/{$this->ad->id}";
                 $newImage = $this->ad->images()->create(['path'=>$newImage->store($newFileName, 'public')]);
 
-                dispatch(new ResizeImage($newImage->path, 200 , 200));
+                dispatch(new ResizeImage($newImage->path, 600 , 600));
             }
 
             File::deleteDirectory(storage_path('/app/livewire-tmp'));

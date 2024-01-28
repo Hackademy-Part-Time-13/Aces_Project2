@@ -11,22 +11,22 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['path','ads_id'];
+    protected $fillable = ['path','ad_id'];
 
-    public function ad (){
+    public function ad(){
         return $this->belongsTo(Ad::class);
     }
 
      public static function getUrlByFilePath($filePath, $w , $h){
-         if(!$w && !$h){
-             return Storage::url($filePath);
-         }
+        if(!$w && !$h){
+            return Storage::url($filePath);
+        }
 
-         $path = dirname($filePath);
-         $filename = basename($filePath);
-         $file = "{$path}/crop_{$w}x{$h}_{$filename}";
+        $path = dirname($filePath);
+        $filename = basename($filePath);
+        $file = "{$path}/crop_{$w}x{$h}_{$filename}";
 
-         return Storage::url($file);
+        return Storage::url($file);
 
      }
 

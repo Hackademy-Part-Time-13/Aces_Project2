@@ -34,7 +34,7 @@
             @foreach($existingImages as $image)
             <div>
                 <div class="d-block m-auto">
-                    <div class="img-preview rounded d-block mx-auto my-1" style="background-image: url({{$image->getUrl(200,200)}}); background-size: cover;">
+                    <div class="img-preview rounded d-block mx-auto my-1" style="background-image: url({{$image->getUrl(600,600)}}); background-size: cover;">
                         <button type="button" class="btn btn-danger m-1" wire:click="removeExistingImage({{ $image->id }})">
                             <i class="bi bi-x-lg"></i>
                         </button>

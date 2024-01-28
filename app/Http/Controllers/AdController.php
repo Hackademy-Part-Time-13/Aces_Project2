@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\File;
 
 class AdController extends Controller
 {
@@ -25,6 +26,13 @@ class AdController extends Controller
     {
         $ad = Ad::withTrashed()->findOrFail($id);
 
+        foreach($ad->images() as $image){
+            
+            $image->delete(); 
+        }
+
+        File::deleteDirectory(storage_path('/app/public/ads/'.$id));
+        
         $ad->forceDelete();
     
         return redirect()->back()->with('success', trans('ui.ad_deleted_success'));

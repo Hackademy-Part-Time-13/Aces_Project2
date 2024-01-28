@@ -12,7 +12,7 @@
                 @if(count($ad->images)>0)
                 @foreach ($ad->images as $img)
                 <div class="carousel-item @if($loop->first) active @endif">                
-                  <img src="{{$img->getUrl(200,200)}}" class="d-block w-100" alt="...">                  
+                  <img src="{{$img->getUrl(600,600)}}" class="d-block w-100" alt="...">                  
                 </div>
                 @endforeach
                 @else  
