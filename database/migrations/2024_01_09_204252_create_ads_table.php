@@ -21,11 +21,12 @@ return new class extends Migration
             $table->string('description');
             $table->timestamps();
             $table->boolean('is_accepted')->default(false);
-            $table->json('previous_state')->nullable();
+            $table->unsignedBigInteger('revisioned_by_user_id')->nullable();
             $table->softDeletes();
 
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('revisioned_by_user_id')->references('id')->on('users');
         });
     }
 

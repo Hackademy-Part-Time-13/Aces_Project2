@@ -14,7 +14,7 @@ class Ad extends Model
     use HasFactory, Searchable, SoftDeletes;
 
     protected $fillable = [
-        'title', 'category_id','user_id','price','description','previous_state','is_accepted'
+        'title', 'category_id','user_id','price','description','is_accepted', 'revisioned_by_user_id',
     ];
 
     public function toSearchableArray()

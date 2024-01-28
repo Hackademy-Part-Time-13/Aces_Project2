@@ -15,9 +15,11 @@
     
   </div>
 
-  <div class="row">
+  <div class="row mt-3">
     @forelse($ads as $ad)
-    <x-card :ad="$ad"/>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
+      <x-card :ad="$ad"/>
+    </div>
     @empty
 
       <div>

@@ -16,7 +16,8 @@
     "bootstrap-icons": "^1.11.3",
     "flag-icon-css": "^4.1.7",
     "flag-icons": "^7.1.0",
-    "laravel-vite": "^0.0.24"
+    "laravel-vite": "^0.0.24",
+    "swiper": "^11.0.5"
   },
   "name": "aces_project2",
   "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",
