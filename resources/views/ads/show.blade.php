@@ -1,43 +1,69 @@
 <x-main title="{{$ad->title}}">
 
     <div class="row mt-2">        
-
-        <div id="carouselExampleIndicators" class="carousel slide mt-5 col-12 col-lg-6">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                @if(count($ad->images)>0)
-                @foreach ($ad->images as $img)
-                <div class="carousel-item @if($loop->first) active @endif">                
-                  <img src="{{$img->getUrl(600,600)}}" class="d-block w-100" alt="...">                  
+        <div class="col-12 col-lg-6 mt-5 d-flex">
+            <div class="col-2 ">
+                <!-- Lista delle anteprime -->
+                <div class="d-flex flex-column align-items-center">
+                    @if(count($ad->images)>0)
+                        @foreach ($ad->images as $img)
+                        <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$loop->index}}" class="my-2 rounded @if($loop->first) active @endif">                
+                          <img src="{{$img->getUrl(600,600)}}" class="rounded small-preview">                  
+                        </a>
+                        @endforeach
+                        @else  
+                        <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="my-2 rounded">
+                            <img class="rounded small-preview" src=" https://picsum.photos/id/{{$ad->id}}/600/600" alt="Card image cap"> 
+                        </a>
+                        <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="my-2 rounded">
+                            <img class="rounded small-preview" src=" https://picsum.photos/id/{{$ad->id+1}}/600/600" alt="Card image cap"> 
+                        </a>
+                        <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="my-2 rounded">
+                            <img class="rounded small-preview" src=" https://picsum.photos/id/{{$ad->id+2}}/600/600" alt="Card image cap"> 
+                        </a>
+                          
+                     @endif
                 </div>
-                @endforeach
-                @else  
-                <div class="carousel-item active">
-                    <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/600/600" alt="Card image cap"> 
-                  </div>
-                  <div class="carousel-item">
-                    <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id+1}}/600/600" alt="Card image cap"> 
-                  </div>
-                  <div class="carousel-item">
-                    <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id+2}}/600/600" alt="Card image cap"> 
-                  </div>    
-                <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/600/600" alt="Card image cap"> 
-                @endif
-               
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            <div class="col-10">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    
+                    <div class="carousel-inner">
+                        @if(count($ad->images)>0)
+                        @foreach ($ad->images as $img)
+                        <div class="carousel-item @if($loop->first) active @endif">                
+                          <img src="{{$img->getUrl(600,600)}}" class="d-block w-100 rounded">                  
+                        </div>
+                        @endforeach
+                        @else  
+                        <div class="carousel-item active">
+                            <img class="card-img-top rounded" src=" https://picsum.photos/id/{{$ad->id}}/600/600" alt="Card image cap"> 
+                          </div>
+                          <div class="carousel-item">
+                            <img class="card-img-top rounded" src=" https://picsum.photos/id/{{$ad->id+1}}/600/600" alt="Card image cap"> 
+                          </div>
+                          <div class="carousel-item">
+                            <img class="card-img-top rounded" src=" https://picsum.photos/id/{{$ad->id+2}}/600/600" alt="Card image cap"> 
+                          </div>    
+                        
+                        @endif
+                       
+                    </div>
+                    
+                    <button class="carousel-control-prev @if($ad->images->count() == 1) d-none @endif" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next @if($ad->images->count() == 1) d-none @endif" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    
+                </div>
+            </div>
         </div>
+
+       
 
   
         <div class="col-12 col-lg-6 mt-5 d-flex flex-column justify-content-between ">

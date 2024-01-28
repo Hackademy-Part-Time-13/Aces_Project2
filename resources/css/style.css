@@ -114,6 +114,11 @@ nav li {
     min-height: calc(100vh - 90px);
 }
 
+.small-preview {
+    width: 50px; 
+    height: auto;
+}
+
 /* swiper */
 .custom-h {
     height: 410px;
