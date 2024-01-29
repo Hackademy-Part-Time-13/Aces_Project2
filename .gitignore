@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 /storage/ads.index-shm
 /storage/ads.index-wal
+google_credential.json
