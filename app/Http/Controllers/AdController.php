@@ -50,41 +50,46 @@ class AdController extends Controller
     public function news(Request $request)
     {
         $title = 'Last items';
-        $orderby='default';
+        $orderby = $request->input('orderby', 'default');
 
-        if($request->all() && $request->input('orderby') != 'default'){
-            $orderby = $request->input('orderby');
-            $ads = Ad::where('is_accepted',true)->orderBy('price', $orderby)->paginate(8);
-        }else{
-            $ads = Ad::where('is_accepted',true)->latest()->paginate(8);
+        if ($orderby != 'default') {
+            $ads = Ad::where('is_accepted', true)
+                    ->orderBy('price', $orderby)
+                    ->paginate(8)
+                    ->appends($request->all());
+        } else {
+            $ads = Ad::where('is_accepted', true)
+                    ->latest()
+                    ->paginate(8)
+                    ->appends($request->all());
         }
 
-        return view('ads.index', compact('ads','orderby','title'));
+        return view('ads.index', compact('ads', 'orderby', 'title'));
     }
 
     public function popular(Request $request)
     {
-        $orderby='default';
-        $title='Popular';
+        $title = 'Popular';
+        $orderby = $request->input('orderby', 'default');
 
-        if($request->all() && $request->input('orderby') != 'default'){
-
-            $orderby = $request->input('orderby');
-
-            $ads = Ad::where('is_accepted', true)->latest()
-            ->withCount('favBy')
-            ->orderByDesc('fav_by_count')
-            ->orderBy('price', $orderby)
-            ->paginate(8);            
-
-        }else{
-            $ads = Ad::where('is_accepted', true)->latest()
-            ->withCount('favBy')
-            ->orderByDesc('fav_by_count')
-            ->paginate(8);
+        if ($orderby != 'default') {
+            $ads = Ad::where('is_accepted', true)
+                    ->latest()
+                    ->withCount('favBy')
+                    ->orderByDesc('fav_by_count')
+                    ->orderBy('price', $orderby)
+                    ->paginate(8)
+                    ->appends($request->all());
+        } else {
+            $ads = Ad::where('is_accepted', true)
+                    ->latest()
+                    ->withCount('favBy')
+                    ->orderByDesc('fav_by_count')
+                    ->paginate(8)
+                    ->appends($request->all());
         }
 
-        return view('ads.index', compact('ads','orderby','title'));
+        return view('ads.index', compact('ads', 'title', 'orderby'));
     }
 
     public function adsByCategory(Category $category, Request $request)
@@ -98,18 +103,21 @@ class AdController extends Controller
             $title=$category->title_es;
         }
 
-        $id = $category->id;
-        
-        $orderby='default';
+        $id = $category->id;        
+        $orderby = $request->input('orderby', 'default');
 
-        if($request->all() && $request->input('orderby') != 'default'){
-
-            $orderby = $request->input('orderby');
-            $ads = Ad::where('is_accepted',true)->where('category_id',$category->id)->orderBy('price', $orderby)->paginate(6);
-
-        }else{
-
-            $ads = Ad::where('is_accepted',true)->where('category_id',$category->id)->latest()->paginate(6);
+        if ($orderby != 'default') {
+            $ads = Ad::where('category_id', $id)
+                ->where('is_accepted',true)
+                ->orderBy('price', $orderby)
+                ->paginate(8)
+                ->appends($request->all());
+        } else {
+            $ads = Ad::where('category_id', $id)
+                ->where('is_accepted',true)
+                ->latest()
+                ->paginate(8)
+                ->appends($request->all());
         }
 
         return view('ads.index', compact('ads','orderby','title','id'));
@@ -121,15 +129,20 @@ class AdController extends Controller
         $title="Items by ".$user->name;
         $id = $user->id;
         
-        $orderby='default';
+        $orderby = $request->input('orderby', 'default');
 
-        if($request->all() && $request->input('orderby') != 'default'){
-
-            $orderby = $request->input('orderby');
-            $ads = Ad::where('is_accepted',true)->where('user_id',$user->id)->latest()->orderBy('price', $orderby)->paginate(6);
-            
-        }else{
-            $ads = Ad::where('is_accepted',true)->where('user_id',$user->id)->latest()->paginate(6);
+        if ($orderby != 'default') {
+            $ads = Ad::where('user_id', $id)
+                ->where('is_accepted',true)
+                ->orderBy('price', $orderby)
+                ->paginate(8)
+                ->appends($request->all());
+        } else {
+            $ads = Ad::where('user_id', $id)
+                ->where('is_accepted',true)
+                ->latest()
+                ->paginate(8)
+                ->appends($request->all());
         }
 
         return view('ads.index', compact('ads','orderby','title','id'));
@@ -138,13 +151,21 @@ class AdController extends Controller
     public function favs(Request $request)
     {
         $title="Wishlist";
-        $orderby='default';
+        $orderby = $request->input('orderby', 'default');
+        $user = Auth::user();
 
-        if($request->all() && $request->input('orderby') != 'default'){
-            $orderby = $request->input('orderby');
-            $ads = Auth::user()->favAds()->orderBy('price', $orderby)->paginate(8);
-        }else{
-            $ads = Auth::user()->favAds()->paginate(6);
+        if ($orderby != 'default') {
+            $ads = $user->favAds()
+                ->where('is_accepted',true)
+                ->orderBy('price', $orderby)
+                ->paginate(8)
+                ->appends($request->all());
+        } else {
+            $ads = $user->favAds()
+                ->where('is_accepted',true)
+                ->latest()
+                ->paginate(8)
+                ->appends($request->all());
         }
 
         return view('ads.index', compact('ads','orderby','title'));
@@ -155,13 +176,20 @@ class AdController extends Controller
     {   
         $query=$request->input('searched');
         $title="Items about ".$query;
-        $orderby='default';
+        $orderby = $request->input('orderby', 'default');
 
-        if($request->has('orderby') && $request->input('orderby') != 'default'){
-            $orderby = $request->input('orderby');
-            $ads = Ad::search($request->searched)->where('is_accepted',true)->orderBy('price', $orderby)->paginate(8);
+        if($orderby != 'default'){
+           
+            $ads = Ad::search($request->searched)
+                ->where('is_accepted',true)
+                ->orderBy('price', $orderby)
+                ->paginate(8)
+                ->appends($request->all());
         }else{
-            $ads = Ad::search($request->searched)->where('is_accepted',true)->paginate(6);
+            $ads = Ad::search($request->searched)
+                ->where('is_accepted',true)
+                ->paginate(8)
+                ->appends($request->all());
         }        
 
         return view('ads.index', compact('ads', 'title', 'orderby','query'));       
