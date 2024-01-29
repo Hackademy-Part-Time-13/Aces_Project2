@@ -47,21 +47,17 @@
 
       <div class="col-12 col-md-6 bg-body-tertiary border rounded p-3">
         <h5 class="mb-4">Content warning</h5>
-
-          
-          <p>Adult: <i id="adult-warning" class="fas fa-circle "></i></p>
-          
+          <p>Adult: <i id="adult-warning" class="fas fa-circle "></i></p>          
           <p>Spoof: <i id="spoof-warning" class="fas fa-circle "></i></p>
           <p>Medical: <i id="medical-warning" class="fas fa-circle "></i></p>
           <p>Violence: <i id="violence-warning" class="fas fa-circle "></i></p>
-          <p>Racy: <i id="racy-warning" class="fas fa-circle "></i></p>
-        
+          <p>Racy: <i id="racy-warning" class="fas fa-circle "></i></p>        
       </div>   
     </div>
 
     <div>
       {{-- inizio dati + azioni --}}
-      <div class="col-12 col-md-6 p-2">
+      <div class="col-12">
         <p><strong>{{__('ui.title')}}:</strong> {{$ad_to_check->title}}</p>
         <p><strong>{{__('ui.price')}}:</strong> € {{number_format($ad_to_check->price, 2, ',', '.')}}</p>
         <p><strong>{{__('ui.category')}}:</strong> {{$ad_to_check->category->name}}</p>
@@ -69,13 +65,7 @@
         <p><strong>{{__('ui.seller')}}:</strong> {{$ad_to_check->user->name}}</p>
         <p><strong>{{__('ui.date')}}:</strong> {{$ad_to_check->created_at->format('d/m/y')}}</p>
 
-        
-
-
-
-
-
-        <div class="d-flex gap-2 mt-5">
+        <div class="d-flex justify-content-around mt-5">
           <form action="{{route('revisor.accept_ad',['ad'=>$ad_to_check])}}" method="POST">
             @csrf
             @method('PATCH') 
@@ -96,6 +86,47 @@
   <div class="row mt-5 history-section">
     <div class="d-flex justify-content-between mt-4">
       <h2 class="text-center">{{__('ui.history')}}</h2>
+    </div>
+
+    <div class="col-12 col-md-6 table-responsive">
+      <h5 class="text-primary my-3">{{__('ui.accepted_ads')}}</h5>
+      <table class="table table-striped small">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{__('ui.title')}}</th>
+            <th scope="col">{{__('ui.category')}}</th>            
+            <th scope="col">{{__('ui.price')}}</th>
+            <th scope="col">{{__('ui.seller')}}</th>            
+            <th scope="col">{{__('ui.actions')}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($accepted_ads as $accepted_ad)
+                <tr>
+                    <th scope="row">{{$accepted_ad->id}}</th>
+                    <td>{{$accepted_ad->title}}</td>
+                    <td>
+                      @if (app()->getLocale() == 'it')
+                          {{ $accepted_ad->category->title_it }}
+                          @elseif (app()->getLocale() == 'en')
+                            {{ $accepted_ad->category->title_en }}
+                          @elseif (app()->getLocale() == 'es')
+                            {{ $accepted_ad->category->title_es }}
+                          @else
+                            {{ $accepted_ad->category->title_en }} 
+                          @endif
+                    </td>                    
+                    <td>€ {{number_format($accepted_ad->price, 2, ',', '.')}}</td>
+                    <td>{{$accepted_ad->user->name}}</td>                    
+                    <td>
+                      <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">{{__('ui.revoke')}}</a>                        
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+      </table>
+      {{ $accepted_ads->links() }}
     </div>
 
     <div class="col-12 col-md-6 table-responsive">
@@ -145,46 +176,7 @@
       {{ $rejected_ads->links() }}
     </div>
 
-    <div class="col-12 col-md-6 table-responsive">
-      <h5 class="text-primary my-3">{{__('ui.accepted_ads')}}</h5>
-      <table class="table table-striped small">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">{{__('ui.title')}}</th>
-            <th scope="col">{{__('ui.category')}}</th>            
-            <th scope="col">{{__('ui.price')}}</th>
-            <th scope="col">{{__('ui.seller')}}</th>            
-            <th scope="col">{{__('ui.actions')}}</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($accepted_ads as $accepted_ad)
-                <tr>
-                    <th scope="row">{{$accepted_ad->id}}</th>
-                    <td>{{$accepted_ad->title}}</td>
-                    <td>
-                      @if (app()->getLocale() == 'it')
-                          {{ $accepted_ad->category->title_it }}
-                          @elseif (app()->getLocale() == 'en')
-                            {{ $accepted_ad->category->title_en }}
-                          @elseif (app()->getLocale() == 'es')
-                            {{ $accepted_ad->category->title_es }}
-                          @else
-                            {{ $accepted_ad->category->title_en }} 
-                          @endif
-                    </td>                    
-                    <td>€ {{number_format($accepted_ad->price, 2, ',', '.')}}</td>
-                    <td>{{$accepted_ad->user->name}}</td>                    
-                    <td>
-                      <a class="btn btn-outline-danger" href="{{route('revisor.back', $accepted_ad)}}">{{__('ui.revoke')}}</a>                        
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-      </table>
-    {{ $accepted_ads->links() }}
-    </div>
+    
 
   </div>
 
