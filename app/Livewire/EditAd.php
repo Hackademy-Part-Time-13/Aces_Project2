@@ -3,19 +3,30 @@
 namespace App\Livewire;
 
 use App\Models\Ad;
+use App\Models\Image;
 use Livewire\Component;
 use App\Models\Category;
+use App\Jobs\ResizeImage;
+use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class EditAd extends Component
 {
     use WithFileUploads;
     
-    public $temporary_images;
-    public $images = [];
     public $ad;
+
+    #[Validate('required_without:existingImages')] 
+    public $temporary_images;
+
+    #[Validate('required_without:temporary_images')] 
+    public $existingImages = [];
+
+    public $newImages = [];
+
     
     #[Validate('required|max:30')] 
     public $title;
@@ -23,11 +34,28 @@ class EditAd extends Component
     #[Validate('required|exists:categories,id')] 
     public $selectedCategory;
     
-    #[Validate('required|numeric|min:0.01|max:9999.99')] 
+    #[Validate('required|numeric|min:1.00|max:9999.99')] 
     public $price;
 
     #[Validate('required|max:300')] 
     public $description;
+
+    protected $rules = [
+        'temporary_images.*' => 'image|max:3000',
+    ];
+
+    protected $messages = [
+        'temporary_images.required_without' => 'validation.temporary_images.required_without',
+        'temporary_images.*.max'=>'validation.temporary_images.max',
+        'temporary_images.*.image'=>'validation.temporary_images.image',
+        'existingImages.required_without' => '',
+        'title.required'=>'validation.title.required',
+        'description.required'=>'validation.description.required',
+        'description.max'=>'validation.description.max',
+        'selectedCategory'=>'validation.selectedCategory',
+        'price'=>'validation.price',
+        
+    ];
 
     public function mount(Request $request){
         
@@ -36,82 +64,77 @@ class EditAd extends Component
         $this->selectedCategory = $this->ad->category->id;
         $this->price = $this->ad->price;
         $this->description = $this->ad->description;
-        $this->images = $this->ad->images;
-
+        $this->existingImages = $this->ad->images;
         
-    }
-
-    protected $rules = [
-        'images.*'=>'image|max:1024',
-        'temporary_images.*'=>'image|max:1024',
-    ];
-
-// Personalizzazione messaggi d'errore (consigliato in caso di traduzione in altra lingua)
-    protected $messages = [
-        'required' => 'Il campo :attribute è richiesto',
-        'min' => 'Il campo :attribute è troppo corto',
-        'temporary_images.required' => 'Immagine richiesta',
-        'temporary_images.*.image' => 'I file devono essere immagini',
-        'temporary_images.*.max' => 'Dimensioni massime consentite: 1 MB',
-        'images.image' => 'L\'immagine deve essere un file immagine',
-        'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
-    ];
-
+    }    
 
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:3000',
+            'temporary_images.*'=>'required_without:existingImages|image|max:3000',
         ])) {
             foreach ($this->temporary_images as $image) {
-                $this->images[] = $image;
+                $this->newImages[] = $image;
             }
         }
     }
 
+    // rimuovi nuove immagini
     public function removeImage($key)
     {
-        $imageKeys = $this->images->pluck('id')->toArray();
-        
-        $this->images = $this->images->filter(function ($image, $index) use ($key) {
-            return $index != $key;
-        });
-        // if (in_array($key, $imageKeys)) {
-        //     $this->images = $this->images->where('id', '!=', $this->images[$key]->id);
-        // }
-    }
-
-    public function updated($propertyName)    {
-
-        $this->validateOnly($propertyName);
-
-        if ($propertyName === 'temporary_images') {
-            $this->update($this->ad);
+        if (in_array($key, array_keys($this->newImages))) {
+            unset($this->newImages[$key]);
         }
     }
 
+    public function removeExistingImage($imageId)
+    {
+        $image = Image::find($imageId);
+        if ($image) {
+
+            $cropUrl = $image->getUrl(600,600);
+            // dd(base_path('public'.$cropUrl));
+            
+            File::delete(storage_path('app/public/'.$image->path));
+            File::delete(base_path('public'.$cropUrl));
+
+            $image->delete(); // Elimina il record dal database
+        }
+
+        // Aggiorna l'array delle immagini esistenti per riflettere la modifica
+        $this->existingImages = $this->ad->images()->get();
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function update()
     {
-        
-        $imageIds = $this->images->pluck('id')->toArray();   
+        $this->validate();     
 
-        $this->validate();  
-
-        $this->ad->update([
-            'title' => $this->title,
-            'description' => $this->description,
-            'category_id' => $this->selectedCategory,
-            'price' => $this->price,
-        ]);
-
-        
-        $this->ad->images()->sync($imageIds);
+        $this->ad->title = $this->title;
+        $this->ad->description = $this->description;
+        $this->ad->price = $this->price;
+        $this->ad->category_id = $this->selectedCategory;
+        $this->ad->is_accepted = false;
         $this->ad->save();
-        // dd($this->ad);
 
-               
-        return redirect()->route('profile')->with('success', 'Ad edited successfully, it will be posted after review');
+        // Caricamento delle nuove immagini
+        if(count($this->newImages)){
+            foreach($this->newImages as $newImage){
+                
+                $newFileName = "ads/{$this->ad->id}";
+                $newImage = $this->ad->images()->create(['path'=>$newImage->store($newFileName, 'public')]);
+
+                dispatch(new ResizeImage($newImage->path, 600 , 600));
+            }
+
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
+        }
+                       
+        return redirect()->route('profile')->with('success', trans('ui.ad_edited_success'));
     
         $this->dispatch('formsubmit')->to('notification-button');
     }

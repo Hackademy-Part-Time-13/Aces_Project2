@@ -5,35 +5,23 @@ namespace App\Livewire;
 use App\Models\Ad;
 use Livewire\Component;
 use App\Models\Category;
+use App\Jobs\RemoveFaces;
 use App\Jobs\ResizeImage;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use App\Jobs\GoogleVisionLabelImage;
+use App\Jobs\GoogleVisionSafeSearch;
 use Illuminate\Support\Facades\File;
 
 class CreateAd extends Component
 {
     use WithFileUploads;
     
+    #[Validate('required')] 
     public $temporary_images;
+
     public $images = [];
     public $ad;
-
-    protected $rules = [
-        'images.*'=>'image|max:3600',
-        'temporary_images.*'=>'image|max:3600',
-    ];
-
-// Personalizzazione messaggi d'errore (consigliato in caso di traduzione in altra lingua)
-    protected $messages = [
-        'required' => 'Il campo :attribute è richiesto',
-        'min' => 'Il campo :attribute è troppo corto',
-        'temporary_images.required' => 'Immagine richiesta',
-        'temporary_images.*.image' => 'I file devono essere immagini',
-        'temporary_images.*.max' => 'Dimensioni massime consentite: 1 MB',
-        'images.image' => 'L\'immagine deve essere un file immagine',
-        'images.max' => 'Dimensioni massime consentite per l\'immagine: 1 MB',
-    ];
-
 
     #[Validate('required|max:30')] 
     public $title;
@@ -47,10 +35,25 @@ class CreateAd extends Component
     #[Validate('required|max:300')] 
     public $description;
 
+    protected $rules = [
+        'temporary_images.*' => 'image|max:3000',
+    ];
+
+    protected $messages = [
+        'temporary_images.required' =>'validation.temporary_images.required',
+        'temporary_images.*.max'=>'validation.temporary_images.max',
+        'temporary_images.*.image'=>'validation.temporary_images.image',
+        'title.required'=>'validation.title.required',
+        'description.required'=>'validation.description.required',
+        'description.max'=>'validation.description.max',
+        'selectedCategory'=>'validation.selectedCategory',
+        'price'=>'validation.price',        
+    ];
+
     public function updatedTemporaryImages()
     {
         if ($this->validate([
-            'temporary_images.*'=>'image|max:3600',
+            'temporary_images.*'=>'required|image|max:3600',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->images[] = $image; 
@@ -58,17 +61,17 @@ class CreateAd extends Component
         }
     }
 
-        public function removeImage($key)
-        {
-            if (in_array($key, array_keys($this->images))) {
-                unset($this->images[$key]);
-            }
+    public function removeImage($key)
+    {
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
         }
+    }
 
-        public function updated($propertyName)
-            {
-                $this->validateOnly($propertyName);
-            }
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
 
     public function store()
@@ -86,16 +89,20 @@ class CreateAd extends Component
 
         if(count($this->images)){
             foreach($this->images as $image){
-                //  $imagePath = $image->store('images', 'public');
-                //  $newAd->images()->create(['path' => $imagePath]);
+               
+                $newFileName = "ads/{$newAd->id}";
+                $newImage = $newAd->images()->create(['path'=>$image->store($newFileName, 'public')]);
 
-                 $newFileName = "ads/{$newAd->id}";
-                 $newImage = $newAd->images()->create(['path'=>$image->store($newFileName, 'public')]);
-
-                 dispatch(new ResizeImage($newImage->path, 200 , 200));
+                RemoveFaces::withChain([
+                    new ResizeImage($newImage->path, 600 , 600),
+                    new GoogleVisionSafeSearch($newImage->id),
+                    new GoogleVisionLabelImage($newImage->id),
+                     
+                ])->dispatch($newImage->id);
+               
             }
 
-             File::deleteDirectory(storage_path('/app/livewire-tmp'));
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
             
             // pulizia degli input
@@ -108,7 +115,7 @@ class CreateAd extends Component
             
         
 
-        session()->flash('success', 'Ad created successfully, it will be posted after review');
+        session()->flash('success', trans('ui.ad_created_success'));
         
         $this->dispatch('formsubmit')->to('notification-button');
 

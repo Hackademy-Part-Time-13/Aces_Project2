@@ -72,6 +72,23 @@ return [
     'with_google'=>'Continue with Google',
     'forgot_password_page'=>'Forgot password? No worries, we\'ve got you covered!',
     'reset_password'=>'Reset password',
+    'ad_deleted_success'=>'Ad deleted successfully',
+    'ad_accepted_success'=>'Ad accepted successfully',
+    'ad_rejected_success'=>'Ad rejected successfully',
+    'ops'=>'Whoops, go back',
+    'operation_canceled'=>'Operation canceled successfully',
+    'ad_not_found'=>'Ad not found',
+    'ad_restored_success'=>'Ad restored successfully',
+    'featured'=>'Featured',
+    'cheapest'=>'Cheapest',
+    'most_expensive'=>'Most expensive',
+    'browse'=>'Browse',
+    'no_fav'=>'Add items to your favorites and find them here.',
+    'upload_img'=>'Upload photos',
+    'edit_item'=>'Edit item',
+    'ad_created_success'=>'Ad created successfully, it will be posted after review',
+    'ad_edited_success'=>'Ad edited successfully, it will be posted after review',
+    'lang'=>'Languages',
 
 
 

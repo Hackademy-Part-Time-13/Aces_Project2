@@ -2,7 +2,7 @@
     use Carbon\Carbon;
 @endphp
 <x-main title="{{config('app.name')}} | Profile">
-    <div class="row m-3 justify-content-between">
+    <div class="row mt-4 justify-content-between">
         <div class="col-12 col-md-3 bg-body-tertiary border p-3">
             {{-- accordion --}}
             <div class="accordion accordion-flush" id="accordionExample">
@@ -74,7 +74,17 @@
                     <tr>
                         <th scope="row">{{$ad->id}}</th>
                         <td>{{$ad->title}}</td>
-                        <td>{{$ad->category->name}}</td>
+                        <td>
+                          @if (app()->getLocale() == 'it')
+                          {{ $ad->category->title_it }}
+                          @elseif (app()->getLocale() == 'en')
+                            {{ $ad->category->title_en }}
+                          @elseif (app()->getLocale() == 'es')
+                            {{ $ad->category->title_es }}
+                          @else
+                            {{ $ad->category->title_en }} 
+                          @endif
+                        </td>
                         <td>{{Carbon::parse($ad->created_at)->diffForHumans()}}</td>
                         <td>
                             @if ($ad->is_accepted)
@@ -86,7 +96,7 @@
                             @endif
                         </td>
                         <td class="d-flex gap-2">
-                            {{-- <a class="btn btn-warning py-1" href={{route('ad.edit',$ad->id)}}>{{__('ui.edit')}}</a> --}}
+                            <a class="btn btn-warning py-1" href={{route('ad.edit',$ad->id)}}>{{__('ui.edit')}}</a>
                             <form action={{route('ad.delete',$ad->id)}} method="POST">
                                 @csrf
                                 @method('DELETE')

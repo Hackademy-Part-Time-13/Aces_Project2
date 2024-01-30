@@ -3,18 +3,27 @@
 
 :root {
     --primary-color: #00bda7;
+    
 }
 
 * {
     font-family: 'Lato', sans-serif;
+    font-size: 15px;
 }
 
 header {
     height: 500px;
-    background-image: url('https://picsum.photos/3000/500');
+    background-image: url('/public/media/header-image.png');
+    background-position: center -410px;
     width: 100vw;
     margin-left: calc(50% - 50vw) !important;
     margin-top: -10px!important;  
+}
+
+@media screen and (max-width: 991px) {
+    header {
+        background-position: center bottom;
+    }
 }
 
 .history-section {
@@ -37,9 +46,8 @@ header {
 }
 
 .text-extramuted {
-    font-size: x-small;
-    opacity: 0.6;
-    
+    font-size: small!important;
+    opacity: 0.5;    
 }
 
 .text-extramuted:hover {
@@ -81,21 +89,73 @@ nav li {
     opacity: 75%;
 }
 
- /* Freccine di navigazione tra le card */
- .scroll-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1;
+.card-transparent {
+    background-color: rgba(255, 255, 255, 0.75)!important;
+    color: black !important;
 }
 
-.scroll-left {
-    left: 10px;
+.img-preview {
+    height: 150px;
+    width: 150px;
+    
 }
 
-.scroll-right {
-    right: 10px;
+.img-container {
+    min-height: 160px;
+    
+}
+
+.proportional {
+    max-width: 100%;
+    height: auto;
+}
+
+.min-screen {
+    min-height: calc(100vh - 90px);
+}
+
+.small-preview {
+    width: 50px; 
+    height: auto;
+}
+
+/* swiper */
+.custom-h {
+    height: 410px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;    
+    height: 445px !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-color)!important;
+    width: 35px!important;
+    height: 35px!important;
+    
+}
+
+.swiper-button-next {
+    transform: translateX(55%);
+}
+
+.swiper-button-prev {
+    transform: translateX(-55%);
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 30px!important; /* Riduci la dimensione del font dell'icona */
+}
+
+.swiper-button-disabled {
+    display: none !important;
 }
 

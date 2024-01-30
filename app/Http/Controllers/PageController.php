@@ -11,13 +11,14 @@ class PageController extends Controller
     public function home()
     {
         // ultimi 4 annunci
-        $last_ads = Ad::where('is_accepted',true)->latest()->take(4)->get();
+        $last_ads = Ad::where('is_accepted',true)->latest()->take(8)->get();
         
         // 4 annunci più preferiti dagli utenti
-        $popular_ads = Ad::where('is_accepted', true)->latest()
+        $popular_ads = Ad::where('is_accepted', true)
         ->withCount('favBy')
         ->orderByDesc('fav_by_count')
-        ->take(4)
+        ->latest()
+        ->take(8)
         ->get();
         
         return view('welcome', compact('last_ads','popular_ads'));

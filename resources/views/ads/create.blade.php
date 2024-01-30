@@ -1,6 +1,7 @@
 <x-main title="{{config('app.name')}} | Sell an item">
-    
-    <livewire:create-ad/>
 
-    
+    <div class="mt-3">
+        <livewire:create-ad/>
+    </div>
+
 </x-main>
