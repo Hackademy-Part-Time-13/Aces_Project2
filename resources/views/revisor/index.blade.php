@@ -25,7 +25,7 @@
           
           <div class="carousel-inner">
             @foreach ($ad_to_check->images as $img)
-              <div class="carousel-item @if($loop->first) active @endif" id="{{$img->id}}" data-adult="{{$img->adult}}" data-spoof="{{$img->spoof}}" data-medical="{{$img->medical}}" data-violence="{{$img->violence}}" data-racy="{{$img->racy}}" data-labels="{{implode($img->labels)}}">                
+              <div class="carousel-item @if($loop->first) active @endif" id="{{$img->id}}" data-adult="{{$img->adult}}" data-spoof="{{$img->spoof}}" data-medical="{{$img->medical}}" data-violence="{{$img->violence}}" data-racy="{{$img->racy}}" data-labels="{{implode(", ",$img->labels)}}">                
                 <img src="{{$img->getUrl(600,600)}}" class="d-block w-100">                
               </div>
             @endforeach
@@ -67,17 +67,15 @@
               <div class="card-header fw-semibold">
                 Tags
               </div>
-               <p class="py-2 px-3">
+               <div class="py-2 px-3">
                 @foreach($ad_to_check->images as $image)
                   @if($image->labels)
-                    @foreach($image->labels as $label)
-                    {{$label}},
-                    @endforeach
+                   <p id="labels"></p>
                   @else
-                  Nessuna label
+                  <p>Nessuna label</p>
                   @endif
                 @endforeach
-               </p>
+               </div>
              
                 
               
@@ -268,7 +266,13 @@
     });
 
     function clearAndAddLabels(elementId, labels){
-
+      const element = document.getElementById(elementId);
+      if(element){
+        element.textContent = '';
+        if(labels){
+          element.textContent = labels;
+        }
+      }
     };
    
     function clearAndAddClass(elementId, classString) {
