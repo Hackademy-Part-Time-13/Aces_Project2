@@ -9,6 +9,7 @@ use App\Jobs\ResizeImage;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use App\Jobs\GoogleVisionSafeSearch;
+use App\Jobs\RemoveFaces;
 use Illuminate\Support\Facades\File;
 
 class CreateAd extends Component
@@ -91,8 +92,12 @@ class CreateAd extends Component
                 $newFileName = "ads/{$newAd->id}";
                 $newImage = $newAd->images()->create(['path'=>$image->store($newFileName, 'public')]);
 
-                dispatch(new ResizeImage($newImage->path, 600 , 600));
-                dispatch(new GoogleVisionSafeSearch($newImage->id));
+                RemoveFaces::withChain([
+                     new ResizeImage($newImage->path, 600 , 600),
+                     new GoogleVisionSafeSearch($newImage->id),
+                     
+                ])->dispatch($newImage->id);
+               
             }
 
             File::deleteDirectory(storage_path('/app/livewire-tmp'));
