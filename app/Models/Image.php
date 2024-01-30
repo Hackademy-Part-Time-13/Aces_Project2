@@ -11,7 +11,11 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['path','ad_id'];
+    protected $fillable = ['path','ad_id','labels'];
+
+    protected $casts = [
+        'labels' => 'array',
+    ];
 
     public function ad(){
         return $this->belongsTo(Ad::class);

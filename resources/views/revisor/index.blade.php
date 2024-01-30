@@ -49,7 +49,7 @@
         <div class="row">          
           <div class="col-12 col-md-6">
             <div class="card m-0 ">
-              <div class="card-header">
+              <div class="card-header fw-semibold">
                 Content warning
               </div>
               <ul class="list-group list-group-flush">
@@ -64,16 +64,23 @@
           
           <div class="col-12 col-md-6">
             <div class="card m-0 ">
-              <div class="card-header">
-                Label
+              <div class="card-header fw-semibold">
+                Tags
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Adult: <i id="adult-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Spoof: <i id="spoof-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Medical: <i id="medical-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Violence: <i id="violence-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Racy: <i id="racy-warning" class="fas fa-circle "></i></li>
-              </ul>
+               <p class="py-2 px-3">
+                @foreach($ad_to_check->images as $image)
+                  @if($image->labels)
+                    @foreach($image->labels as $label)
+                    {{$label}},
+                    @endforeach
+                  @else
+                  Nessuna label
+                  @endif
+                @endforeach
+               </p>
+             
+                
+              
   
           </div>
         </div>
