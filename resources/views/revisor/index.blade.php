@@ -25,7 +25,7 @@
           
           <div class="carousel-inner">
             @foreach ($ad_to_check->images as $img)
-              <div class="carousel-item @if($loop->first) active @endif" id="{{$img->id}}" data-adult="{{$img->adult}}" data-spoof="{{$img->spoof}}" data-medical="{{$img->medical}}" data-violence="{{$img->violence}}" data-racy="{{$img->racy}}">                
+              <div class="carousel-item @if($loop->first) active @endif" id="{{$img->id}}" data-adult="{{$img->adult}}" data-spoof="{{$img->spoof}}" data-medical="{{$img->medical}}" data-violence="{{$img->violence}}" data-racy="{{$img->racy}}" data-labels="{{implode($img->labels)}}">                
                 <img src="{{$img->getUrl(600,600)}}" class="d-block w-100">                
               </div>
             @endforeach
@@ -87,7 +87,17 @@
         <div class="row mt-3">
           <p><strong>{{__('ui.title')}}:</strong> {{$ad_to_check->title}}</p>
           <p><strong>{{__('ui.price')}}:</strong> € {{number_format($ad_to_check->price, 2, ',', '.')}}</p>
-          <p><strong>{{__('ui.category')}}:</strong> {{$ad_to_check->category->name}}</p>
+          <p><strong>{{__('ui.category')}}:</strong> 
+            @if (app()->getLocale() == 'it')
+            {{ $ad_to_check->category->title_it }}
+          @elseif (app()->getLocale() == 'en')
+            {{ $ad_to_check->category->title_en }}
+          @elseif (app()->getLocale() == 'es')
+            {{ $ad_to_check->category->title_es }}
+          @else
+            {{ $ad_to_check->category->title_en }} 
+          @endif
+          </p>
           <p><strong>{{__('ui.description')}}:</strong> {{$ad_to_check->description}}</p>
           <p><strong>{{__('ui.seller')}}:</strong> {{$ad_to_check->user->name}}</p>
           <p><strong>{{__('ui.date')}}:</strong> {{$ad_to_check->created_at->format('d/m/y')}}</p>
@@ -235,11 +245,15 @@
         racy: activeItem.dataset.racy
       };
 
+      const labels = activeItem.dataset.labels;
+
       clearAndAddClass('adult-warning', warnings.adult);
       clearAndAddClass('spoof-warning', warnings.spoof);
       clearAndAddClass('medical-warning', warnings.medical);
       clearAndAddClass('violence-warning', warnings.violence);
       clearAndAddClass('racy-warning', warnings.racy);
+
+      clearAndAddLabels('labels', labels)
 
     };
 
@@ -253,6 +267,9 @@
         updateContentWarnings(activeItem);
     });
 
+    function clearAndAddLabels(elementId, labels){
+
+    };
    
     function clearAndAddClass(elementId, classString) {
         const element = document.getElementById(elementId);
