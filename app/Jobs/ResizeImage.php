@@ -42,6 +42,13 @@ class ResizeImage implements ShouldQueue
 
        $croppedImage = Image::load($srcPath)
                      ->crop(Manipulations::CROP_CENTER , $w, $h)
-                     ->save( $destPath);
+                     ->watermark(public_path('/media/altrologo.png'))
+                     ->watermarkOpacity(35)
+                     ->watermarkHeight(40, Manipulations::UNIT_PERCENT)
+                     ->watermarkWidth(20, Manipulations::UNIT_PERCENT)
+                     ->watermarkPadding(5,5,Manipulations::UNIT_PERCENT)
+                     ->save($destPath);
+
+                    
     }
 }
