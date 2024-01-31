@@ -25,7 +25,9 @@
           
           <div class="carousel-inner">
             @foreach ($ad_to_check->images as $img)
-              <div class="carousel-item @if($loop->first) active @endif" id="{{$img->id}}" data-adult="{{$img->adult}}" data-spoof="{{$img->spoof}}" data-medical="{{$img->medical}}" data-violence="{{$img->violence}}" data-racy="{{$img->racy}}" data-labels="{{implode(", ",$img->labels)}}">                
+            
+              <div class="carousel-item @if($loop->first) active @endif" id="{{$img->id}}" data-adult="{{$img->adult}}" data-spoof="{{$img->spoof}}" data-medical="{{$img->medical}}" data-violence="{{$img->violence}}" data-racy="{{$img->racy}}" data-labels="{{ is_array($img->labels) ? implode(", ", $img->labels) : '' }}"
+                >                
                 <img src="{{$img->getUrl(600,600)}}" class="d-block w-100">                
               </div>
             @endforeach
