@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             ['title_it' => 'Arredamento', 'title_en' => 'Furniture', 'title_es'=> 'Mobiliario' , 'icon' => 'fa-hammer'],
             ['title_it' => 'Abbigliamento', 'title_en' => 'Clothing', 'title_es'=> 'Ropa','icon' => 'fa-shirt'],
             ['title_it' => 'Sport', 'title_en' =>'Sport' , 'title_es'=> 'Deportes','icon' => 'fa-table-tennis-paddle-ball'],
-            ['title_it' => 'Accessori per animali', 'title_en' =>'Pets', 'title_es'=> 'Accesorios para mascotas','icon' => 'fa-cat'],
+            ['title_it' => 'Animali', 'title_en' =>'Pets', 'title_es'=> 'Mascotas','icon' => 'fa-cat'],
             ['title_it' => 'Servizi', 'title_en' => 'Services', 'title_es'=> 'Servicios','icon' => 'fa-bell-concierge'],
             ['title_it' => 'Collezionismo', 'title_en' =>'Collectibles', 'title_es'=> 'Coleccionismo','icon' => 'fa-museum'],    
         ];

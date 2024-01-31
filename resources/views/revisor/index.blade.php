@@ -1,6 +1,7 @@
 <x-main>
-        
-  <div class="row mb-3 mt-3">
+    
+  {{-- titolo --}}
+  <div class="row my-4">
     @if($ad_to_check)
       <div class="text-primary d-flex align-items-center justify-content-center gap-2">
         <h4>{{__('ui.revisor_ads')}}</h4>
@@ -13,9 +14,11 @@
       </div>
     @endif
   </div>
-        
+  
+  {{-- carosello e dati annuncio + azioni --}}
   @if($ad_to_check)
-      
+    
+    {{-- carosello + dati annuncio --}}
     <div class="row">
       
       {{-- carosello --}}
@@ -45,75 +48,91 @@
         <p class="fst-italic">Questo annuncio non ha foto.</p>
         @endif
       </div>      
-      {{-- fine carosello --}}
+      
+      {{-- dati annuncio --}}
+      <div class="col-12 col-md-7 d-flex flex-column justify-content-between">
 
-      <div class="col-12 col-md-7">
+
+        <div class="col-12 mb-3 d-flex flex-column justify-content-between ">
+          <div class="card mb-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item display-6">€ {{number_format($ad_to_check->price, 2, ',', '.')}}</li>
+              <li class="list-group-item fw-bold">{{$ad_to_check->title}}</li>
+              <li class="list-group-item">
+                <i class="fa-solid fa-tag me-1"></i>
+                <a href="{{route('adsByCategory',$ad_to_check->category)}}" class="d-inline nav-link text-extramuted">
+                  @if (app()->getLocale() == 'it')
+                      {{ $ad_to_check->category->title_it }}
+                  @elseif (app()->getLocale() == 'en')
+                      {{ $ad_to_check->category->title_en }}
+                  @elseif (app()->getLocale() == 'es')
+                      {{ $ad_to_check->category->title_es }}
+                  @else
+                      {{ $ad_to_check->category->title_en }} 
+                  @endif
+                </a>
+              </li>
+              <li class="list-group-item">{{$ad_to_check->description}}</li>                   
+            </ul>
+          </div>     
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item fst-italic d-flex gap-2">
+                <a class="nav-link" href="{{route('adsByUser',$ad_to_check->user)}}">{{$ad_to_check->user->name}}</a>  
+                <a href={{route('user',$ad_to_check->user)}}>
+                    <i class="fa-regular fa-comment text-primary"></i>
+                </a>
+              </li>                                             
+            </ul>
+          </div>             
+        </div>
+        
         <div class="row">          
-          <div class="col-12 col-md-6">
-            <div class="card m-0 ">
-              <div class="card-header fw-semibold">
-                Content warning
+          <div class="col-12">          
+            <div class="col-12 mb-3">
+              <div class="card m-0 p-0">
+                <div class="card-header fw-semibold bg-primary bg-gradient text-white">
+                  Content warning
+                </div>
+                <ul class="card-body d-flex justify-content-around py-2 m-0 ">
+                  <div class="m-0">Adult: <i id="adult-warning" class="fas fa-circle "></i></div>
+                  <div class="m-0">Spoof: <i id="spoof-warning" class="fas fa-circle "></i></div>
+                  <div class="m-0">Medical: <i id="medical-warning" class="fas fa-circle "></i></div>
+                  <div class="m-0">Violence: <i id="violence-warning" class="fas fa-circle "></i></div>
+                  <div class="m-0">Racy: <i id="racy-warning" class="fas fa-circle "></i></div>
+                </ul>
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Adult: <i id="adult-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Spoof: <i id="spoof-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Medical: <i id="medical-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Violence: <i id="violence-warning" class="fas fa-circle "></i></li>
-                <li class="list-group-item">Racy: <i id="racy-warning" class="fas fa-circle "></i></li>
-              </ul>
             </div>
           </div>
-          
-          <div class="col-12 col-md-6">
+          {{-- tags --}}
+          <div class="col-12 m-0 ">
             <div class="card m-0 ">
-              <div class="card-header fw-semibold">
+              <div class="card-header fw-semibold bg-primary bg-gradient text-white">
                 Tags
               </div>
-               <div class="py-2 px-3">
+              <div class="py-2 px-3">
                 @foreach($ad_to_check->images as $image)
                   @if($image->labels)
-                   <p id="labels"></p>
+                   <p class="m-0 small" id="labels"></p>
                   @else
-                  <p>Nessuna label</p>
+                  <p class="m-0 small">Nessuna label</p>
                   @endif
                 @endforeach
-               </div>
-             
-                
-              
-  
+              </div>
+            </div>  
           </div>
-        </div>
-        <div class="row mt-3">
-          <p><strong>{{__('ui.title')}}:</strong> {{$ad_to_check->title}}</p>
-          <p><strong>{{__('ui.price')}}:</strong> € {{number_format($ad_to_check->price, 2, ',', '.')}}</p>
-          <p><strong>{{__('ui.category')}}:</strong> 
-            @if (app()->getLocale() == 'it')
-            {{ $ad_to_check->category->title_it }}
-          @elseif (app()->getLocale() == 'en')
-            {{ $ad_to_check->category->title_en }}
-          @elseif (app()->getLocale() == 'es')
-            {{ $ad_to_check->category->title_es }}
-          @else
-            {{ $ad_to_check->category->title_en }} 
-          @endif
-          </p>
-          <p><strong>{{__('ui.description')}}:</strong> {{$ad_to_check->description}}</p>
-          <p><strong>{{__('ui.seller')}}:</strong> {{$ad_to_check->user->name}}</p>
-          <p><strong>{{__('ui.date')}}:</strong> {{$ad_to_check->created_at->format('d/m/y')}}</p>
-        </div>
-       
-        
-        </div>
-      </div>   
+        </div> 
+      </div>
+
     </div>
 
+    {{-- azioni --}}
     <div>
       {{-- inizio dati + azioni --}}
       <div class="row mb-5">
         
 
-        <div class="d-flex justify-content-around mt-5">
+        <div class="d-flex justify-content-evenly mt-5">
           <form action="{{route('revisor.accept_ad',['ad'=>$ad_to_check])}}" method="POST">
             @csrf
             @method('PATCH') 
