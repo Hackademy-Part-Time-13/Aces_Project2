@@ -89,6 +89,7 @@ return [
     'ad_created_success'=>'Ad created successfully, it will be posted after review',
     'ad_edited_success'=>'Ad edited successfully, it will be posted after review',
     'lang'=>'Languages',
+    'revisor'=>'Revisor',
 
 
 

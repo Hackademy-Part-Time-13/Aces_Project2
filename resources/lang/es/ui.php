@@ -90,4 +90,5 @@ return [
     'ad_created_success'=>'Anuncio creado con éxito, será publicado después de la revisión',
     'ad_edited_success'=>'Anuncio modificado con éxito, será publicado después de la revisión',
     'lang'=>'Idiomas',
+    'revisor'=>'Revisor',
 ];
