@@ -6,9 +6,9 @@ return [
     'temporary_images.image' => 'I file devono essere immagini',
     'temporary_images.max' => 'Dimensioni massime consentite: 3 KB', 
     'title.required'=>'Inserisci un titolo',
-    'title.max'=>'Il titolo non deve superare i 30 caratteri',
+    'title.max'=>'Il titolo non deve superare i 100 caratteri',
     'description.required'=>'Inserisci una descrizione',
-    'description.max'=>'La descrizione non deve superare i 300 caratteri',
+    'description.max'=>'La descrizione non deve superare i 500 caratteri',
     'selectedCategory'=>'Seleziona una categoria',
-    'price' => 'Inserisci un prezzo compreso tra 1.00 e 9999.99',     
+    'price' => 'Inserisci un prezzo compreso tra 1,00 e 99.999,99',     
 ];

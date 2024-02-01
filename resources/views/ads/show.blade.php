@@ -69,7 +69,7 @@
         <div class="col-12 col-lg-6 mt-5 d-flex flex-column justify-content-between ">
             <div class="card mb-3">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item display-6">€ {{$ad->price}}</li>
+                    <li class="list-group-item display-6">€ {{number_format($ad->price, 2, ',', '.')}}</li>
                     <li class="list-group-item fw-bold">{{$ad->title}}</li>
                     <li class="list-group-item">
                         <i class="fa-solid fa-tag me-1"></i>

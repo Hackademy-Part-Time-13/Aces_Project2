@@ -23,16 +23,16 @@ class CreateAd extends Component
     public $images = [];
     public $ad;
 
-    #[Validate('required|max:30')] 
+    #[Validate('required|max:100')] 
     public $title;
 
     #[Validate('required|exists:categories,id')] 
     public $selectedCategory;
     
-    #[Validate('required|numeric|min:0.01|max:9999.99')] 
+    #[Validate('required|numeric|min:0.01|max:99999.99')] 
     public $price;
 
-    #[Validate('required|max:300')] 
+    #[Validate('required|max:500')] 
     public $description;
 
     protected $rules = [

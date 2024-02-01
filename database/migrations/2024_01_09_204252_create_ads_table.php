@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             
             $table->id();
-            $table->string('title',30);
+            $table->string('title',100);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->float('price');
-            $table->string('description');
+            $table->string('description',500);
             $table->timestamps();
             $table->boolean('is_accepted')->default(false);
             $table->unsignedBigInteger('revisioned_by_user_id')->nullable();

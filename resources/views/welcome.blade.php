@@ -48,10 +48,8 @@
   <script type="module">
     import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
   
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".mySwiper", {      
       
-      
-      spaceBetween: 5,
       navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',

@@ -1,5 +1,5 @@
 
-  <div class="card mx-auto mb-auto h-100 border-0 shadow rounded-0" style="width: 250px;">
+  <div class="card mx-auto mb-auto border-0 shadow rounded-0 h-100" style="width: 250px;">
     <a href={{route('ad.show',$ad)}}>
       @if(count($ad->images)>0)
       <img class="card-img-top rounded-0" src="{{$ad->images()->first()->getUrl(600,600)}}" alt="Card image cap">
@@ -8,8 +8,8 @@
       <img class="card-img-top rounded-0" src=" https://picsum.photos/id/{{$ad->id}}/250/250" alt="Card image cap"> 
       @endif
     </a>     
-    <div class="card-body pb-0">
-      <a href={{route('ad.show',$ad)}} class="card-title fs-6 fw-semibold card-link">{{$ad->title}}</a>
+    <div class="card-body pb-0 ">
+      <a href={{route('ad.show',$ad)}} class="card-title fs-6 fw-semibold card-link title-card-h">{{$ad->title}}</a>
       <div class="d-flex justify-content-between mt-3 mb-0 small">
         <p class="card-text text-muted">€ {{number_format($ad->price, 2, ',', '.')}}</p>
         <a href="{{route('adsByUser',$ad->user)}}" class="nav-link text-extramuted">{{$ad->user->name}}</a>            

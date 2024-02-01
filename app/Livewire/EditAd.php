@@ -28,16 +28,16 @@ class EditAd extends Component
     public $newImages = [];
 
     
-    #[Validate('required|max:30')] 
+    #[Validate('required|max:100')] 
     public $title;
 
     #[Validate('required|exists:categories,id')] 
     public $selectedCategory;
     
-    #[Validate('required|numeric|min:1.00|max:9999.99')] 
+    #[Validate('required|numeric|min:1.00|max:99999.99')] 
     public $price;
 
-    #[Validate('required|max:300')] 
+    #[Validate('required|max:500')] 
     public $description;
 
     protected $rules = [

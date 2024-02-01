@@ -38,17 +38,17 @@ class DatabaseSeeder extends Seeder
             Category::create($category);
         }
 
-        User::factory(10)->create();
+        // User::factory(10)->create();
 
-        User::create([
-            'name'=>'Revisore',
-            'email'=>'revisor@presto.it',
-            'password' => static::$password ??= Hash::make('password'),
-            'is_revisor'=> true,
-            'email_verified_at' => now(),            
-        ]);
+        // User::create([
+        //     'name'=>'Revisore',
+        //     'email'=>'revisor@presto.it',
+        //     'password' => static::$password ??= Hash::make('password'),
+        //     'is_revisor'=> true,
+        //     'email_verified_at' => now(),            
+        // ]);
 
-        Ad::factory(30)->create(); 
+        // Ad::factory(30)->create(); 
         
     }
 }
