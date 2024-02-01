@@ -5,7 +5,7 @@ return [
     'last_items'=>'Últimos anuncios',
     'welcome'=>'Nos vemos, ',
     'sell'=>'Vender ahora',
-    'revisor_dashboard'=>'Zona de Auditores',
+    'revisor_dashboard'=>'Área revisor',
     'popular'=>'Lo más popular',
     'search_items'=>'Buscar listados',    
     'see_all'=>'Ver todo',
@@ -91,4 +91,8 @@ return [
     'ad_edited_success'=>'Anuncio modificado con éxito, será publicado después de la revisión',
     'lang'=>'Idiomas',
     'revisor'=>'Revisor',
+    'already_emailed_revisor'=>'Ya has realizado la solicitud.',
+    'request_revisor'=>'¡Gracias! Tu solicitud ha sido enviada exitosamente.',
+    'user_became_revisor'=>'¡Felicidades! El usuario se ha convertido en revisor.',
+
 ];

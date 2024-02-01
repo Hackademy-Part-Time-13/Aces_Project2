@@ -4,7 +4,7 @@ return [
     'last_items'=>'Last Items',
     'welcome'=>'Welcome back, ',
     'sell'=>'Sell now',
-    'revisor_dashboard'=>'Revisor dashboard',
+    'revisor_dashboard'=>'Reviewer dashboard',
     'popular'=>'Most Popular',
     'search_items'=>'Search for items',    
     'see_all'=>'See all',
@@ -89,7 +89,10 @@ return [
     'ad_created_success'=>'Ad created successfully, it will be posted after review',
     'ad_edited_success'=>'Ad edited successfully, it will be posted after review',
     'lang'=>'Languages',
-    'revisor'=>'Revisor',
+    'revisor'=>'Reviewer ',
+    'already_emailed_revisor'=>'You have already submitted the request.',
+    'request_revisor'=>'Thank you! Your application has been successfully submitted.',
+    'user_became_revisor'=>'Congratulations! The user has become a reviewer',
 
 
 

@@ -15,7 +15,7 @@ header {
     height: 500px;
     background-image: url('/public/media/header-image.png');
     background-position: center -410px;
-    width: 100vw;
+    width: 99.5vw;
     margin-left: calc(50% - 50vw) !important;
     margin-top: -10px!important;  
 }

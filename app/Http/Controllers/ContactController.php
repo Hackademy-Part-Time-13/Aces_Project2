@@ -18,7 +18,7 @@ class ContactController extends Controller
       // Verifica se l'utente ha già fatto la richiesta
       if ($user->contact_requested) {
 
-         return redirect('/work-with-us')->with('error', 'Hai già effettuato la richiesta.');
+         return redirect('/work-with-us')->with('error', trans('ui.already_emailed_revisor'));
 
       } else {
 
@@ -29,18 +29,15 @@ class ContactController extends Controller
          // Imposta il flag sulla richiesta nel modello dell'utente
          $user->update(['contact_requested' => true]);
          
-         return redirect('/work-with-us')->with('success', 'Thank you! Your application has been successfully submitted.');
+         return redirect('/work-with-us')->with('success', trans('ui.request_revisor'));
       }
-
-      
     
    }
-
 
    public function makeRevisor (User $user){
       
       Artisan::call('presto:make-user-revisor', ["email"=>$user->email]);
-      return redirect('/')->with('success', 'Complimenti! L\' utente è diventato revisore');
+      return redirect('/')->with('success', trans('ui.user_became_revisor'));
       
    }
 }

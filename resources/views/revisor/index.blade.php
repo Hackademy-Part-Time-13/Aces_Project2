@@ -150,7 +150,7 @@
 
   @endif
 
-  <div class="row mt-5 history-section bg-body-secondary border rounded-3">
+  <div class="row mt-5 history-section ">
     
     <h2 class="text-center my-4">{{__('ui.history')}}</h2>    
 

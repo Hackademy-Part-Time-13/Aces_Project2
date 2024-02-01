@@ -90,6 +90,10 @@ return [
     'ad_edited_success'=>'Annuncio modificato con successo, sarà pubblicato dopo la revisione',
     'lang'=>'Lingue',  
     'revisor'=>'Revisore',
+    'already_emailed_revisor'=>'Hai già effettuato la richiesta.',
+    'request_revisor'=>'Grazie! La tua richiesta è stata inviata con successo.',
+    'user_became_revisor'=>'Complimenti! L\'utente è diventato revisore',
+
 
 
 ];
