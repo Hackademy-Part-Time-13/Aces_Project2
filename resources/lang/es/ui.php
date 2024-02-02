@@ -94,5 +94,7 @@ return [
     'already_emailed_revisor'=>'Ya has realizado la solicitud.',
     'request_revisor'=>'¡Gracias! Tu solicitud ha sido enviada exitosamente.',
     'user_became_revisor'=>'¡Felicidades! El usuario se ha convertido en revisor.',
+    'items_by'=>'Artículos de ',
+    'items_about'=>'Artículos sobre ',
 
 ];

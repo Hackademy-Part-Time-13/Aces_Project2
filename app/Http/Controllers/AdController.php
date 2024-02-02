@@ -126,7 +126,7 @@ class AdController extends Controller
 
     public function adsByUser(User $user, Request $request)
     {   
-        $title="Items by ".$user->name;
+        $title=trans('ui.items_by').$user->name;
         $id = $user->id;
         
         $orderby = $request->input('orderby', 'default');
@@ -175,7 +175,7 @@ class AdController extends Controller
     public function searchAds(Request $request)
     {   
         $query=$request->input('searched');
-        $title="Items about ".$query;
+        $title=trans('ui.items_about').$query;
         $orderby = $request->input('orderby', 'default');
 
         if($orderby != 'default'){

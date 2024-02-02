@@ -93,7 +93,8 @@ return [
     'already_emailed_revisor'=>'You have already submitted the request.',
     'request_revisor'=>'Thank you! Your application has been successfully submitted.',
     'user_became_revisor'=>'Congratulations! The user has become a reviewer',
-
+    'items_by'=>'Items by ',
+    'items_about'=>'Items about ',
 
 
 

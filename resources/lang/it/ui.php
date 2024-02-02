@@ -93,6 +93,8 @@ return [
     'already_emailed_revisor'=>'Hai già effettuato la richiesta.',
     'request_revisor'=>'Grazie! La tua richiesta è stata inviata con successo.',
     'user_became_revisor'=>'Complimenti! L\'utente è diventato revisore',
+    'items_by'=>'Annunci di ',
+    'items_about'=>'Annunci su ',
 
 
 
